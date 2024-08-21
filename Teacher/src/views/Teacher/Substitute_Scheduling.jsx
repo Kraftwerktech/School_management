@@ -6,6 +6,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RxCrossCircled } from 'react-icons/rx';
 import { CiCalendar } from "react-icons/ci";
 
+
 // Dummy Data
 const students = [
   { id: 1, date: '01 July 2024', name: 'John Doe', periods: ['', '', '', '', '', ''] },
@@ -35,7 +36,7 @@ function SubstituteScheduling() {
   );
 
   return (
-    <div className="pb-8 mt-1">
+    <div className="pb-8 mr-5 mt-1">
       <h3 className="text-[31px] font-semibold mb-6">Substitute Scheduling</h3>
 
       <div className="w-full bg-transparent pb-0  mb-0">
@@ -85,7 +86,10 @@ function SubstituteScheduling() {
             <MdExpandMore className="absolute text-[#BB5042] right-3 top-[40%] transform -translate-y-1/2 pointer-events-none" />
           </div>
 
+
           {/* Search Button */}
+
+
           <button className="px-5 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto h-[44px] flex items-center justify-center">
             Search
           </button>
@@ -96,10 +100,10 @@ function SubstituteScheduling() {
       </div>
 
       {/* Student Table */}
-      <div className="w-full bg-white  rounded-md">
+      <div className="w-full rounded-t-[8px]">
         <div className="overflow-x-auto">
-          <table className="min-w-full table-auto">
-            <thead className="bg-[#E4EBE6]">
+          <table className="min-w-full  table-auto">
+            <thead className="bg-[#E4EBE6] h-[60px]">
               <tr className="text-center text-sm text-[#465049]">
                 <th className="px-4 py-2">SL</th>
                 <th className="px-4 py-2">Date</th>
@@ -114,29 +118,31 @@ function SubstituteScheduling() {
               </tr>
             </thead>
             <tbody>
-              {displayedStudents.map((student, index) => (
-                <tr key={student.id} className="border-b h-[92px] text-sm text-gray-700 text-center">
-                  <td className="px-4 py-2">{(currentPage - 1) * itemsPerPage + index + 1}</td>
-                  <td className="px-4 py-2">{student.date}</td>
-                  <td className="px-4 py-2">
-                    <span>{student.name}</span>
-                  </td>
-                  {student.periods.map((period, idx) => (
-                    <td key={idx} className="px-4 py-2">
-                      <button className={`w-[76.67px] h-[60px] flex items-center justify-center ${period ? 'bg-transparent' : 'bg-[#F8EEEC]'} ${idx % 2 === 0 ? 'text-[#08A647]' : 'text-[#BB5042]'}`}>
-                        {period}
-                        {period ? <IoIosCheckmarkCircleOutline className="h-6 w-6" /> : <RxCrossCircled className="h-6 w-6" />}
-                      </button>
-                    </td>
-                  ))}
-                  <td className="px-4 py-2">
-                    <button className="border-[1px] border-[#BB5042] text-[#BB5042] w-[103px] h-[44px] rounded-md flex items-center justify-center">
-                      Assign
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+  {displayedStudents.map((student, index) => (
+    <tr key={student.id} className="border-b h-[92px] text-sm text-gray-700 text-center">
+      <td className="px-4 py-2">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+      <td className="px-4 py-2">{student.date}</td>
+      <td className="px-4 py-2">
+        <span>{student.name}</span>
+      </td>
+      {student.periods.map((period, idx) => (
+        <td key={idx} className="px-4 py-2">
+          <button
+            className={`w-[76.67px] h-[60px] flex items-center justify-center ${idx % 2 === 0 ? 'bg-[#F8EEEC] text-[#BB5042]' : 'bg-transparent text-[#08A647]'}`}
+          >
+            {idx % 2 === 0 ? <RxCrossCircled className="h-6 w-6" /> : <IoIosCheckmarkCircleOutline className="h-6 w-6" />}
+          </button>
+        </td>
+      ))}
+      <td className="px-4 py-2">
+        <button className="border-[1px] border-[#BB5042] text-[#BB5042] w-[103px] h-[44px] rounded-md flex items-center justify-center">
+          Assign
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
         </div>
       </div>

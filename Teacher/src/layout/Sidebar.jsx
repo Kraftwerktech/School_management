@@ -16,7 +16,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
 
   const menuItems = [
     { path: "/teacher/dashboard", name: "Dashboard", icon: <AiFillDashboard /> },
-    { path: "student-info", name: "Student Information", icon: <PiStudentDuotone /> },
+    { path: "student-info", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "my-class", name: "My Class", icon: <HiOutlineUserGroup /> },
     { path: "student-dir", name: "Student Directory", icon: <MdOutlinePlayLesson /> },
     { path: "academic-management", name: "Academic Management", icon: <SiMicrosoftacademic /> },

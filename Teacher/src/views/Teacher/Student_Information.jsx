@@ -188,7 +188,7 @@ function StudentInformation() {
       <div className="w-full text-center bg-white">
         <div className="overflow-x-auto">
           <table className="min-w-full border-[1px] table-auto text-center">
-            <thead className="bg-[#E4EBE6] text-center">
+            <thead className="bg-[#E4EBE6] h-[60px] text-center">
               <tr className="text-[#465049] text-center">
                 <th className="px-4 py-2">SL</th>
                 <th className="px-4 py-2">Picture</th>
