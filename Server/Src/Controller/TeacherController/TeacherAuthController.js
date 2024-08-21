@@ -51,6 +51,30 @@ class AuthControllers {
         }
     };
 
+     getTeacherProfile = async (req, res) => {
+        try {
+            const teacherId = req.params.id;
+    
+            // Find the teacher by ID
+            const teacher = await TeacherModel.findById(teacherId).select('+password'); // Assuming password is hidden by default
+    
+            if (!teacher) {
+                return res.status(404).json({ message: 'Teacher not found' });
+            }
+    
+            res.status(200).json({
+                success: true,
+                data: teacher
+            });
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({
+                success: false,
+                message: 'Server Error'
+            });
+        }
+    };
+
 
 
     sendOTP = async (req, res) => {

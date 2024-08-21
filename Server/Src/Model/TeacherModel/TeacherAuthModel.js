@@ -16,6 +16,24 @@ const teacherSchema = new Schema({
         required: true,
         select: false
     },
+    subjectName: {
+      type:String,
+    },
+    assingclass: {
+        type:String,
+      },
+      joiningDate: {
+        type:String,
+      },
+      bloodgroup: {
+        type:String,
+      },
+      address: {
+        type:String,
+      },
+      education: {
+        type:String,
+      },
     image: {
         type: String
        

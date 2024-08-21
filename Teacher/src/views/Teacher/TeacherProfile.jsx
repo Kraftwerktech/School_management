@@ -41,7 +41,7 @@ const TeacherProfile = () => {
                 </h3>
             <p className="text-[#939393] text-[16px] mt-3">Math</p>
           </div>
-          <div className=' border-b-[1px] p-2 gap-1'>
+          <div className=' border-b-[1px]'>
             <h3 className="text-gray-600 font-medium flex gap-2">
             <span><LiaChalkboardTeacherSolid className='h-6 w-6 text-[#BB5042]'/></span>
             <span className=' text-[16px]'>Assigned Class</span>
