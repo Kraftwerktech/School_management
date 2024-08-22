@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { CiCalendar } from 'react-icons/ci';
+
 import { Link } from 'react-router-dom';
+
+import { IoCalendarClearOutline } from "react-icons/io5";
+
 
 // Dummy Data
 const students = [
@@ -117,7 +120,7 @@ const StudentInformation = () => {
                 <th className="px-4 py-2">
                   <div className="flex pl-11 justify-center">
                     <Link to="/teacher/dashboard/routineCalender">
-                      <CiCalendar className="w-[70px] h-[70px] text-[#BB5042]" />
+                      <IoCalendarClearOutline className="w-[70px] h-[70px] text-[#BB5042]" />
                     </Link>
                   </div>
                 </th>
