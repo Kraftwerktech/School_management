@@ -32,6 +32,16 @@ import {
   CategoryList,
   CategoryShow,
 } from "./pages/categories";
+import {
+  ProductCreate,
+  ProductList,
+  ProductEdit,
+  ProductShow,
+} from "./pages/products";
+import { Mainlayout } from "./pages/Dashboard/Mainlayout";
+import CreateTeacher from "./pages/AddTeacher/createTeacher";
+import ShowAllasingTeacher from "./pages/ShowAllasingTeacher";
+
 import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
 
@@ -133,6 +143,27 @@ function App() {
             authProvider={authProvider}
             resources={[
               {
+                name: "dashboard",
+                list: "/dashboard",
+                meta: {
+                  canDelete: true,
+                },
+              },
+              {
+                name: "AddTeacher",
+                list: "/AddTeacher",
+                meta: {
+                  canDelete: true,
+                },
+              },
+              {
+                name: "Teacher's List",
+                list: "/ShowAllasingTeacher",
+                meta: {
+                  canDelete: true,
+                },
+              },
+              {
                 name: "blog_posts",
                 list: "/blog-posts",
                 create: "/blog-posts/create",
@@ -152,6 +183,17 @@ function App() {
                   canDelete: true,
                 },
               },
+              {
+                name: "products",
+                list: "/products",
+                create: "/products/create",
+                edit: "/products/edit/:id",
+                show: "/products/show/:id",
+                meta: {
+                  canDelete: true,
+                },
+              },
+              
             ]}
             options={{
               syncWithLocation: true,
@@ -177,6 +219,15 @@ function App() {
                   index
                   element={<NavigateToResource resource="blog_posts" />}
                 />
+                <Route path="/dashboard">
+                  <Route index element={<Mainlayout />} />
+                </Route>
+                <Route path="/AddTeacher">
+                  <Route index element={<CreateTeacher/>} />
+                </Route>
+                <Route path="/ShowAllasingTeacher">
+                  <Route index element={<ShowAllasingTeacher/>} />
+                </Route>
                 <Route path="/blog-posts">
                   <Route index element={<BlogPostList />} />
                   <Route path="create" element={<BlogPostCreate />} />
@@ -188,6 +239,12 @@ function App() {
                   <Route path="create" element={<CategoryCreate />} />
                   <Route path="edit/:id" element={<CategoryEdit />} />
                   <Route path="show/:id" element={<CategoryShow />} />
+                </Route>
+                <Route path="/products">
+                  <Route index element={<ProductList />} />
+                  <Route path="create" element={<ProductCreate />} />
+                  <Route path="edit/:id" element={<ProductEdit />} />
+                  <Route path="show/:id" element={<ProductShow />} />
                 </Route>
                 <Route path="*" element={<ErrorComponent />} />
               </Route>
