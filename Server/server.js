@@ -13,6 +13,7 @@ dotenv.config();
 const { dbConnect } = require('./Src/Utils/db');
 const teacherAuthApi = require('./Src/Router/teacherAuthApi');
 
+
 // Initialize Express app
 const app = express();
 
@@ -21,7 +22,7 @@ const server = http.createServer(app);
 
 // Set up CORS with specific origin and credentials
 app.use(cors({
-    origin: 'http://localhost:5173', // Corrected origin without trailing slash
+    origin: ['http://localhost:5174/', 'http://localhost:5173'],
     credentials: true
 }));
 

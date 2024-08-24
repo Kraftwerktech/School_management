@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const teacherSchema = new Schema({
     username: {
@@ -7,9 +7,11 @@ const teacherSchema = new Schema({
     },
     email: {
         type: String,
+        required: true
     },
-    phone:{
-       type: String
+    phone: {
+        type: String,
+        required: true
     },
     password: {
         type: String,
@@ -17,31 +19,40 @@ const teacherSchema = new Schema({
         select: false
     },
     subjectName: {
-      type:String,
+        type: String,
+        required: true
     },
     assingclass: {
-        type:String,
-      },
-      joiningDate: {
-        type:String,
-      },
-      bloodgroup: {
-        type:String,
-      },
-      address: {
-        type:String,
-      },
-      education: {
-        type:String,
-      },
+        type: String,
+        required: true
+    },
+    joiningDate: {
+        type: String
+    },
+    bloodgroup: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    education: {
+        type: String
+    },
+    designation: {
+        type: String
+    },
+    nid: {
+        type: String
+    },
     image: {
         type: String
-       
     },
     role: {
         type: String,
         default: 'teacher'
     }
-})
+}, {
+    timestamps: true
+});
 
-module.exports = model('teachers',teacherSchema)
+module.exports = model('Teacher', teacherSchema);

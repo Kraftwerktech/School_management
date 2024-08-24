@@ -1,7 +1,7 @@
 const TeacherModel = require('../../Model/TeacherModel/TeacherAuthModel');
-const TeacherOTPModel = require('../../Model/TeacherModel/otpvarification');
+//const TeacherOTPModel = require('../../Model/TeacherModel/otpvarification');
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 const { responseReturn } = require('../../Utils/response');
 const { createToken } = require('../../Utils/tokenCreate');
 // OTP expiration time: 5 minutes
@@ -77,86 +77,87 @@ class AuthControllers {
 
 
 
-    sendOTP = async (req, res) => {
-        const { email } = req.body;
+    // sendOTP = async (req, res) => {
+    //     const { email } = req.body;
 
-        try {
-            // Check if the teacher exists
-            const teacher = await TeacherModel.findOne({ email });
-            if (!teacher) {
-                return responseReturn(res, 404, { error: " nd" });
-            }  
+    //     try {
+    //         // Check if the teacher exists
+    //         const teacher = await TeacherModel.findOne({ email });
+    //         if (!teacher) {
+    //             return responseReturn(res, 404, { error: " nd" });
+    //         }  
 
-            // Generate a 4-digit OTP
-            const otp = crypto.randomInt(1000, 9999).toString();
+    //         // Generate a 4-digit OTP
+    //         const otp = crypto.randomInt(1000, 9999).toString();
 
-            // Calculate OTP expiration time
-            const expiresAt = Date.now() + OTP_EXPIRATION_TIME;
+    //         // Calculate OTP expiration time
+    //         const expiresAt = Date.now() + OTP_EXPIRATION_TIME;
 
-            // Save OTP to the database
-            await TeacherOTPModel.create({
-                _id: email,
-                otp,
-                createdAt: new Date(),
-                expiresAt: new Date(expiresAt),
-            });
+    //         // Save OTP to the database
+    //         await TeacherOTPModel.create({
+    //             _id: email,
+    //             otp,
+    //             createdAt: new Date(),
+    //             expiresAt: new Date(expiresAt),
+    //         });
 
-            // Set up email transporter
-            const transporter = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: {
-                    user: process.env.EMAIL_USERNAME,
-                    pass: process.env.EMAIL_PASSWORD,
-                },
-            });
+    //         // Set up email transporter
+    //         const transporter = nodemailer.createTransport({
+    //             service: 'Gmail',
+    //             auth: {
+    //                 user: process.env.EMAIL_USERNAME,
+    //                 pass: process.env.EMAIL_PASSWORD,
+    //             },
+    //         });
 
-            // Email details
-            const mailOptions = {
-                from: process.env.EMAIL_USERNAME,
-                to: email,
-                subject: 'Your OTP Code',
-                text: `Your OTP code is ${otp}. It will expire in 5 minutes.`,
-            };
+    //         // Email details
+    //         const mailOptions = {
+    //             from: process.env.EMAIL_USERNAME,
+    //             to: email,
+    //             subject: 'Your OTP Code',
+    //             text: `Your OTP code is ${otp}. It will expire in 5 minutes.`,
+    //         };
 
-            // Send OTP via email
-            await transporter.sendMail(mailOptions);
+    //         // Send OTP via email
+    //         await transporter.sendMail(mailOptions);
 
-            responseReturn(res, 200, { message: 'OTP sent to your email' });
+    //         responseReturn(res, 200, { message: 'OTP sent to your email' });
 
-        } catch (error) {
-            console.error('Error sending OTP:', error.message);
-            responseReturn(res, 500, { error: "Internal server error" });
-        }
-    };
+    //     } catch (error) {
+    //         console.error('Error sending OTP:', error.message);
+    //         responseReturn(res, 500, { error: "Internal server error" });
+    //     }
+    // };
 
     // Verify OTP
-    verifyOTP = async (req, res) => {
-        const { email, otp } = req.body;
+    // verifyOTP = async (req, res) => {
+    //     const { email, otp } = req.body;
 
-        try {
-            // Find the OTP record in the database
-            const otpRecord = await TeacherOTPModel.findOne({ _id: email });
-            if (!otpRecord) {
-                return responseReturn(res, 404, { error: "OTP not found or expired" });
-            }
+    //     try {
+    //         // Find the OTP record in the database
+    //         const otpRecord = await TeacherOTPModel.findOne({ _id: email });
+    //         if (!otpRecord) {
+    //             return responseReturn(res, 404, { error: "OTP not found or expired" });
+    //         }
 
-            // Check if the OTP matches and is not expired
-            if (otpRecord.otp !== otp || otpRecord.expiresAt < new Date()) {
-                return responseReturn(res, 401, { error: "Invalid or expired OTP" });
-            }
+    //         // Check if the OTP matches and is not expired
+    //         if (otpRecord.otp !== otp || otpRecord.expiresAt < new Date()) {
+    //             return responseReturn(res, 401, { error: "Invalid or expired OTP" });
+    //         }
 
-            // OTP verified successfully
-            responseReturn(res, 200, { message: 'OTP verified successfully' });
+    //         // OTP verified successfully
+    //         responseReturn(res, 200, { message: 'OTP verified successfully' });
 
-            // Optionally delete OTP record after successful verification
-            await TeacherOTPModel.deleteOne({ _id: email });
+    //         // Optionally delete OTP record after successful verification
+    //         await TeacherOTPModel.deleteOne({ _id: email });
 
-        } catch (error) {
-            console.error('Error verifying OTP:', error.message);
-            responseReturn(res, 500, { error: "Internal server error" });
-        }
-    };
+    //     } catch (error) {
+    //         console.error('Error verifying OTP:', error.message);
+    //         responseReturn(res, 500, { error: "Internal server error" });
+    //     }
+    // };
 
+    
     logout = async (req, res) => {
         try {
             res.cookie('accessToken',null,{
