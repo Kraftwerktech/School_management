@@ -57,7 +57,10 @@ function RoutineCalendarScreen() {
     <div className="w-full mx-auto px-4 py-6">
       <div className='flex justify-between items-center mb-6'>
         <div className='flex items-center gap-4'>
-          <SlArrowLeftCircle className='text-[24px] text-[#BB5042]' />
+        <Link to='/teacher/dashboard/class-routine'>
+        <SlArrowLeftCircle className='text-[24px] text-[#BB5042]' />
+        </Link>
+        
           <span className='text-[24px] font-bold'>Calendar</span>
         </div>
         <div className='flex items-center'>
@@ -93,7 +96,9 @@ function RoutineCalendarScreen() {
             const dayOfWeek = new Date(currentYear, currentMonthIndex, date).getDay();
             return (
               <div key={index} className={`border border-gray-300 p-2 h-[180px] ${dayOfWeek === 5 ? 'bg-gray-100' : ''}`}>
-                <div className='text-center font-medium mb-2'>{date}</div>
+                <div className='text-center font-medium mb-2'>
+                  <Link to='/teacher/dashboard/class-routine'>{date}</Link>
+                  </div>
                 {dayOfWeek !== 5 ? (
                   <div className='flex flex-col items-center space-y-1'>
                     <div className='bg-[#98AD9E] text-white text-[10px] rounded-md w-[90%] h-[24px] flex items-center justify-center truncate'>
