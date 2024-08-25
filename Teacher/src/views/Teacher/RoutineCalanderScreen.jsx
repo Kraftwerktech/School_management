@@ -3,6 +3,7 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 function RoutineCalendarScreen() {
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -53,7 +54,7 @@ function RoutineCalendarScreen() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="w-full mx-auto px-4 py-6">
       <div className='flex justify-between items-center mb-6'>
         <div className='flex items-center gap-4'>
           <SlArrowLeftCircle className='text-[24px] text-[#BB5042]' />
@@ -87,7 +88,7 @@ function RoutineCalendarScreen() {
           ))}
         </div>
 
-        <div className='grid grid-cols-7'>
+        <div className='grid grid-cols-7 w-full'>
           {dates.map((date, index) => {
             const dayOfWeek = new Date(currentYear, currentMonthIndex, date).getDay();
             return (
@@ -104,12 +105,16 @@ function RoutineCalendarScreen() {
                     <div className='bg-[#98AD9E] text-white text-[10px] rounded-md w-[90%] h-[24px] flex items-center justify-center truncate'>
                       {`3rd period | ${generateRandomClasses()}`}
                     </div>
+                    <div className=' text-white text-[10px] rounded-md w-[90%] h-[24px] flex truncate'>
                     <button 
-                      className='text-xs text-blue-500 underline mt-1'
+                      className=' mt-1'
                       onClick={() => openModal(`Details for ${date}, ${months[currentMonthIndex]} ${currentYear}`)}
                     >
-                      See more
+                      <span className='text-[10px] text-gray-400'> more...</span>
+                     
                     </button>
+                    </div>
+                  
                   </div>
                 ) : (
                   <div className='h-full flex items-center justify-center text-gray-500'>
@@ -128,17 +133,38 @@ function RoutineCalendarScreen() {
         onRequestClose={closeModal}
         contentLabel="Class Details"
         className="fixed inset-0 flex items-center justify-center p-4 bg-gray-800 bg-opacity-75"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-0"
       >
-        <div className="bg-white p-6 rounded-md shadow-lg w-[90%] max-w-lg mx-auto">
-          <h2 className="text-lg font-bold mb-4">Class Details</h2>
-          <p>{modalContent}</p>
+        <div className="relative bg-white w-[700px] h-auto p-6 rounded-md shadow-lg max-w-lg mx-auto">
           <button 
             onClick={closeModal}
-            className="mt-4 px-4 py-2 bg-[#BB5042] text-white rounded-md"
+            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
           >
-            Close
+            <IoCloseCircleOutline className="w-6 h-6" />
           </button>
+          <h2 className="text-[24px] text-gray-600 mt-5 text-center font-bold mb-6">
+            {modalContent}
+          </h2>
+          <div className="w-[400px] border border-gray-300 rounded-md mx-auto p-8 mb-8">
+            <div className="text-[#465049] border-b-[1px] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">1st period {generateRandomClasses()}</span>
+            </div>
+            <div className="text-[#465049] border-b-[1px] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">2nd period {generateRandomClasses()}</span>
+            </div>
+            <div className="text-[#465049] border-b-[1px] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">3rd period {generateRandomClasses()}</span>
+            </div>
+            <div className="text-[#465049] border-b-[1px] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">4th period {generateRandomClasses()}</span>
+            </div>
+            <div className="text-[#465049] border-b-[1px] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">5th period {generateRandomClasses()}</span>
+            </div>
+            <div className="text-[#465049] font-semibold text-[16px] py-2 flex justify-between items-center">
+              <span className="truncate">6th period {generateRandomClasses()}</span>
+            </div>
+          </div>
         </div>
       </Modal>
     </div>

@@ -2,7 +2,6 @@ import {
   AuthBindings,
   Authenticated,
   ErrorComponent,
-  GitHubBanner,
   Refine,
 } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
@@ -39,8 +38,8 @@ import {
   ProductShow,
 } from "./pages/products";
 import { Mainlayout } from "./pages/Dashboard/Mainlayout";
-import CreateTeacher from "./pages/AddTeacher/createTeacher";
-import ShowAllasingTeacher from "./pages/ShowAllasingTeacher";
+import { Create } from "./pages/AddTeacher/create";
+import Index from "./pages/ShowAllasingTeacher/index";
 
 import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
@@ -48,58 +47,70 @@ import { parseJwt } from "./utils/parse-jwt";
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (config.headers) {
+  if (token && config.headers) {
     config.headers["Authorization"] = `Bearer ${token}`;
   }
-
   return config;
 });
 
 function App() {
   const authProvider: AuthBindings = {
     login: async ({ credential }: CredentialResponse) => {
-      const profileObj = credential ? parseJwt(credential) : null;
+      try {
+        const profileObj = credential ? parseJwt(credential) : null;
 
-      if (profileObj) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...profileObj,
-            avatar: profileObj.picture,
-          })
-        );
+        if (profileObj) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...profileObj,
+              avatar: profileObj.picture,
+            })
+          );
+          localStorage.setItem("token", `${credential}`);
 
-        localStorage.setItem("token", `${credential}`);
+          return {
+            success: true,
+            redirectTo: "/",
+          };
+        }
+
+        return {
+          success: false,
+        };
+      } catch (error) {
+        console.error("Login Error:", error);
+        return {
+          success: false,
+          error: new Error("Failed to login"),
+        };
+      }
+    },
+    logout: async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (token && typeof window !== "undefined") {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          axios.defaults.headers.common = {};
+          window.google?.accounts.id.revoke(token, () => {});
+        }
 
         return {
           success: true,
-          redirectTo: "/",
+          redirectTo: "/login",
+        };
+      } catch (error) {
+        console.error("Logout Error:", error);
+        return {
+          success: false,
+          error: new Error("Failed to logout"),
         };
       }
-
-      return {
-        success: false,
-      };
-    },
-    logout: async () => {
-      const token = localStorage.getItem("token");
-
-      if (token && typeof window !== "undefined") {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        axios.defaults.headers.common = {};
-        window.google?.accounts.id.revoke(token, () => {
-          return {};
-        });
-      }
-
-      return {
-        success: true,
-        redirectTo: "/login",
-      };
     },
     onError: async (error) => {
-      console.error(error);
+      console.error("Auth Error:", error);
       return { error };
     },
     check: async () => {
@@ -134,7 +145,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <DevtoolsProvider>
           <Refine
@@ -145,20 +155,18 @@ function App() {
               {
                 name: "dashboard",
                 list: "/dashboard",
-                meta: {
-                  canDelete: true,
-                },
               },
               {
                 name: "AddTeacher",
                 list: "/AddTeacher",
+                create: "/AddTeacher/create",
                 meta: {
                   canDelete: true,
                 },
               },
               {
-                name: "Teacher's List",
-                list: "/ShowAllasingTeacher",
+                name: "assigned_teachers",
+                list: "/assigned-teachers",
                 meta: {
                   canDelete: true,
                 },
@@ -193,7 +201,6 @@ function App() {
                   canDelete: true,
                 },
               },
-              
             ]}
             options={{
               syncWithLocation: true,
@@ -205,10 +212,7 @@ function App() {
             <Routes>
               <Route
                 element={
-                  <Authenticated
-                    key="authenticated-inner"
-                    fallback={<CatchAllNavigate to="/login" />}
-                  >
+                  <Authenticated fallback={<CatchAllNavigate to="/login" />}>
                     <Layout>
                       <Outlet />
                     </Layout>
@@ -217,17 +221,14 @@ function App() {
               >
                 <Route
                   index
-                  element={<NavigateToResource resource="blog_posts" />}
+                  element={<NavigateToResource resource="dashboard" />}
                 />
-                <Route path="/dashboard">
-                  <Route index element={<Mainlayout />} />
-                </Route>
-                <Route path="/AddTeacher">
-                  <Route index element={<CreateTeacher/>} />
-                </Route>
-                <Route path="/ShowAllasingTeacher">
-                  <Route index element={<ShowAllasingTeacher/>} />
-                </Route>
+                <Route path="/dashboard" element={<Mainlayout />} />
+                <Route path="/teachers/create" element={<Create />} />
+                <Route
+                  path="/assigned-teachers"
+                  element={<Index />}
+                />
                 <Route path="/blog-posts">
                   <Route index element={<BlogPostList />} />
                   <Route path="create" element={<BlogPostCreate />} />
@@ -249,14 +250,7 @@ function App() {
                 <Route path="*" element={<ErrorComponent />} />
               </Route>
               <Route
-                element={
-                  <Authenticated
-                    key="authenticated-outer"
-                    fallback={<Outlet />}
-                  >
-                    <NavigateToResource />
-                  </Authenticated>
-                }
+                element={<Authenticated fallback={<Outlet />} />}
               >
                 <Route path="/login" element={<Login />} />
               </Route>
@@ -266,7 +260,6 @@ function App() {
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
           </Refine>
-          <DevtoolsPanel />
         </DevtoolsProvider>
       </RefineKbarProvider>
     </BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaList, FaCaretDown } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import teacher from '../assets/Teacher/teacher.jpg'; // Replace with appropriate icon or image for notifications
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { CiTrash } from "react-icons/ci";
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ showSidebar, setShowSidebar }) => {
@@ -13,6 +13,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
     { id: 2, message: 'Assignment deadline approaching', timestamp: '1 hour ago', icon: teacher },
     { id: 3, message: 'New class schedule available', timestamp: 'Yesterday', icon: teacher },
     { id: 4, message: 'Meeting at 3 PM', timestamp: 'Yesterday', icon: teacher },
+    { id: 5, message: 'Meeting at 3 PM', timestamp: 'Yesterday', icon: teacher }
   ]);
   const [unreadCount, setUnreadCount] = useState(notifications.length);
   const [filter, setFilter] = useState('all');
@@ -66,7 +67,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
 
   return (
     <div className='fixed w-full z-10'> {/* Ensures header is above all content */}
-      <div className='ml-0 lg:ml-[260px] rounded-md h-[65px] flex justify-between items-center bg-[#F6F9F7] text-[#f2f4f6] px-5 transition-all'>
+      <div className='ml-0 lg:ml-[260px] h-[65px] flex justify-between items-center bg-[#F6F9F7] text-[#f2f4f6] px-5 transition-all'>
         <div
           onClick={() => setShowSidebar(!showSidebar)}
           className='w-[35px] flex lg:hidden h-[35px] rounded-sm bg-indigo-500 shadow-lg hover:shadow-indigo-500/50 justify-center items-center cursor-pointer'
@@ -83,7 +84,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
           />
         </div>
 
-        <div className='flex justify-center items-center gap-8 relative'>
+        <div className='flex justify-center ml-5 items-center gap-8 relative'>
           {/* Notification Icon */}
           <div className='relative z-20' ref={notificationRef}> {/* Ensures notifications dropdown is above profile dropdown */}
             <IoMdNotificationsOutline 
@@ -97,42 +98,46 @@ const Header = ({ showSidebar, setShowSidebar }) => {
             )}
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className='absolute top-full right-0 mt-2 w-96 bg-white shadow-lg rounded-md py-2 z-50'>
-                <div className='px-4 py-2 text-[20px] border-b text-gray-700 font-semibold'>Notifications</div>
-                <div className='flex gap-4 w-full h-[48px] mt-2 mb-2'>
+              <div className='absolute w-[500px] top-full right-0 mt-2 bg-white shadow-lg rounded-md py-2 z-100'>
+                <div className='px-5 py-2 text-[20px] border-b text-gray-700 font-semibold'>Notifications</div>
+                <div className='flex px-5 py-2 gap-4 w-full h-[48px] mt-2 mb-2'>
                   <button 
-                    className={`px-4 py-2 rounded-md ${filter === 'all' ? 'bg-[#616158] text-white' : 'text-gray-600'} hover:bg-[#616158] hover:text-white`}
+                    className={`px-5 text-center border-[1px] rounded-md ${filter === 'all' ? 'bg-[#616158] text-white' : 'text-gray-600'} hover:bg-[#616158] hover:text-white`}
                     onClick={() => setFilter('all')}
                   >
                     All
                   </button>
                   <button 
-                    className={`px-4 py-2 rounded-md ${filter === 'unread' ? 'bg-[#616158] text-white' : 'text-gray-600'} hover:bg-[#616158] hover:text-white`}
+                    className={`px-5 border-[1px] rounded-md ${filter === 'unread' ? 'bg-[#616158] text-white' : 'text-gray-600'} hover:bg-[#616158] hover:text-white`}
                     onClick={() => setFilter('unread')}
                   >
                     Unread
                   </button>
+                  <div className='justify-end text-black mt-2 ml-28'>
+                    <span>Mark all as read</span>
+                  </div>
                 </div>
-                <div className='max-h-60 overflow-y-auto'>
+                <div className='max-h-[350px] max-w-[480px] justify-center pl-[20px] scrollbar-custom overflow-y-auto'>
                   {filteredNotifications.length > 0 ? (
                     filteredNotifications.map((notification, index) => (
                       <div 
                         key={notification.id} 
-                        className={`px-4 py-2 border-b last:border-b-0 flex justify-between items-center ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}
+                        className={`px-4 py-2 border-b last:border-b-0 flex justify-between items-center ${index % 2 === 0 ? 'bg-[#e9efeb]' : 'bg-[#F6F9F7]'}`}
                       >
                         <div className='flex items-center'>
                           <img 
                             src={notification.icon} 
                             alt="icon" 
-                            className='w-8 h-8 rounded-full mr-3' 
+                            className='w-[50px] h-[50px] rounded-full mr-3' 
                           />
                           <div>
-                            <p className='text-gray-800'>{notification.message}</p>
+                            <p className='text-gray-800 font-semibold'>{notification.message}</p>
+                            <p className=' text-black'>Please Conforim your all personal</p>
                             <span className='text-gray-500 text-sm'>{notification.timestamp}</span>
                           </div>
                         </div>
-                        <RiDeleteBin6Line 
-                          className='text-red-500 w-5 h-5 cursor-pointer ml-2'
+                        < CiTrash 
+                          className='text-[#bb5042] w-5 h-5 cursor-pointer'
                           onClick={() => handleDeleteNotification(notification.id)}
                         />
                       </div>
