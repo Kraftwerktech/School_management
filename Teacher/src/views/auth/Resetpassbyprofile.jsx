@@ -17,7 +17,7 @@ const ResetPasswordCard = () => {
     <div>
       <h3 className="font-bold text-[31px]">Change Password</h3>
       <div className="flex items-center mt-5 mb-10 justify-center">
-        <div className="w-[650px] h-[425px] p-20 bg-white rounded-md border-[1px]">
+        <div className="bg-white border-[1px] rounded-md p-20 w-[600px] h-[480px]">
           <form>
             <div className="mb-4">
               <label className="block text-gray-600 mb-2 font-medium">
@@ -29,8 +29,8 @@ const ResetPasswordCard = () => {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-3 mt-1 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
-                  placeholder="Enter new password"
+                  className="w-full placeholder:text-[12px] p-3 mt-1 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
+                  placeholder="Password Must be at Least 8 Characters"
                 />
                 {password && (
                   <button
@@ -43,7 +43,7 @@ const ResetPasswordCard = () => {
                 )}
               </div>
             </div>
-            <div className="mb-8">
+            <div className="mb-10">
               <label className="block text-gray-600 mb-2 font-medium">
                 <CiLock className="inline-block text-xl text-[#BB5042] mr-2" />
                 Confirm New Password
@@ -53,8 +53,8 @@ const ResetPasswordCard = () => {
                   type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full p-3 mt-1 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
-                  placeholder="Confirm new password"
+                  className="w-full placeholder:text-[12px] p-3 mt-1 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
+                  placeholder="Re-enter Password"
                 />
                 {confirmPassword && (
                   <button

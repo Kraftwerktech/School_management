@@ -4,7 +4,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { useForm } from "@pankod/refine-antd";
 import { useState } from "react";
 
-export const TeacherCreate: React.FC<IResourceComponentsProps> = () => {
+export const Create: React.FC<IResourceComponentsProps> = () => {
     const [form] = useForm();
     const apiUrl = useApiUrl();
     const { mutate: create } = useCreate();

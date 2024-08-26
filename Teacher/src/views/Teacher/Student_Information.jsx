@@ -6,7 +6,7 @@ const students = [
   {
     id: 1,
     picture: 'https://randomuser.me/api/portraits/men/32.jpg',
-    studentId: '37384587228',
+    studentId: 'DM 16000024',
     name: 'John Doe',
     class: 'IX',
     section: 'A',
@@ -15,7 +15,7 @@ const students = [
   {
     id: 2,
     picture: 'https://randomuser.me/api/portraits/women/44.jpg',
-    studentId: '37384587229',
+    studentId: 'DM 16000025',
     name: 'Jane Smith',
     class: 'IX',
     section: 'A',
@@ -24,7 +24,7 @@ const students = [
   {
     id: 3,
     picture: 'https://randomuser.me/api/portraits/men/85.jpg',
-    studentId: '37384587230',
+    studentId: 'DM 16000026',
     name: 'Sam Johnson',
     class: 'IX',
     section: 'B',
@@ -33,7 +33,7 @@ const students = [
   {
     id: 4,
     picture: 'https://randomuser.me/api/portraits/women/65.jpg',
-    studentId: '37384587231',
+    studentId: 'DM 16000027',
     name: 'Emily Davis',
     class: 'IX',
     section: 'C',
@@ -42,7 +42,7 @@ const students = [
   {
     id: 5,
     picture: 'https://randomuser.me/api/portraits/men/76.jpg',
-    studentId: '37384587232',
+    studentId: 'DM 16000028',
     name: 'Michael Brown',
     class: 'IX',
     section: 'A',
@@ -51,7 +51,7 @@ const students = [
   {
     id: 6,
     picture: 'https://randomuser.me/api/portraits/women/88.jpg',
-    studentId: '37384587233',
+    studentId: 'DM 16000029',
     name: 'Sophia Wilson',
     class: 'IX',
     section: 'B',
@@ -60,7 +60,7 @@ const students = [
   {
     id: 7,
     picture: 'https://randomuser.me/api/portraits/men/92.jpg',
-    studentId: '37384587234',
+    studentId: 'DM 16000030',
     name: 'James Anderson',
     class: 'IX',
     section: 'C',
@@ -69,7 +69,7 @@ const students = [
   {
     id: 8,
     picture: 'https://randomuser.me/api/portraits/women/52.jpg',
-    studentId: '37384587235',
+    studentId: 'DM 16000031',
     name: 'Olivia Martinez',
     class: 'IX',
     section: 'A',
@@ -78,7 +78,7 @@ const students = [
   {
     id: 9,
     picture: 'https://randomuser.me/api/portraits/men/49.jpg',
-    studentId: '37384587236',
+    studentId: 'DM 16000032',
     name: 'Liam Taylor',
     class: 'IX',
     section: 'B',
@@ -87,7 +87,7 @@ const students = [
   {
     id: 10,
     picture: 'https://randomuser.me/api/portraits/women/60.jpg',
-    studentId: '37384587237',
+    studentId: 'DM 16000033',
     name: 'Isabella Thomas',
     class: 'IX',
     section: 'C',
@@ -125,12 +125,12 @@ function StudentInformation() {
       <h3 className="text-[31px] font-semibold mb-6">Student Directory</h3>
       
       <div className="w-full bg-white mr-4 pb-2 mt-0">
-        <div className="flex flex-wrap  gap-5">
+        <div className="flex flex-wrap gap-3">
           <input 
-            className="px-5 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full md:max-w-[384px]" 
+            className="px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full md:max-w-[300px]" 
             type="text" 
             name="search" 
-            placeholder="Search by Student Name or Student ID" 
+            placeholder="Search by Student Name or ID" 
           />
           
           <div className="relative w-full md:w-[170px]">
@@ -186,10 +186,10 @@ function StudentInformation() {
       </div>
 
       <div className="w-full text-center bg-white">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-t-[12px]">
           <table className="min-w-full border-[1px] table-auto text-center">
             <thead className="bg-[#E4EBE6] h-[60px] text-center">
-              <tr className="text-[#465049] text-center">
+              <tr className="text-[#465049] text-[16px] text-center">
                 <th className="px-4 py-2">SL</th>
                 <th className="px-4 py-2">Picture</th>
                 <th className="px-4 py-2">Student ID</th>
@@ -201,18 +201,18 @@ function StudentInformation() {
             </thead>
             <tbody>
               {displayedStudents.map((student, index) => (
-                <tr key={student.id} className="border-b text-sm text-gray-700">
+                <tr key={student.id} className="border-b text-[16px] text-gray-700">
                   <td className="px-4 py-2 text-center">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                   <td className="px-4 py-2 flex justify-center">
                     <img
                       src={student.picture}
                       alt={student.name}
-                      className="w-10 h-10 rounded-full"
+                      className="w-[60px] h-[60px] rounded-full"
                     />
                   </td>
-                  <td className="px-4 py-2 text-center">{student.studentId}</td>
+                  <td className="px-4 py-2 text-[#939393] text-center">{student.studentId}</td>
                   <td className="px-4 py-2 text-center">
-                    <a className='text-[#0318CF] hover:text-[#BB5042]' href='http://localhost:5173/teacher/dashboard/student-dir'>{student.name}</a>
+                    <a className='text-[#0318CF] font-medium text-[16px] hover:text-[#BB5042]' href='http://localhost:5173/teacher/dashboard/student-dir'>{student.name}</a>
                   </td>
                   <td className="px-4 py-2 text-center">{student.class}</td>
                   <td className="px-4 py-2 text-center">{student.section}</td>

@@ -19,7 +19,7 @@ function RoutineCalendarScreen() {
   const dates = Array.from({ length: totalDays }, (_, i) => startDate.getDate() + i);
 
   const generateRandomClasses = () => {
-    const subjects = ['Math', 'Science', 'English', 'History', 'Geography'];
+    const subjects = ['Math-02', 'Science', 'Eng-01', 'HIS-01', 'Geo-01'];
     const classes = ['IX-A', 'IX-B', 'IX-C', 'IX-D'];
 
     const randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
@@ -54,7 +54,7 @@ function RoutineCalendarScreen() {
   };
 
   return (
-    <div className="w-full mx-auto px-4 py-6">
+    <div className="w-full pr-10">
       <div className='flex justify-between items-center mb-6'>
         <div className='flex items-center gap-4'>
         <Link to='/teacher/dashboard/class-routine'>
@@ -63,7 +63,7 @@ function RoutineCalendarScreen() {
         
           <span className='text-[24px] font-bold'>Calendar</span>
         </div>
-        <div className='flex items-center'>
+        <div className=' items-center'>
           <button 
             className='px-4 py-2' 
             onClick={() => handleMonthChange(-1)}
@@ -96,31 +96,30 @@ function RoutineCalendarScreen() {
             const dayOfWeek = new Date(currentYear, currentMonthIndex, date).getDay();
             return (
               <div key={index} className={`border border-gray-300 p-2 h-[180px] ${dayOfWeek === 5 ? 'bg-gray-100' : ''}`}>
-                <div className='text-center font-medium mb-2'>
+                <div className='text-center mb-2 font-semibold'>
                   <Link to='/teacher/dashboard/class-routine'>{date}</Link>
                   </div>
-                {dayOfWeek !== 5 ? (
-                  <div className='flex flex-col items-center space-y-1'>
-                    <div className='bg-[#98AD9E] text-white text-[10px] rounded-md w-[90%] h-[24px] flex items-center justify-center truncate'>
-                      {`1st period | ${generateRandomClasses()}`}
-                    </div>
-                    <div className='bg-[#98AD9E] text-white text-[10px] rounded-md w-[90%] h-[24px] flex items-center justify-center truncate'>
-                      {`2nd period | ${generateRandomClasses()}`}
-                    </div>
-                    <div className='bg-[#98AD9E] text-white text-[10px] rounded-md w-[90%] h-[24px] flex items-center justify-center truncate'>
-                      {`3rd period | ${generateRandomClasses()}`}
-                    </div>
-                    <div className=' text-white text-[10px] rounded-md w-[90%] h-[24px] flex truncate'>
-                    <button 
-                      className=' mt-1'
-                      onClick={() => openModal(`Details for ${date}, ${months[currentMonthIndex]} ${currentYear}`)}
-                    >
-                      <span className='text-[10px] text-gray-400'> more...</span>
-                     
-                    </button>
-                    </div>
-                  
-                  </div>
+                {dayOfWeek !== 6 ? (
+                 <div className='flex flex-col items-center space-y-1'>
+                 <div className='bg-[#98AD9E] text-white text-[10px] md:text-[12px] rounded-md w-[100%] h-[24px] flex items-center pl-2 pr-2 justify-start truncate'>
+                   {`1st period | ${generateRandomClasses()}`}
+                 </div>
+                 <div className='bg-[#98AD9E] text-white text-[10px] md:text-[12px] rounded-md w-[100%] h-[24px] flex items-center pl-2 pr-2 justify-start truncate'>
+                   {`2nd period | ${generateRandomClasses()}`}
+                 </div>
+                 <div className='bg-[#98AD9E] text-white text-[10px] md:text-[12px] rounded-md w-[100%] h-[24px] flex items-center pl-2 pr-2 justify-start truncate'>
+                   {`3rd period | ${generateRandomClasses()}`}
+                 </div>
+                 <div className='w-[100%] h-[24px] flex items-center justify-start pl-2'>
+                   <button 
+                     className='text-[10px] md:text-[12px] text-gray-400 hover:text-gray-600 transition-colors truncate'
+                     onClick={() => openModal(`Details for ${date}, ${months[currentMonthIndex]} ${currentYear}`)}
+                   >
+                     more...
+                   </button>
+                 </div>
+               </div>
+               
                 ) : (
                   <div className='h-full flex items-center justify-center text-gray-500'>
                     No Classes

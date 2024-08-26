@@ -113,7 +113,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
                   >
                     Unread
                   </button>
-                  <div className='justify-end text-black mt-2 ml-28'>
+                  <div className='justify-end text-black mt-2 ml-[160px]'>
                     <span>Mark all as read</span>
                   </div>
                 </div>

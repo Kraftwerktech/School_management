@@ -6,7 +6,7 @@ import { PropagateLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { teacherLogin, clearMessages } from '../../store/Reducers/authReducer';
-import { CiUser, CiLock } from 'react-icons/ci'; // Ensure you import necessary icons
+import { CiUser, CiLock } from 'react-icons/ci';
 
 function Teacherlogin() {
     const navigate = useNavigate();
@@ -16,11 +16,19 @@ function Teacherlogin() {
         username: '',
         password: ''
     });
+    const [inputErrors, setInputErrors] = useState({
+        username: '',
+        password: ''
+    });
 
     const inputHandle = (e) => {
         setState({
             ...state,
             [e.target.name]: e.target.value
+        });
+        setInputErrors({
+            ...inputErrors,
+            [e.target.name]: '' // Reset the error message when user starts typing
         });
     };
 
@@ -31,6 +39,14 @@ function Teacherlogin() {
 
     useEffect(() => {
         if (errorMessage) {
+            const errors = {};
+            if (errorMessage.includes("username")) {
+                errors.username = "Invalid username. Please try again.";
+            }
+            if (errorMessage.includes("password")) {
+                errors.password = "Incorrect password. Please try again.";
+            }
+            setInputErrors(errors);
             toast.error(errorMessage);
             dispatch(clearMessages());
         }
@@ -59,59 +75,62 @@ function Teacherlogin() {
                         </div>
                         <img src={teacherImage} alt="Teacher Illustration" className="w-full max-w-lg h-auto mt-2" />
                     </div>
-<div className="ml-[200px]">
-
-<div className=' h-[746px] max-w-full bg-white rounded-l-[56px] mt-[100px] p-20 flex flex-col items-center justify-center '>
                     <div>
-                        <h2 className="text-[30px] lg:text-[39px] text-gray-700 mb-6 font-bold text-center">Login</h2>
-                        <form onSubmit={submit}>
-                            <div className=" mb-6">
-                                <label className="text-gray-700 w-[430px] font-medium text-[18px] flex items-center">
-                                    <CiUser className="text-[#BB5042] mb-2 w-6 h-6 mr-2" />
-                                    Username
-                                </label>
-                                <input
-                                    onChange={inputHandle}
-                                    value={state.username}
-                                    name="username"
-                                    type="text"
-                                    placeholder="Enter Username"
-                                    className="w-[480px] placeholder:text-sm max-w-lg mt-1 p-3 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
-                                    required
-                                />
+                        <div className="h-[746px] lg:h-[600px] max-w-full bg-white rounded-l-[56px] mt-[40px] p-20 flex flex-col items-center justify-center">
+                            <div>
+                                <h2 className="text-[30px] lg:text-[39px] text-gray-700 mb-6 font-bold text-center">Login</h2>
+                                <form onSubmit={submit}>
+                                    <div className="mb-6">
+                                        <label className="text-gray-700 w-[430px] font-medium text-[18px] flex items-center">
+                                            <CiUser className="text-[#BB5042] mb-2 w-6 h-6 mr-2" />
+                                            Username
+                                        </label>
+                                        <input
+                                            onChange={inputHandle}
+                                            value={state.username}
+                                            name="username"
+                                            type="text"
+                                            placeholder="Enter Username"
+                                            className={`w-[480px] placeholder:text-sm max-w-lg mt-1 p-3 focus:border-[#BB5042] focus:outline-none border ${inputErrors.username ? 'border-red-500' : 'border-gray-300'} rounded-lg`}
+                                            required
+                                        />
+                                        {inputErrors.username && (
+                                            <p className="text-red-500 text-sm mt-1">{inputErrors.username}</p>
+                                        )}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="text-gray-700 text-[18px] w-[430px] font-medium flex items-center">
+                                            <CiLock className="text-[#BB5042] mb-2 w-6 h-6 mr-2" />
+                                            Password
+                                        </label>
+                                        <input
+                                            onChange={inputHandle}
+                                            value={state.password}
+                                            name="password"
+                                            type="password"
+                                            placeholder="Enter Password"
+                                            className={`w-full placeholder:text-sm max-w-lg mt-1 p-3 focus:border-[#BB5042] focus:outline-none border ${inputErrors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg`}
+                                            required
+                                        />
+                                        {inputErrors.password && (
+                                            <p className="text-red-500 text-sm mt-1">{inputErrors.password}</p>
+                                        )}
+                                    </div>
+                                    <div className="text-right">
+                                        <Link to="/forget-password" className="text-[#0866FF]">
+                                            Forgot Password?
+                                        </Link>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="w-full max-w-lg mt-10 h-[60px] p-3 bg-[#BB5042] text-[20px] text-white rounded-lg flex justify-center items-center"
+                                    >
+                                        {loader ? <PropagateLoader color="#fff" cssOverride={{ display: 'flex', justifyContent: 'center' }} /> : 'Login'}
+                                    </button>
+                                </form>
                             </div>
-                            <div className="mb-4">
-                                <label className="text-gray-700 text-[18px] w-[430px] font-medium flex items-center">
-                                    <CiLock className="text-[#BB5042] mb-2 w-6 h-6 mr-2" />
-                                    Password
-                                </label>
-                                <input
-                                    onChange={inputHandle}
-                                    value={state.password}
-                                    name="password"
-                                    type="password"
-                                    placeholder="Enter Password"
-                                    className="w-full placeholder:text-sm max-w-lg mt-1 p-3 focus:border-[#BB5042] focus:outline-none border border-gray-300 rounded-lg"
-                                    required
-                                />
-                            </div>
-                            <div className="text-right">
-                                <Link to="/forget-password" className="text-[#0866FF]">
-                                    Forgot Password?
-                                </Link>
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full max-w-lg mt-10 h-[60px] p-3 bg-[#BB5042] text-[20px] text-white rounded-lg flex justify-center items-center"
-                            >
-                                {loader ? <PropagateLoader color="#fff" cssOverride={{ display: 'flex', justifyContent: 'center' }} /> : 'Login'}
-                            </button>
-                        </form>
+                        </div>
                     </div>
-                    </div>   
-</div>
-                
-
                 </div>
             </div>
         </div>

@@ -12,9 +12,9 @@ import teacher from '../../assets/Teacher/teacher.jpg'
 
 const TeacherProfile = () => {
   return (
-    <div className='max-w-[1200px]'>
+    <div className='max-w-full'>
         <h3 className=' font-semibold text-[31px]'>Profile</h3>
-         <div className="w-[1094px] mt-5  flex items-center justify-center">
+         <div className=" max-w-full mr-[47px] mt-5  flex items-center justify-center">
       <div className=" w-[1200px] h-[566px] pt-2 bg-white rounded-lg  flex flex-col md:flex-row gap-6">
         {/* Profile Image and Name */}
         <div className="flex flex-col  items-center md:items-start  w-[238px]">
