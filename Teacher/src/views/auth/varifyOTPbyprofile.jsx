@@ -41,7 +41,7 @@ const ResetPasswordCard = () => {
                     </div>
                     <Link to="http://localhost:5173/teacher/dashboard/reset-pass-profile">
                         <button className="w-full bg-[#BB5042] text-white py-3 rounded-lg hover:bg-[#c6295c] transition duration-200 focus:outline-none focus:ring-4 focus:ring-[#d73166]/40">
-                            Continue
+                            Submit
                         </button>
                     </Link>
                     <div className="text-center mt-6 mb-6">

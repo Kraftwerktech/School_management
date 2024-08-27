@@ -46,7 +46,7 @@ const ResetPasswordCard = () => {
             <div className="mb-10">
               <label className="block text-gray-600 mb-2 font-medium">
                 <CiLock className="inline-block text-xl text-[#BB5042] mr-2" />
-                Confirm New Password
+                Confirm Password
               </label>
               <div className="relative">
                 <input
@@ -69,7 +69,7 @@ const ResetPasswordCard = () => {
             </div>
             <Link to="http://localhost:5173/teacher/dashboard">
               <button className="w-full bg-[#BB5042] text-white py-3 rounded-lg hover:bg-[#c6295c] transition duration-200 focus:outline-none focus:ring-4 focus:ring-[#d73166]/40">
-                Reset Password
+                Change Password
               </button>
             </Link>
           </form>
