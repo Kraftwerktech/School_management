@@ -8,6 +8,8 @@ import { SiMicrosoftacademic } from "react-icons/si";
 import { CiCalendar } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbCalendarTime } from "react-icons/tb";
+import { FcCollaboration } from "react-icons/fc";
+import Group from "../assets/Teacher/icons/Group.png";
 
 import logo from '../assets/Teacher/logo1.png';
 
@@ -24,7 +26,9 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
     { path: "student-result", name: "Student Result", icon: < HiOutlineUserGroup /> },
     { path: "class-routine", name: "Class Routine", icon: <CiCalendar /> },
     { path: "substitute-scheduling", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
+    { path: "collaboration", name: "Parents Teachers Collaboration", icon: <FcCollaboration /> },
     { path: "setting", name: "Setting", icon: <IoSettingsOutline /> },
+   
     
   ];
 
