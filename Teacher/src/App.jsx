@@ -27,6 +27,8 @@ import VerifyIdentyByProfile from './views/auth/Varifyidentiybyprofile';
 import VarifyOTPbyprofile from './views/auth/varifyOTPbyprofile';
 import Notificationsall from './views/Teacher/Notificationall';
 import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
+import RequestMeeting from './views/Teacher/RequestMeeting';
+import ArchiveMeeting from './views/Teacher/Archivemeeting';
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +41,8 @@ function App() {
           <Route path="student-result" element={<Student_Result />} />
           <Route path="setting" element={<Setting />} />
           <Route path="collaboration" element={<Parents_Teachers_Collaboration />} />
+          <Route path="requestmeeting" element={<RequestMeeting />} />
+          <Route path="archive" element={<ArchiveMeeting />} />
           <Route path="home-work" element={<Home_Works />} />
           <Route path="group-student" element={<Group_Students_By_Class />} />
           <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
