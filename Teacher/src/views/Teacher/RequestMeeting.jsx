@@ -326,99 +326,25 @@ function Parents_Teachers_Collaboration() {
         <p className="text-[45px] font-bold text-[#ffffff]">24</p>
         <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
       </div>
-      <div>
+      <div className=' max-w-[700px]'>
         <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
+        <p className="text-[16px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
         <div className="flex gap-2 mt-2">
           <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
+          <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
         </div>
       </div>
     </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>2:00 PM - 4:00 PM</span>
+    <div className="max-h-full space-y-4 gap-4">
+      <div className="text-[16px]  font-medium flex gap-2 items-center text-[#6B7280]">
+        <span className='text-[16px]'><SlClock className='text-[#BB5042] w-5 h-5'/></span>
+        <span className='text-[16px]'>2:00 PM - 4:00 PM</span>
         </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
+      <div className="text-[16px] flex  gap-2 items-center font-medium text-[#6B7280]">
+        <span><GoLocation className='text-[#BB5042] w-5 h-5'/></span>
+        <span className='text-[16px]'>Building No. 5, Room 302</span>
        </div>
-      <button className="mt-2 bg-[#85392F] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
-      <span className=' font-bold'> Arranged by </span>Guardians
-      </button>
-    </div>
-    <div className=" space-y-6 gap-4 items-center mr-4">
-
-        <div>
-        <button  onClick={() => acceptsetShowModal(true)} className='flex border-[1px] border-[#08A647] rounded-[8px] px-5 py-2 items-center justify-center gap-2'>
-        <span><IoIosCheckmarkCircleOutline className='w-5 h-5 text-[#08A647]'/></span>
-        <span className='text-[#08A647]'>Accept</span>
-       
-      </button>
-      {acceptShowModal && <AcceptMeetingModal acceptsetShowModal={acceptsetShowModal} />}
-        </div>
-    <div>
-    <button onClick={() => rejectsetShowModal(true)} className='flex border-[1px] rounded-[8px] border-[#BB5042] px-5 py-2 items-center justify-center gap-2'>
-        <span><RxCrossCircled className='w-5 h-5 text-[#BB5042]'/></span>
-        <span className='text-[#BB5042]'>Reject</span>
-      </button>
-      {rejectShowModal && <RejectMeetingModal rejectsetShowModal={rejectsetShowModal} />}
-    </div>
-      
-    </div>
-  </div>
-  <div className='w-[60%] flex pb-6 pt-4 items-center space-y-4 justify-between'>
-    <div className='pl-4'>
-      <img src='https://randomuser.me/api/portraits/men/32.jpg' className='w-14 h-14 rounded-full border-[3px] border-[#BB5042]'/>
-    </div>
-    <div>
-      <span className='text-[#0318CF]'>Rebeka</span>
-    </div>
-    <div>
-      <span className='text-[#939393]'>DM 16000024</span>
-      <br/>
-      <span>Class VI | B</span>
-    </div>
-    <span className='text-[#E8E8E8] text-[40px]'>|</span>
-    <div>
-      <span>Request by</span>
-      <br/>
-      <span className='text-[#939393]'>Md. Rubel Hasan</span>
-    </div>
-    <div>
-      <span>Relation</span>
-      <br/>
-      <span className='text-[#939393]'>Father</span>
-    </div>
-  </div>
-</div>
-<div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
-  <div className="flex justify-between border-b-[2px] pb-8 items-center">
-    <div className="flex gap-4">
-      <div className="bg-[#85392F] rounded-md text-center p-2 h-[118px] w-[112px]">
-        <p className="text-[45px] font-bold text-[#ffffff]">24</p>
-        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
-      </div>
-      <div>
-        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
-        <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
-        </div>
-      </div>
-    </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>2:00 PM - 4:00 PM</span>
-        </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
-      <button className="mt-2 bg-[#85392F] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
+      <button className="mt-2 bg-[#85392F] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-5 py-2">
       <span className=' font-bold'> Arranged by </span>Guardians
       </button>
     </div>
@@ -468,6 +394,80 @@ function Parents_Teachers_Collaboration() {
   </div>
 </div>
 {/* Add more cards similarly */}
+<div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
+  <div className="flex justify-between border-b-[2px] pb-8 items-center">
+    <div className="flex gap-4">
+      <div className="bg-[#85392F] rounded-md text-center p-2 h-[118px] w-[112px]">
+        <p className="text-[45px] font-bold text-[#ffffff]">24</p>
+        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
+      </div>
+      <div className=' max-w-[700px]'>
+        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
+        <p className="text-[16px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
+        <div className="flex gap-2 mt-2">
+          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
+          <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
+        </div>
+      </div>
+    </div>
+    <div className="max-h-full space-y-4 gap-4">
+      <div className="text-[16px]  font-medium flex gap-2 items-center text-[#6B7280]">
+        <span className='text-[16px]'><SlClock className='text-[#BB5042] w-5 h-5'/></span>
+        <span className='text-[16px]'>2:00 PM - 4:00 PM</span>
+        </div>
+      <div className="text-[16px] flex  gap-2 items-center font-medium text-[#6B7280]">
+        <span><GoLocation className='text-[#BB5042] w-5 h-5'/></span>
+        <span className='text-[16px]'>Building No. 5, Room 302</span>
+       </div>
+      <button className="mt-2 bg-[#85392F] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-5 py-2">
+      <span className=' font-bold'> Arranged by </span>Guardians
+      </button>
+    </div>
+    <div className=" space-y-6 gap-4 items-center mr-4">
+
+        <div>
+        <button  onClick={() => acceptsetShowModal(true)} className='flex border-[1px] border-[#08A647] rounded-[8px] px-5 py-2 items-center justify-center gap-2'>
+        <span><IoIosCheckmarkCircleOutline className='w-5 h-5 text-[#08A647]'/></span>
+        <span className='text-[#08A647]'>Accept</span>
+       
+      </button>
+      {acceptShowModal && <AcceptMeetingModal acceptsetShowModal={acceptsetShowModal} />}
+        </div>
+    <div>
+    <button onClick={() => rejectsetShowModal(true)} className='flex border-[1px] rounded-[8px] border-[#BB5042] px-5 py-2 items-center justify-center gap-2'>
+        <span><RxCrossCircled className='w-5 h-5 text-[#BB5042]'/></span>
+        <span className='text-[#BB5042]'>Reject</span>
+      </button>
+      {rejectShowModal && <RejectMeetingModal rejectsetShowModal={rejectsetShowModal} />}
+    </div>
+      
+    </div>
+  </div>
+  <div className='w-[60%] flex pb-6 pt-4 items-center space-y-4 justify-between'>
+    <div className='pl-4'>
+      <img src='https://randomuser.me/api/portraits/men/32.jpg' className='w-14 h-14 rounded-full border-[3px] border-[#BB5042]'/>
+    </div>
+    <div>
+      <span className='text-[#0318CF]'>Rebeka</span>
+    </div>
+    <div>
+      <span className='text-[#939393]'>DM 16000024</span>
+      <br/>
+      <span>Class VI | B</span>
+    </div>
+    <span className='text-[#E8E8E8] text-[40px]'>|</span>
+    <div>
+      <span>Request by</span>
+      <br/>
+      <span className='text-[#939393]'>Md. Rubel Hasan</span>
+    </div>
+    <div>
+      <span>Relation</span>
+      <br/>
+      <span className='text-[#939393]'>Father</span>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   );

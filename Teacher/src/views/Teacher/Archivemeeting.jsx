@@ -15,6 +15,9 @@ import { CiLocationOn } from "react-icons/ci";
 import { GrAttachment } from "react-icons/gr";
 import DatePicker from 'react-datepicker';
 import {Link} from 'react-router-dom';
+import 'react-datepicker/dist/react-datepicker.css';
+import { CiCalendar } from "react-icons/ci";
+
 
 function CreateMeetingModal({ setShowModal }) {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -153,9 +156,12 @@ function CreateMeetingModal({ setShowModal }) {
 function Parents_Teachers_Collaboration() {
   const [showPopup, setShowPopup] = useState(false);
   const [isCardVisible, setIsCardVisible] = useState(false);
+  const [isCardRejected, setIsCardRejected] = useState(false);
+ 
   const [isCardrejected, setisCardrejected] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [activeTab, setActiveTab] = useState('upcoming'); // Set the default active tab
 
   const handleTabClick = (tabName) => {
@@ -181,7 +187,7 @@ function Parents_Teachers_Collaboration() {
       </div>
 
       {/* Tabs Section */}
-      <div className="max-h-[1840px] mt-8 w-full flex gap-40 border-b-2 mb-5 text-[18px] text-[#6B7280] font-medium relative">
+      <div className="max-h-[1840px] mt-8 w-full flex gap-40 border-b-2 mb-8 text-[18px] text-[#6B7280] font-medium relative">
       <div
         className={`cursor-pointer flex items-center text-[25px] pb-2 relative ${
           activeTab === 'upcoming' ? 'text-[#151515] font-bold border-b-4 border-[#BB5042]' : 'hover:text-[#BB5042]'
@@ -224,417 +230,487 @@ function Parents_Teachers_Collaboration() {
 
 
 
-<div className=' flex justify-end gap-[50px]'>
-  <button className='px-5 py-2 border-[1px] bg-[#616158] text-[#FFFF] rounded-[8px]'>All</button>
-  <button className='px-5 py-2 border-[1px] rounded-[8px]'>Me</button>
-  <button className='px-5 py-2 border-[1px] rounded-[8px]'>Guardian</button>
+    <div className="flex justify-end mb-8 gap-[40px]">
+    <div className="relative w-full md:w-[215px]"> {/* Adjusted the width for better date visibility */}
+  <DatePicker
+    selected={startDate}
+    onChange={(date) => setStartDate(date)}
+    className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-[60px] h-[44px]" // Adjusted padding for better alignment
+    placeholderText="Start Date"
+    dateFormat="dd MMMM yyyy"
+  />
+  <CiCalendar className="absolute w-7 h-7 text-[#BB5042] right-3 top-[40%] transform -translate-y-1/2 pointer-events-none" /> {/* Adjusted icon position */}
 </div>
+
+
+<div className="relative w-full md:w-[215px]"> {/* Adjusted the width for better date visibility */}
+  <DatePicker
+    selected={endDate}
+    onChange={(date) =>  setEndDate(date)}
+    className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-[60px] h-[44px]" // Adjusted padding for better alignment
+    placeholderText="End Date"
+    dateFormat="dd MMMM yyyy"
+  />
+  <CiCalendar className="absolute w-7 h-7 text-[#BB5042] right-3 top-[40%] transform -translate-y-1/2 pointer-events-none" /> {/* Adjusted icon position */}
+</div>
+
+      
+      <button className="px-5 py-2 border-[1px] text-white bg-[#BB5042] rounded-[8px]">
+        Search
+      </button>
+    </div>
 
 
       {/* Meeting Cards Section */}
       <div className="mt-6 space-y-6">
         {/* Sample Card 1 */}
  
-        <div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
-  <div className="flex justify-between border-b-[2px] pb-8 items-center">
-    <div className="flex gap-4">
-      <div className="bg-[#A7BEAE] rounded-md text-center p-2 h-[118px] w-[112px]">
-        <p className="text-[45px] font-bold text-[#ffffff]">26</p>
-        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
-      </div>
-      <div>
-        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
-        <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
+        <div className="border rounded-lg p-6 bg-white shadow-sm">
+      <div className="flex justify-between border-b-2 pb-8 items-center">
+        <div className="flex gap-6">
+          <div className="bg-[#A7BEAE] rounded-md text-center p-4 h-[118px] w-[112px] flex flex-col justify-center items-center">
+            <p className="text-[45px] font-bold text-white">26</p>
+            <p className="text-[20px] font-semibold text-white">August</p>
+          </div>
+          <div className='flex gap-[60px] justify-between'>
+          <div className="flex flex-col">
+            <div className='max-w-[800px]'>
+            <p className="text-[20px] text-[#465049] pb-2 font-bold">Meeting Agenda</p>
+            <p className="text-[16px] text-[#6B7280] leading-snug">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, hic quos! Illo, inventore vitae, esse nihil dicta sint totam dignissimos qui nulla, praesentium laudantium repellendus molestias.totam dignissimos qui nulla, praesentium laudantium repellendus molestias.
+            </p>
+            </div>
+            
+            <div className="flex gap-2 mt-2 items-center">
+              <BsFiletypePdf className="text-[#BB5042] w-5 h-5" />
+              <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
+            </div>
+          </div>
+          <div className="justify-start space-y-[20px]">
+            
+            <div className="text-[14px] font-medium flex gap-2 items-center text-[#6B7280]">
+            <SlClock className="text-[#BB5042] w-5 h-5" />
+            <span className=' text-[16px]'>3:00 PM - 5:00 PM</span>
+          </div>
+          <div className="text-[14px] flex gap-2 items-center font-medium text-[#6B7280]">
+            <GoLocation className="text-[#BB5042] w-5 h-5" />
+            <span className='text-[16px]'>Building No. 5, Room 302</span>
+          </div>
+          <button className="mt-3 bg-[#98AD9E] text-white border border-transparent rounded-md px-7 py-2">
+            <span className="font-bold">Arranged by </span>Me
+          </button>
+           
+          
         </div>
-      </div>
-    </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>3:00 PM - 5:00 PM</span>
-        </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
-      <button className="mt-2 bg-[#98AD9E] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
-      <span className=' font-bold'> Arranged by </span>Me
-      </button>
-    </div>
-    <div className="flex gap-4 items-center mr-4">
-      <FiEdit className='w-6 h-6 text-[#BB5042]' />
-      <span className=' text-[#B6B6B6] text-[28px]'>|</span>
-      <CiTrash className='w-6 h-6 text-[#BB5042]' />
-    </div>
-  </div>
-  <div className='w-full flex pb-6 pt-4 justify-between'>
-    <div className='flex gap-2 items-center'>
-      <span className='font-bold text-[16px]'>Attendant Status</span>
-    </div>
-    <div className='relative'>
-      <div
-        className='flex gap-2 items-center cursor-pointer'
-        onMouseEnter={() => setShowPopup(true)}
-        onMouseLeave={() => setShowPopup(false)}
-      >
-        <span>
-          <IoCheckmarkCircleOutline className='w-6 h-6 text-[#08A647]' />
-        </span>
-        <span>15 Guardians</span>
-      </div>
-
-      {showPopup && (
-        <div className='absolute top-8 left-0 z-10 p-6 w-[340px] bg-white border border-gray-300 rounded shadow-lg'>
-          <h3 className='font-bold text-lg mb-3'>Accepted by</h3>
-          <div className='flex gap-7 space-y-2  border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
           </div>
           
-          <div className='flex gap-7 space-y-3 border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
-          <div className='flex gap-7 space-y-3 border-b-[1px] items-center'>
-          <span>
-          <p>Fatema Fegum</p>
-          <p>Mother</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Anika Mahazabin</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
-          <div className='flex gap-7   items-center'>
-          <span>
-          <p>Abul Malek</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Taseen Ahmed</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
         </div>
-      )}
-    </div>
-    <div className='relative'>
-      <div
-        className='flex gap-2 items-center cursor-pointer'
-        onMouseEnter={() =>setIsCardVisible(true)}
-        onMouseLeave={() => setIsCardVisible(false)}
-      >
-        <span>
-          <AiOutlineMinusCircle className='w-6 h-6 text-[#BB5042] opacity-50' />
-        </span>
-        <span>15 Guardians</span>
+        
       </div>
-
-      {isCardVisible && (
-        <div className='absolute top-8 left-0 z-10 p-6 w-[340px] bg-white border border-gray-300 rounded shadow-lg'>
-          <h3 className='font-bold text-lg mb-3'>Not Respond</h3>
-          <div className='flex gap-7 space-y-2  border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
+      <div className="w-full flex justify-between pb-6 pr-5 pt-4">
+        <div className="flex gap-[54px]">
+          <div className=' flex'>
+            <span className=' font-bold text-[18px]'> Attendant Status</span>
+           </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setShowPopup(true)}
+              onMouseLeave={() => setShowPopup(false)}
+            >
+              <IoCheckmarkCircleOutline className="w-6 h-6 text-[#08A647]" />
+              <span>15 Guardians</span>
+            </div>
+            {showPopup && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Accepted by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
           </div>
-          
-          <div className='flex gap-7 space-y-3 border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardVisible(true)}
+              onMouseLeave={() => setIsCardVisible(false)}
+            >
+              <AiOutlineMinusCircle className="w-6 h-6 text-[#BB5042] opacity-50" />
+              <span>15 Guardians</span>
+            </div>
+            {isCardVisible && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Not Respond</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
           </div>
-          <div className='flex gap-7 space-y-3 border-b-[1px] items-center'>
-          <span>
-          <p>Fatema Fegum</p>
-          <p>Mother</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Anika Mahazabin</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
-          <div className='flex gap-7   items-center'>
-          <span>
-          <p>Abul Malek</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Taseen Ahmed</p>
-            <p>DM 16000024</p>
-          </span>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardRejected(true)}
+              onMouseLeave={() => setIsCardRejected(false)}
+            >
+              <RxCrossCircled className="w-6 h-6 text-[#BB5042]" />
+              <span>3 Guardians</span>
+            </div>
+            {isCardRejected && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Rejected by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
           </div>
         </div>
-      )}
-    </div>
-    <div className='relative'>
-      <div
-        className='flex gap-2 items-center cursor-pointer'
-        onMouseEnter={() =>setisCardrejected(true)}
-        onMouseLeave={() => setisCardrejected(false)}
-      >
-        <span>
-          <RxCrossCircled className='w-6 h-6 text-[#BB5042]' />
-        </span>
-        <span>3 Guardians</span>
+        <div className="flex gap-[74px]">
+          <div className="flex gap-2 items-center">
+            <LiaChalkboardTeacherSolid className="w-6 h-6 text-[#BB5042]" />
+            <span>Class VI | B</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <HiOutlineUserGroup className="w-6 h-6 text-[#BB5042]" />
+            <span>10 Guardians</span>
+          </div>
+        </div>
       </div>
+      <div className=" bg-[#EFF0E0] mr-5 p-4 rounded-md mt-4">
+        <span className="font-semibold">Meeting Outcome</span>
+        <p className="text-[#465049] mt-2">
+          Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam nibh enim quis non cras. Posuere nec eget risus eu adipiscing egestas aliquam vestibulum vestibulum. Est sem sed dolor hac pellentesque elit nisi vulputate eget.
+        </p>
+      </div>
+    </div>
 
-      {isCardrejected && (
-        <div className='absolute top-8 left-0 z-10 p-6 w-[340px] bg-white border border-gray-300 rounded shadow-lg'>
-          <h3 className='font-bold text-lg mb-3'>Rejected by</h3>
-          <div className='flex gap-7 space-y-2  border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
-          
-          <div className='flex gap-7 space-y-3 border-b-[1px] items-center'>
-          <span>
-          <p>Md. Rubel Hasan</p>
-          <p>Father</p>
-          </span>
-          <span className=' text-[#939393]'>
-            <p>Akil Uz Zaman</p>
-            <p>DM 16000024</p>
-          </span>
-          </div>
-         
-        </div>
-      )}
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><LiaChalkboardTeacherSolid className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>Class VI | B</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><HiOutlineUserGroup className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>10 Guardians</span>
-    </div>
-  </div>
-</div>
 
         {/* Sample Card 2 */}
-  <div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
-  <div className="flex justify-between border-b-[2px] pb-8 items-center">
-    <div className="flex gap-4">
-      <div className="bg-[#A7BEAE] rounded-md text-center p-2 h-[118px] w-[112px]">
-        <p className="text-[45px] font-bold text-[#ffffff]">26</p>
-        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
+        <div className="border rounded-lg p-6 bg-white shadow-sm">
+      <div className="flex justify-between border-b-2 pb-8 items-center">
+        <div className="flex gap-6">
+          <div className="bg-[#A7BEAE] rounded-md text-center p-4 h-[118px] w-[112px] flex flex-col justify-center items-center">
+            <p className="text-[45px] font-bold text-white">26</p>
+            <p className="text-[20px] font-semibold text-white">August</p>
+          </div>
+          <div className='flex gap-[60px] justify-between'>
+          <div className="flex flex-col">
+            <div className='max-w-[800px]'>
+            <p className="text-[20px] text-[#465049] pb-2 font-bold">Meeting Agenda</p>
+            <p className="text-[16px] text-[#6B7280] leading-snug">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, hic quos! Illo, inventore vitae, esse nihil dicta sint totam dignissimos qui nulla, praesentium laudantium repellendus molestias.totam dignissimos qui nulla, praesentium laudantium repellendus molestias.
+            </p>
+            </div>
+            
+            <div className="flex gap-2 mt-2 items-center">
+              <BsFiletypePdf className="text-[#BB5042] w-5 h-5" />
+              <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
+            </div>
+          </div>
+          <div className="justify-start space-y-[20px]">
+            
+            <div className="text-[14px] font-medium flex gap-2 items-center text-[#6B7280]">
+            <SlClock className="text-[#BB5042] w-5 h-5" />
+            <span className=' text-[16px]'>3:00 PM - 5:00 PM</span>
+          </div>
+          <div className="text-[14px] flex gap-2 items-center font-medium text-[#6B7280]">
+            <GoLocation className="text-[#BB5042] w-5 h-5" />
+            <span className='text-[16px]'>Building No. 5, Room 302</span>
+          </div>
+          <button className="mt-3 bg-[#98AD9E] text-white border border-transparent rounded-md px-7 py-2">
+            <span className="font-bold">Arranged by </span>Me
+          </button>
+           
+          
+        </div>
+          </div>
+          
+        </div>
+        
       </div>
-      <div>
-        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
-        <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
+      <div className="w-full flex justify-between pb-6 pr-5 pt-4">
+        <div className="flex gap-10">
+          <div className=' flex'>
+            <span className=' font-bold text-[18px]'> Attendant Status</span>
+           </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setShowPopup(true)}
+              onMouseLeave={() => setShowPopup(false)}
+            >
+              <IoCheckmarkCircleOutline className="w-6 h-6 text-[#08A647]" />
+              <span>15 Guardians</span>
+            </div>
+            {showPopup && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Accepted by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardVisible(true)}
+              onMouseLeave={() => setIsCardVisible(false)}
+            >
+              <AiOutlineMinusCircle className="w-6 h-6 text-[#BB5042] opacity-50" />
+              <span>15 Guardians</span>
+            </div>
+            {isCardVisible && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Not Respond</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardRejected(true)}
+              onMouseLeave={() => setIsCardRejected(false)}
+            >
+              <RxCrossCircled className="w-6 h-6 text-[#BB5042]" />
+              <span>3 Guardians</span>
+            </div>
+            {isCardRejected && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Rejected by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-10">
+          <div className="flex gap-2 items-center">
+            <LiaChalkboardTeacherSolid className="w-6 h-6 text-[#BB5042]" />
+            <span>Class VI | B</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <HiOutlineUserGroup className="w-6 h-6 text-[#BB5042]" />
+            <span>10 Guardians</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>3:00 PM - 5:00 PM</span>
-        </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
-      <button className="mt-2 bg-[#98AD9E] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
-      <span className=' font-bold'> Arranged by </span>Me
-      </button>
-    </div>
-    <div className="gap-4 w-[140px] h-[140px] items-center justify-center rounded-[12px] text-center bg-[#F8EEEC] mr-4">
-      <div className='pt-4 pl-3 pr-3 space-y-3'>
-      
-      <span className='text-[#767b78] font-semibold text-sm'>Submit the Meeting Status</span>
-      
-      <button className='bg-[#BB5042] px-5 py-2 rounded-[8px] text-white'>Status</button>
+      <div className=" bg-[#EFF0E0] mr-5 p-4 rounded-md mt-4">
+        <span className="font-semibold">Meeting Outcome</span>
+        <p className="text-[#465049] mt-2">
+          Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam nibh enim quis non cras. Posuere nec eget risus eu adipiscing egestas aliquam vestibulum vestibulum. Est sem sed dolor hac pellentesque elit nisi vulputate eget.
+        </p>
       </div>
-      
     </div>
-  </div>
-  <div className='w-full flex pb-6 pt-4 justify-between'>
-    <div className='flex gap-2 items-center'>
-      <span className='font-bold text-[16px]'>Attendant Status</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><IoCheckmarkCircleOutline className='w-6 h-6 text-[#08A647]' /></span>
-      <span>15 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><AiOutlineMinusCircle className='w-6 h-6 text-[#BB5042] text-opacity-50' /></span>
-      <span>12 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><RxCrossCircled className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>4 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><LiaChalkboardTeacherSolid className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>Class VI | B</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><HiOutlineUserGroup className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>10 Guardians</span>
-    </div>
-  </div>
-</div>
 
 
-<div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
-  <div className="flex justify-between border-b-[2px] pb-8 items-center">
-    <div className="flex gap-4">
-      <div className="bg-[#A7BEAE] rounded-md text-center p-2 h-[118px] w-[112px]">
-        <p className="text-[45px] font-bold text-[#ffffff]">25</p>
-        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
+    <div className="border rounded-lg p-6 bg-white shadow-sm">
+      <div className="flex justify-between border-b-2 pb-8 items-center">
+        <div className="flex gap-6">
+          <div className="bg-[#A7BEAE] rounded-md text-center p-4 h-[118px] w-[112px] flex flex-col justify-center items-center">
+            <p className="text-[45px] font-bold text-white">26</p>
+            <p className="text-[20px] font-semibold text-white">August</p>
+          </div>
+          <div className='flex gap-[60px] justify-between'>
+          <div className="flex flex-col">
+            <div className='max-w-[800px]'>
+            <p className="text-[20px] text-[#465049] pb-2 font-bold">Meeting Agenda</p>
+            <p className="text-[16px] text-[#6B7280] leading-snug">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, hic quos! Illo, inventore vitae, esse nihil dicta sint totam dignissimos qui nulla, praesentium laudantium repellendus molestias.totam dignissimos qui nulla, praesentium laudantium repellendus molestias.
+            </p>
+            </div>
+            
+            <div className="flex gap-2 mt-2 items-center">
+              <BsFiletypePdf className="text-[#BB5042] w-5 h-5" />
+              <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
+            </div>
+          </div>
+          <div className="justify-start space-y-[20px]">
+            
+            <div className="text-[14px] font-medium flex gap-2 items-center text-[#6B7280]">
+            <SlClock className="text-[#BB5042] w-5 h-5" />
+            <span className=' text-[16px]'>3:00 PM - 5:00 PM</span>
+          </div>
+          <div className="text-[14px] flex gap-2 items-center font-medium text-[#6B7280]">
+            <GoLocation className="text-[#BB5042] w-5 h-5" />
+            <span className='text-[16px]'>Building No. 5, Room 302</span>
+          </div>
+          <button className="mt-3 bg-[#98AD9E] text-white border border-transparent rounded-md px-7 py-2">
+            <span className="font-bold">Arranged by </span>Me
+          </button>
+           
+          
+        </div>
+          </div>
+          
+        </div>
+        
       </div>
-      <div>
-        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
-        <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
+      <div className="w-full flex justify-between pb-6 pr-5 pt-4">
+        <div className="flex gap-10">
+          <div className=' flex'>
+            <span className=' font-bold text-[18px]'> Attendant Status</span>
+           </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setShowPopup(true)}
+              onMouseLeave={() => setShowPopup(false)}
+            >
+              <IoCheckmarkCircleOutline className="w-6 h-6 text-[#08A647]" />
+              <span>15 Guardians</span>
+            </div>
+            {showPopup && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Accepted by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardVisible(true)}
+              onMouseLeave={() => setIsCardVisible(false)}
+            >
+              <AiOutlineMinusCircle className="w-6 h-6 text-[#BB5042] opacity-50" />
+              <span>15 Guardians</span>
+            </div>
+            {isCardVisible && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Not Respond</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardRejected(true)}
+              onMouseLeave={() => setIsCardRejected(false)}
+            >
+              <RxCrossCircled className="w-6 h-6 text-[#BB5042]" />
+              <span>3 Guardians</span>
+            </div>
+            {isCardRejected && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Rejected by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-10">
+          <div className="flex gap-2 items-center">
+            <LiaChalkboardTeacherSolid className="w-6 h-6 text-[#BB5042]" />
+            <span>Class VI | B</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <HiOutlineUserGroup className="w-6 h-6 text-[#BB5042]" />
+            <span>10 Guardians</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>3:00 PM - 4:00 PM</span>
-        </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
-      <button className="mt-2 bg-[#98AD9E] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
-      <span className=' font-bold'> Arranged by </span>Me
-      </button>
-    </div>
-    <div className="flex gap-4 items-center mr-4">
-      <FiEdit className='w-6 h-6 text-[#BB5042]' />
-      <span className=' text-[#B6B6B6] text-[28px]'>|</span>
-      <CiTrash className='w-6 h-6 text-[#BB5042]' />
-    </div>
-  </div>
-  <div className='w-full flex pb-6 pt-4 justify-between'>
-    <div className='flex gap-2 items-center'>
-      <span className='font-bold text-[16px]'>Attendant Status</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><IoCheckmarkCircleOutline className='w-6 h-6 text-[#08A647]' /></span>
-      <span>7 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><AiOutlineMinusCircle className='w-6 h-6 text-[#BB5042] text-opacity-50' /></span>
-      <span>3 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><RxCrossCircled className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>2 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><LiaChalkboardTeacherSolid className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>Class VI | B</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><HiOutlineUserGroup className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>10 Guardians</span>
-    </div>
-  </div>
-</div>
-
-
-<div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
-  <div className="flex justify-between border-b-[2px] pb-8 items-center">
-    <div className="flex gap-4">
-      <div className="bg-[#A7BEAE] rounded-md text-center p-2 h-[118px] w-[112px]">
-        <p className="text-[45px] font-bold text-[#ffffff]">24</p>
-        <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
-      </div>
-      <div>
-        <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
-        <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
-        </div>
+      <div className=" bg-[#EFF0E0] mr-5 p-4 rounded-md mt-4">
+        <span className="font-semibold">Meeting Outcome</span>
+        <p className="text-[#465049] mt-2">
+          Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam nibh enim quis non cras. Posuere nec eget risus eu adipiscing egestas aliquam vestibulum vestibulum. Est sem sed dolor hac pellentesque elit nisi vulputate eget.
+        </p>
       </div>
     </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>2:00 PM - 4:00 PM</span>
-        </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
-      <button className="mt-2 bg-[#98AD9E] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
-      <span className=' font-bold'> Arranged by </span>Me
-      </button>
-    </div>
-    <div className="flex gap-4 items-center mr-4">
-      <FiEdit className='w-6 h-6 text-[#BB5042]' />
-      <span className=' text-[#B6B6B6] text-[28px]'>|</span>
-      <CiTrash className='w-6 h-6 text-[#BB5042]' />
-    </div>
-  </div>
-  <div className='w-full flex pb-6 pt-4 justify-between'>
-    <div className='flex gap-2 items-center'>
-      <span className='font-bold text-[16px]'>Attendant Status</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><IoCheckmarkCircleOutline className='w-6 h-6 text-[#08A647]' /></span>
-      <span>5 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><AiOutlineMinusCircle className='w-6 h-6 text-[#BB5042] text-opacity-50' /></span>
-      <span>3 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><RxCrossCircled className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>2 Guardians</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><LiaChalkboardTeacherSolid className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>Class VI | B</span>
-    </div>
-    <div className='flex gap-2 items-center'>
-      <span><HiOutlineUserGroup className='w-6 h-6 text-[#BB5042]' /></span>
-      <span>10 Guardians</span>
-    </div>
-  </div>
-</div>
 
 
 <div className="border rounded-lg p-5 bg-[#FFFFFF] shadow-sm">
@@ -644,33 +720,26 @@ function Parents_Teachers_Collaboration() {
         <p className="text-[45px] font-bold text-[#ffffff]">24</p>
         <p className="text-[20px] font-semibold text-[#ffffff]">August</p>
       </div>
-      <div>
+      <div className=' max-w-[700px]'>
         <p className="text-[20px] text-[#465049] font-bold">Meeting Agenda</p>
-        <p className="text-[14px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
+        <p className="text-[16px] text-[#6B7280]">Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam...</p>
         <div className="flex gap-2 mt-2">
-          <span><BsFiletypePdf className='text-[#BB5042]' /></span>
-          <p className="text-[14px] text-[#BB5042]">Class Syllabus.pdf</p>
+          <span><BsFiletypePdf className='text-[#BB5042] w-5 h-5' /></span>
+          <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
         </div>
       </div>
     </div>
-    <div className="text-right max-h-full space-y-4 gap-4">
-      <div className="text-[14px]  font-medium flex gap-2 items-center text-[#6B7280]">
-        <span><SlClock className='text-[#BB5042] w-4 h-4'/></span>
-        <span>2:00 PM - 4:00 PM</span>
+    <div className=" mr-[163px] max-h-full space-y-4 gap-4">
+      <div className="text-[16px]  font-medium flex gap-2 items-center text-[#6B7280]">
+        <span><SlClock className='text-[#BB5042] w-5 h-5'/></span>
+        <span className='text-[16px]'>2:00 PM - 4:00 PM</span>
         </div>
-      <div className="text-[14px] flex  gap-2 items-center font-medium text-[#6B7280]">
-        <span><GoLocation className='text-[#BB5042] w-4 h-4'/></span>
-        <span>Building No. 5, Room 302</span>
-       </div>
+      
       <button className="mt-2 bg-[#85392F] text-[#FFFF] border-[1px] border-[#E5E7EB] rounded-md px-4 py-2">
       <span className=' font-bold'> Arranged by </span>Guardians
       </button>
     </div>
-    <div className="flex gap-4 items-center mr-4">
-      <FiEdit className='w-6 h-6 text-[#BB5042]' />
-      <span className=' text-[#B6B6B6] text-[28px]'>|</span>
-      <CiTrash className='w-6 h-6 text-[#BB5042]' />
-    </div>
+    
   </div>
   <div className='w-[60%] flex pb-6 pt-4 items-center space-y-4 justify-between'>
     <div className='pl-4'>
@@ -696,8 +765,162 @@ function Parents_Teachers_Collaboration() {
       <span className='text-[#939393]'>Father</span>
     </div>
   </div>
+  <div className=" bg-[#EFF0E0] mr-5 p-4 rounded-md mt-4">
+        <span className="font-semibold">Meeting Outcome</span>
+        <p className="text-[#465049] mt-2">
+          Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam nibh enim quis non cras. Posuere nec eget risus eu adipiscing egestas aliquam vestibulum vestibulum. Est sem sed dolor hac pellentesque elit nisi vulputate eget.
+        </p>
+      </div>
 </div>
-{/* Add more cards similarly */}
+
+
+<div className="border rounded-lg p-6 bg-white shadow-sm">
+      <div className="flex justify-between border-b-2 pb-8 items-center">
+        <div className="flex gap-6">
+          <div className="bg-[#A7BEAE] rounded-md text-center p-4 h-[118px] w-[112px] flex flex-col justify-center items-center">
+            <p className="text-[45px] font-bold text-white">26</p>
+            <p className="text-[20px] font-semibold text-white">August</p>
+          </div>
+          <div className='flex gap-[60px] justify-between'>
+          <div className="flex flex-col">
+            <div className='max-w-[800px]'>
+            <p className="text-[20px] text-[#465049] pb-2 font-bold">Meeting Agenda</p>
+            <p className="text-[16px] text-[#6B7280] leading-snug">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, hic quos! Illo, inventore vitae, esse nihil dicta sint totam dignissimos qui nulla, praesentium laudantium repellendus molestias.totam dignissimos qui nulla, praesentium laudantium repellendus molestias.
+            </p>
+            </div>
+            
+            <div className="flex gap-2 mt-2 items-center">
+              <BsFiletypePdf className="text-[#BB5042] w-5 h-5" />
+              <p className="text-[16px] text-[#BB5042]">Class Syllabus.pdf</p>
+            </div>
+          </div>
+          <div className="justify-start space-y-[20px]">
+            
+            <div className="text-[14px] font-medium flex gap-2 items-center text-[#6B7280]">
+            <SlClock className="text-[#BB5042] w-5 h-5" />
+            <span className=' text-[16px]'>3:00 PM - 5:00 PM</span>
+          </div>
+          <div className="text-[14px] flex gap-2 items-center font-medium text-[#6B7280]">
+            <GoLocation className="text-[#BB5042] w-5 h-5" />
+            <span className='text-[16px]'>Building No. 5, Room 302</span>
+          </div>
+          <button className="mt-3 bg-[#98AD9E] text-white border border-transparent rounded-md px-7 py-2">
+            <span className="font-bold">Arranged by </span>Me
+          </button>
+           
+          
+        </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <div className="w-full flex justify-between pb-6 pr-5 pt-4">
+        <div className="flex gap-10">
+          <div className=' flex'>
+            <span className=' font-bold text-[18px]'> Attendant Status</span>
+           </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setShowPopup(true)}
+              onMouseLeave={() => setShowPopup(false)}
+            >
+              <IoCheckmarkCircleOutline className="w-6 h-6 text-[#08A647]" />
+              <span>15 Guardians</span>
+            </div>
+            {showPopup && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Accepted by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardVisible(true)}
+              onMouseLeave={() => setIsCardVisible(false)}
+            >
+              <AiOutlineMinusCircle className="w-6 h-6 text-[#BB5042] opacity-50" />
+              <span>15 Guardians</span>
+            </div>
+            {isCardVisible && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Not Respond</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onMouseEnter={() => setIsCardRejected(true)}
+              onMouseLeave={() => setIsCardRejected(false)}
+            >
+              <RxCrossCircled className="w-6 h-6 text-[#BB5042]" />
+              <span>3 Guardians</span>
+            </div>
+            {isCardRejected && (
+              <div className="absolute top-8 left-0 z-10 p-4 w-[340px] bg-white border border-gray-300 rounded shadow-lg">
+                <h3 className="font-bold text-lg mb-3">Rejected by</h3>
+                {/* Repeated content with correct spacing */}
+                <div className="flex justify-between border-b pb-2">
+                  <span>
+                    <p>Md. Rubel Hasan</p>
+                    <p>Father</p>
+                  </span>
+                  <span className="text-[#939393]">
+                    <p>Akil Uz Zaman</p>
+                    <p>DM 16000024</p>
+                  </span>
+                </div>
+                {/* Repeat similar blocks as needed */}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-10">
+          <div className="flex gap-2 items-center">
+            <LiaChalkboardTeacherSolid className="w-6 h-6 text-[#BB5042]" />
+            <span>Class VI | B</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <HiOutlineUserGroup className="w-6 h-6 text-[#BB5042]" />
+            <span>10 Guardians</span>
+          </div>
+        </div>
+      </div>
+      <div className=" bg-[#EFF0E0] mr-5 p-4 rounded-md mt-4">
+        <span className="font-semibold">Meeting Outcome</span>
+        <p className="text-[#465049] mt-2">
+          Lorem ipsum dolor sit amet consectetur. Gravida eu aliquam nibh enim quis non cras. Posuere nec eget risus eu adipiscing egestas aliquam vestibulum vestibulum. Est sem sed dolor hac pellentesque elit nisi vulputate eget.
+        </p>
+      </div>
+    </div>
       </div>
     </div>
   );
