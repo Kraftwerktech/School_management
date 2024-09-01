@@ -10,6 +10,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { TbCalendarTime } from "react-icons/tb";
 import { FcCollaboration } from "react-icons/fc";
 import { GrAnnounce } from "react-icons/gr";
+import { LuCalendarDays } from "react-icons/lu";
+import { GoPeople } from "react-icons/go";
+
 
 import Group from "../assets/Teacher/icons/Group.png";
 
@@ -28,7 +31,8 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
     { path: "student-result", name: "Student Result", icon: < HiOutlineUserGroup /> },
     { path: "class-routine", name: "Class Routine", icon: <CiCalendar /> },
     { path: "substitute-scheduling", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
-    { path: "collaboration", name: "Parents Teachers Collaboration", icon: <FcCollaboration /> },
+    { path: "collaboration", name: "Parents Teachers Collaboration", icon: <GoPeople /> },
+    { path: "syllabus", name: "Syllabus", icon: <LuCalendarDays /> },
     { path: "announcement", name: "Announcement", icon: <GrAnnounce /> },
     { path: "setting", name: "Setting", icon: <IoSettingsOutline /> },
    

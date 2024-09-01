@@ -29,6 +29,10 @@ import Notificationsall from './views/Teacher/Notificationall';
 import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
 import RequestMeeting from './views/Teacher/RequestMeeting';
 import ArchiveMeeting from './views/Teacher/Archivemeeting';
+import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
+import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
+import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
+import WaitingApproval from './views/Teacher/Syllabus/WaitingApproval';
 function App() {
   return (
     <BrowserRouter>
@@ -47,6 +51,10 @@ function App() {
           <Route path="group-student" element={<Group_Students_By_Class />} />
           <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
           <Route path="announcement" element={<Announcement />} />
+          <Route path="syllabus" element={<Syllabus />} />
+          <Route path="approved" element={<ApprovedSyllabus />} />
+          <Route path="drafted" element={<DraftedSyllabus />} />
+          <Route path="waiting" element={<WaitingApproval />} />
           <Route path="academic-management" element={<Academic_Management />} />
           <Route path="apply-leave" element={<Apply_For_Leave />} />
           <Route path="teacher-profile" element={<TeacherProfile />} />
