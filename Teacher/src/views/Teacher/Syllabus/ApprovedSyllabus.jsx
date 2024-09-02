@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LayoutSyllabus from './LayoutSyllabus';
 import { IoIosArrowDown } from "react-icons/io";
-import { BsDownload, BsFiletypePdf } from "react-icons/bs";
+import { BsDownload} from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 
 const announcements = [

@@ -69,7 +69,7 @@ function Teacherlogin() {
                             <h1 className="text-[40px] lg:text-[55px] font-bold text-white mt-[120px]">
                                 Hello, Teacher!
                             </h1>
-                            <h2 className="text-[30px] lg:text-[40px] font-extralight text-slate-200 mt-4">
+                            <h2 className="text-[30px] lg:text-[40px] font-thin text-slate-200 mt-4">
                                 Welcome to your <br /> Online Teacher’s Portal
                             </h2>
                         </div>

@@ -101,11 +101,24 @@ function DraftedSyllabus() {
       <LayoutSyllabus />
       <div className="mt-10 mr-5 max-w-full">
         <div className="flex justify-between">
-          <div className="flex text-[20px] font-bold gap-2">
-            <span>Class IX</span>
-            <span>| Science</span>
-            <span>| 2024</span>
+        <div className="flex  gap-2">
+
+          
+
+  {/* Class Information */}
+  <div className="flex text-[20px] font-bold gap-2">
+    <span>Class IX</span>
+    <span>| Science</span>
+    <span>| 2024</span>
+  </div>
+  <div className='ml-3'>
+              {/* In Progress Button */}
+          <button className="bg-yellow-500 text-white text-[14px] font-semibold px-4 py-1 rounded-md">
+    In Progress
+  </button>
           </div>
+</div>
+
           <div className="flex gap-8">
             <button className="border-[1px] flex gap-3 items-center rounded-[8px] px-6 py-2">
               Select Syllabus

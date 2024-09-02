@@ -32,7 +32,9 @@ import ArchiveMeeting from './views/Teacher/Archivemeeting';
 import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
 import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
+import NewCreateSyllabusDraft from './views/Teacher/Syllabus/NewCreateSyllabusDraft';
 import WaitingApproval from './views/Teacher/Syllabus/WaitingApproval';
+import AddLesson from './views/Teacher/Syllabus/AddLesson';
 function App() {
   return (
     <BrowserRouter>
@@ -54,6 +56,8 @@ function App() {
           <Route path="syllabus" element={<Syllabus />} />
           <Route path="approved" element={<ApprovedSyllabus />} />
           <Route path="drafted" element={<DraftedSyllabus />} />
+          <Route path="newdrafted" element={<NewCreateSyllabusDraft />} />
+          <Route path="addlesson" element={<AddLesson />} />
           <Route path="waiting" element={<WaitingApproval />} />
           <Route path="academic-management" element={<Academic_Management />} />
           <Route path="apply-leave" element={<Apply_For_Leave />} />
