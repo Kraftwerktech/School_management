@@ -6,10 +6,33 @@ import { CiTrash } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
 import { GoPlusCircle } from "react-icons/go";
 import { GrAttachment } from "react-icons/gr";
-import { Link } from 'react-router-dom';
-function AddLesson() {
+import { RxCrossCircled } from "react-icons/rx";
+
+
+function AddLesson_addtropic() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Function to toggle the modal visibility
+    const toggleModal = () => {
+      setIsModalOpen(!isModalOpen);
+    };
+  
   const [showAcademicReport, setShowAcademicReport] = useState(true);
   const [showMedicalInfo, setShowMedicalInfo] = useState(true);
+  const [selectedLessons, setSelectedLessons] = useState([]);
+  const [currentLesson, setCurrentLesson] = useState('');
+
+  const handleSelectChange = (e) => {
+    const selectedLesson = e.target.value;
+    if (selectedLesson && !selectedLessons.includes(selectedLesson)) {
+      setSelectedLessons([...selectedLessons, selectedLesson]);
+    }
+    setCurrentLesson(''); // Reset the select box after selection
+  };
+
+  const removeLesson = (lesson) => {
+    setSelectedLessons(selectedLessons.filter(l => l !== lesson));
+  };
 
   return (
     <div className='max-w-full mb-10'>
@@ -91,8 +114,7 @@ function AddLesson() {
   </textarea>
 </div>
 <div className='flex mt-5 mr-5 justify-end'>
-  <Link to="http://localhost:5173/teacher/dashboard/addlessonaddtropic" className=' bg-[#BB5042]  text-[#FFFF] rounded-[8px]  px-5 py-2' >Add Topic</Link>
-
+<button className=' bg-[#B6B6B6]  text-[#626262] font-semibold rounded-[8px]  px-5 py-2'>Add Topic</button>
 </div>
 
 <div className='mt-5 flex justify-between border-b-[1px] mr-5'>
@@ -188,23 +210,137 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 
             </div>
 
-            <div className='mt-10 gap-14 flex items-center mb-5 mr-5'>
-            <div className="relative w-full md:w-[200px]">
-          <select className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full">
+            <div className='mt-10 gap-14 flex mb-5 mr-5'>
+      <div className="relative w-full md:w-[200px]">
+        <div className='items-center flex'>
+          <select
+            className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
+            onChange={handleSelectChange}
+            value={currentLesson}
+          >
             <option value="">Select Lesson</option>
-            <option>Class IX</option>
-            <option>Class X</option>
-            <option>Class XI</option>
-            <option>Class XII</option>
+            <option value="Lesson1">Lesson1</option>
+            <option value="Lesson2">Lesson2</option>
+            <option value="Lesson3">Lesson3</option>
+            <option value="Lesson4">Lesson4</option>
+            <option value="Lesson5">Lesson5</option>
+            <option value="Lesson6">Lesson6</option>
+            <option value="Lesson7">Lesson7</option>
           </select>
-          <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+          <MdExpandMore className="absolute text-[#BB5042] right-3 top-[20%] transform -translate-y-1/2 pointer-events-none" />
         </div>
-        <div className=' flex gap-3'>
-        <span className=' text-[16px] font-semibold text-[#465049]'>Select Topic</span>
-        <GoPlusCircle className='w-6 h-6 text-[#BB5042]' />
+
+        <div className='flex mt-5 gap-3'>
+          {selectedLessons.map((lesson, index) => (
+            <button
+              key={index}
+              className='py-3 items-center flex gap-2 px-5 w-[120px] bg-[#D7E1DA] text-black rounded-md'
+            >
+              {lesson}
+              <RxCrossCircled
+                className='h-6 w-6 cursor-pointer'
+                onClick={() => removeLesson(lesson)}
+              />
+            </button>
+          ))}
         </div>
-        
-</div>
+      </div>
+
+      <div>
+      <div className='flex gap-3'>
+        <span className='text-[16px] font-semibold text-[#465049]'>Select Topic</span>
+        <GoPlusCircle
+          className='w-6 h-6 text-[#BB5042] cursor-pointer'
+          onClick={toggleModal}
+        />
+      </div>
+
+      {/* Add tropic Modal */}
+      {isModalOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
+          <div className='bg-white p-6 rounded-md  max-w-[936px] max-h-[725px] w-full'>
+            <h2 className='text-[24px] text-center font-bold mb-4'>Select Topics</h2>
+            <div className='max-w-[888px] mt-7 mb-10 max-h-[576px] p-4 shadow-md'>
+             <div className=' flex items-center gap-[100px]'>
+                <div className=' flex gap-2 items-center'>
+                <input className='w-5 h-5' type='checkbox'/>
+                <span className=' font-semibold'>Select All</span>
+                </div>
+            
+             <div className='flex gap-4'>
+             <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 21</button>
+             <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 22</button>
+             <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 23</button>
+             <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 24</button>
+             </div>
+             
+             <div className=' flex justify-end items-center'>
+             <button className=' justify-end py-2 rounded-[8px] px-5 text-white bg-[#BB5042]'>Add Topic</button>
+             </div>
+            
+             </div>
+             <div className='flex gap-5 mt-7 items-center'>
+             <input 
+            className="px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full md:max-w-[300px]" 
+            type="text" 
+            name="search" 
+            placeholder="Search by Student Name or ID" 
+          />
+          <button 
+            className="px-7 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto"
+          >
+            Search
+          </button>
+             </div>
+             <div className='mt-5 border-b-[1px]'>
+              <span className=' font-semibold text-[#939393] text-[16px]'>Lesson7</span>
+              <div className='mt-3 gap-2 flex items-center'>
+                <input type='checkbox' className='w-4 h-4'/>
+                <span>Topic 21</span>
+              </div>
+              <div className='mt-3'>
+                <span><b>Topic Title:</b> Lorem ipsum dolor sit amet consectetur.</span>
+              </div>
+              <div className='mb-4'>
+                <p>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
+              </div>
+             </div>
+             <div className='mt-5 border-b-[1px]'>
+              <span className=' font-semibold text-[#939393] text-[16px]'>Lesson7</span>
+              <div className='mt-3 gap-2 flex items-center'>
+                <input type='checkbox' className='w-4 h-4'/>
+                <span>Topic 21</span>
+              </div>
+              <div className='mt-3'>
+                <span><b>Topic Title:</b> Lorem ipsum dolor sit amet consectetur.</span>
+              </div>
+              <div className='mb-4'>
+                <p>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
+              </div>
+             </div>
+            </div>
+            <button
+              className='mt-4 px-4 py-2 bg-[#BB5042] text-white rounded hover:bg-red-700'
+              onClick={toggleModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+      <div className='flex flex-wrap gap-2 mt-4'>
+        {selectedLessons.map((lesson, index) => (
+          <div key={index} className='flex items-center gap-2 bg-[#f5f5f5] p-2 rounded'>
+            <span className='text-gray-700'>{lesson}</span>
+            <AiOutlineClose
+              className='text-red-500 cursor-pointer'
+              onClick={() => removeLesson(lesson)}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
 
 <div className='mt-10 max-w-full mr-5'>
 <textarea placeholder='Write Activity' 
@@ -215,87 +351,22 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
     <span className=' flex items-center text-[16px] text-[#465049]  gap-3'>Add Attachment <GrAttachment className='w-6 h-6 text-[#BB5042]'/></span>
 <button className=' bg-[#B6B6B6] font-bold text-[#626262] rounded-[8px]  px-5 py-2'>Add Topic</button>
 </div>
-
-<div className='mt-5 flex justify-between border-b-[1px] mr-5'>
-<span className='text-[20px] font-bold mb-2'>List of Activity</span>
-<span><MdExpandMore className='w-6 h-6 mb-2 text-[#151515]'/></span>
-</div>
-<div className='mt-2'>
-<div className='flex justify-between border-b-[1px] items-center mt-5 mr-5'>
-<span className='text-[16px] mb-3 font-bold'>Activity 45</span>
-<span className=' items-center mb-3 flex gap-10'>
-<FiEdit className='w-6 mb-3 h-6 text-[#BB5042]'/>
-<CiTrash className='w-6 mb-3 h-6 text-[#BB5042]'/>
-</span>
-</div>
-<div className='mt-3'>
-<span className=' text-[16px] font-semibold'>Board Work | 10 min</span> <br/>
-<span className=' text-[16px] text-[#939393] font-semibold'>Lesson 11</span>
-</div>
-<div className='flex   gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 22 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className='flex   gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 23 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className='flex  gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 24 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className=' space-y-4'>
-    <p>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
-</div>
-</div>
-<div className='mt-2'>
-<div className='flex justify-between border-b-[1px] items-center mt-5 mr-5'>
-<span className='text-[16px] mb-3 font-bold'>Activity 46</span>
-<span className=' items-center mb-3 flex gap-10'>
-<FiEdit className='w-6 mb-3 h-6 text-[#BB5042]'/>
-<CiTrash className='w-6 mb-3 h-6 text-[#BB5042]'/>
-</span>
-</div>
-<div className='mt-3'>
-<span className=' text-[16px] font-semibold'>Board Work | 10 min</span> <br/>
-<span className=' text-[16px] text-[#939393] font-semibold'>Lesson 11</span>
-</div>
-<div className='flex   gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 22 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className='flex   gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 23 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className='flex  gap-2'>
-  <span className='text-[#939393] space-y-3 font-semibold'>Topic 24 | Topic Title:</span>
-  <span className='space-y-3 text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent</span>
-</div>
-<div className=' space-y-4'>
-    <p>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
-</div>
-</div>
-
           </div>
           )}
         </div>
       </div>
-      <div className=' space-y-6 mb-10'>
-        <span className=' text-[16px]  ml-[50px] font-semibold mb-5'>Additional Note</span>
-        <div className='p-3 border-[1px] rounded-[8px] ml-[50px] mr-[98px]'>
-            <p>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-      </div>
+   
       <div className=' space-y-6 mb-[70px]'>
-        <span className=' text-[16px]  ml-[50px] font-semibold mb-5'>Reason</span>
-        <div className='p-3 border-[1px] rounded-[8px] ml-[50px] mr-[98px]'>
-            <p className=' text-[#939393]'>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
+        <span className=' text-[16px]  ml-[90px] font-semibold mb-5'>Additional Note</span>
+        <div className='mt-10 ml-[90px] mr-[90px] max-w-full'>
+<textarea placeholder='Write Activity' 
+  className='px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full h-[200px]'>
+</textarea>
+</div>           
       </div>
       <div className='mt-5 pl-[450px] mb-20'><button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button></div>
     </div>
   );
 }
 
-export default AddLesson;
+export default AddLesson_addtropic;
