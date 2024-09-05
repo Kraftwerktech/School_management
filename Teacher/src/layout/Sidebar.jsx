@@ -12,7 +12,7 @@ import { FcCollaboration } from "react-icons/fc";
 import { GrAnnounce } from "react-icons/gr";
 import { LuCalendarDays } from "react-icons/lu";
 import { GoPeople } from "react-icons/go";
-
+import { PiMessengerLogoLight } from "react-icons/pi";
 
 import Group from "../assets/Teacher/icons/Group.png";
 
@@ -32,6 +32,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
     { path: "class-routine", name: "Class Routine", icon: <CiCalendar /> },
     { path: "substitute-scheduling", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
     { path: "collaboration", name: "Parents Teachers Collaboration", icon: <GoPeople /> },
+    { path: "messagecollaboration", name: "Messageing", icon: <PiMessengerLogoLight /> },
     { path: "syllabus", name: "Syllabus", icon: <LuCalendarDays /> },
     { path: "announcement", name: "Announcement", icon: <GrAnnounce /> },
     { path: "setting", name: "Setting", icon: <IoSettingsOutline /> },

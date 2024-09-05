@@ -255,13 +255,16 @@ function LayoutSyllabus() {
     setNewSyllabusModalOpen(true);
   };
 
+
   const tabs = [
+
     { name: 'Approved Syllabus', path: '/teacher/dashboard/approved' },
     { name: 'Drafted Syllabus', path: '/teacher/dashboard/drafted' },
     { name: 'New Drafted Syllabus',path: '/teacher/dashboard/newdrafted' },
     { name: 'Waiting for your Approval', path: '/teacher/dashboard/waiting' },
-  ];
 
+  ];
+  
   return (
     <div className="max-w-full">
       <div className="flex justify-between items-center mt-5 h-[52px]">
@@ -303,5 +306,6 @@ function LayoutSyllabus() {
     </div>
   );
 }
+
 
 export default LayoutSyllabus;

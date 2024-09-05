@@ -38,6 +38,7 @@ import AddLesson from './views/Teacher/Syllabus/AddLesson';
 import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
 import AddTropic from './views/Teacher/Syllabus/AddTropic';
 import AddActivity from './views/Teacher/Syllabus/AddActivity';
+import MessageColab from './views/Teacher/TeacherParentsCollaboration/MessageColab';
 function App() {
   return (
     <BrowserRouter>
@@ -50,6 +51,7 @@ function App() {
           <Route path="student-result" element={<Student_Result />} />
           <Route path="setting" element={<Setting />} />
           <Route path="collaboration" element={<Parents_Teachers_Collaboration />} />
+          <Route path="messagecollaboration" element={<MessageColab />} />
           <Route path="requestmeeting" element={<RequestMeeting />} />
           <Route path="archive" element={<ArchiveMeeting />} />
           <Route path="home-work" element={<Home_Works />} />
