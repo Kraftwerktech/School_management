@@ -36,6 +36,8 @@ import NewCreateSyllabusDraft from './views/Teacher/Syllabus/NewCreateSyllabusDr
 import WaitingApproval from './views/Teacher/Syllabus/WaitingApproval';
 import AddLesson from './views/Teacher/Syllabus/AddLesson';
 import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
+import AddTropic from './views/Teacher/Syllabus/AddTropic';
+import AddActivity from './views/Teacher/Syllabus/AddActivity';
 function App() {
   return (
     <BrowserRouter>
@@ -60,6 +62,8 @@ function App() {
           <Route path="newdrafted" element={<NewCreateSyllabusDraft />} />
           <Route path="addlesson" element={<AddLesson />} />
           <Route path='addlessonaddtropic' element={<AddLesson_addtropic/>}/>
+          <Route path="addTopic" element={<AddTropic/>}/>
+          <Route path="addactivity" element={<AddActivity/>}/>
           <Route path="waiting" element={<WaitingApproval />} />
           <Route path="academic-management" element={<Academic_Management />} />
           <Route path="apply-leave" element={<Apply_For_Leave />} />

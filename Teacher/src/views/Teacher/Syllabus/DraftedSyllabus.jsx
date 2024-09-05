@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LayoutSyllabus from './LayoutSyllabus';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { CiTrash } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
-
 import { CiSearch } from "react-icons/ci";
 
 const announcements = [
@@ -15,7 +14,8 @@ const announcements = [
     pages: "10 to 20",
     activityType: "Lecture",
     topicNo: "1",
-    activityTime: "45 mins"
+    activityTime: "45 mins",
+    status: "In Progress" // Status can be "In Progress" or "Rejected"
   },
   {
     lesson: "Lesson 2",
@@ -24,7 +24,8 @@ const announcements = [
     pages: "21 to 30",
     activityType: "Lab",
     topicNo: "2",
-    activityTime: "1 hour"
+    activityTime: "1 hour",
+    status: "Rejected"
   },
   {
     lesson: "Lesson 3",
@@ -33,7 +34,8 @@ const announcements = [
     pages: "31 to 40",
     activityType: "Discussion",
     topicNo: "3",
-    activityTime: "30 mins"
+    activityTime: "30 mins",
+    status: "In Progress"
   },
   {
     lesson: "Lesson 4",
@@ -42,57 +44,10 @@ const announcements = [
     pages: "31 to 40",
     activityType: "Discussion",
     topicNo: "3",
-    activityTime: "30 mins"
+    activityTime: "30 mins",
+    status: "Rejected"
   },
-  {
-    lesson: "Lesson 5",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 6",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 7",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 8",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 9",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 10",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  }
+  // Add more lessons with either "In Progress" or "Rejected" status
 ];
 
 function DraftedSyllabus() {
@@ -101,23 +56,20 @@ function DraftedSyllabus() {
       <LayoutSyllabus />
       <div className="mt-10 mr-5 max-w-full">
         <div className="flex justify-between">
-        <div className="flex  gap-2">
-
-          
-
-  {/* Class Information */}
-  <div className="flex text-[20px] font-bold gap-2">
-    <span>Class IX</span>
-    <span>| Science</span>
-    <span>| 2024</span>
-  </div>
-  <div className='ml-3'>
+          <div className="flex gap-2">
+            {/* Class Information */}
+            <div className="flex text-[20px] font-bold gap-2">
+              <span>Class IX</span>
+              <span>| Science</span>
+              <span>| 2024</span>
+            </div>
+            <div className='ml-3'>
               {/* In Progress Button */}
-          <button className="bg-yellow-500 text-white text-[14px] font-semibold px-4 py-1 rounded-md">
-    In Progress
-  </button>
+              <button className="bg-yellow-500 text-white text-[14px] font-semibold px-4 py-1 rounded-md">
+                In Progress
+              </button>
+            </div>
           </div>
-</div>
 
           <div className="flex gap-8">
             <button className="border-[1px] flex gap-3 items-center rounded-[8px] px-6 py-2">
@@ -142,9 +94,8 @@ function DraftedSyllabus() {
           </div>
           <div className=' flex gap-2'>
             <span>Add Lesson</span>
-          <IoAddCircleOutline className="w-6 h-6 text-[#BB5042] cursor-pointer" />
+            <IoAddCircleOutline className="w-6 h-6 text-[#BB5042] cursor-pointer" />
           </div>
-         
         </div>
 
         <div className="w-full bg-white mt-6 rounded-md">
@@ -164,7 +115,12 @@ function DraftedSyllabus() {
               </thead>
               <tbody>
                 {announcements.map((announcement, index) => (
-                  <tr key={index} className="border-b text-[16px] text-gray-700">
+                  <tr
+                    key={index}
+                    className={`border-[2px] mb-2 space-y-8 text-[16px] text-gray-700 ${
+                      announcement.status === 'Rejected' ? 'border-red-500' : ''
+                    }`}
+                  >
                     <td className="px-4 py-3">{announcement.lesson}</td>
                     <td className="px-4 max-w-[164px] py-3">{announcement.resource}</td>
                     <td className="px-4 max-w-[186px] py-3">{announcement.chapter}</td>

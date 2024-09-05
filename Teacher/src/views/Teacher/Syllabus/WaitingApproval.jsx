@@ -4,6 +4,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { RxCrossCircled } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
+import { SlArrowLeftCircle } from "react-icons/sl";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { MdExpandMore } from 'react-icons/md';
+import { CiTrash } from "react-icons/ci";
+import { FiEdit } from "react-icons/fi";
+import { GoPlusCircle } from "react-icons/go";
+import { GrAttachment } from "react-icons/gr";
+import { Link } from 'react-router-dom';
 
 const announcements = [
   {
@@ -54,6 +62,9 @@ const announcements = [
 ];
 
 function WaitingApproval() {
+  const [showAcademicReport, setShowAcademicReport] = useState(true);
+    const [showMedicalInfo, setShowMedicalInfo] = useState(true);
+
   const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [rejectReason, setRejectReason] = useState('');
@@ -192,28 +203,108 @@ function WaitingApproval() {
         </div>
       )}
 
-      {isViewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 w-[400px]">
-            <h2 className="text-lg font-bold mb-4">Lesson Details</h2>
-            <p><strong>Lesson:</strong> {selectedAnnouncement.lesson}</p>
-            <p><strong>Resource:</strong> {selectedAnnouncement.resource}</p>
-            <p><strong>Chapter:</strong> {selectedAnnouncement.chapter}</p>
-            <p><strong>Pages:</strong> {selectedAnnouncement.pages}</p>
-            <p><strong>Activity Type:</strong> {selectedAnnouncement.activityType}</p>
-            <p><strong>Topic No.:</strong> {selectedAnnouncement.topicNo}</p>
-            <p><strong>Activity Time:</strong> {selectedAnnouncement.activityTime}</p>
-            <div className="flex justify-end mt-4">
-              <button
-                onClick={closeViewModal}
-                className="bg-gray-300 text-gray-700 rounded-md px-4 py-2"
+{isViewModalOpen && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto">
+    <div className="relative bg-white w-[1000px] rounded-[8px] p-6">
+      {/* Close Icon */}
+      <div className="absolute top-4 right-4 cursor-pointer">
+        <RxCrossCircled
+          size={28}
+          className="text-gray-500 hover:text-gray-700"
+          onClick={closeViewModal}
+        />
+      </div>
+
+      <h2 className="text-[31px] mt-5 mb-5 text-center font-bold">Lesson 12</h2>
+
+      <div>
+        <div className="mt-10 mb-6">
+          {/* Topic Section */}
+          <div className="mb-8 mr-12 border-[1px] rounded-[8px]">
+            <div className="bg-[#A7BEAE] p-4 rounded-t-[8px] justify-between flex text-[20px] font-bold text-white">
+              <h3 className="text-[25px]">Topic</h3>
+              <div
+                className="mr-5 mt-3 cursor-pointer"
+                onClick={() => setShowAcademicReport(!showAcademicReport)}
               >
-                Close
-              </button>
+                {showAcademicReport ? (
+                  <BsChevronUp className="text-white w-5 h-5" />
+                ) : (
+                  <BsChevronDown className="text-white w-5 h-5" />
+                )}
+              </div>
             </div>
+            {showAcademicReport && (
+              <div className="bg-transparent p-4">
+                <div className="mb-5">
+                  <div className="text-[18px] justify-start">
+                    <span className="text-[#465049] font-semibold">Topic 35</span>
+                  </div>
+                  <div className="mt-3 flex justify-start">
+                    <span className="text-[16px] font-semibold text-[#939393]">
+                      Oxford textbooks Science, Class IX | Chapter 5 | Page 20-35
+                    </span>
+                  </div>
+                  <div className="gap-2 mt-2 flex items-center">
+                    <span className="font-bold">Topic Title: </span>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                  </div>
+                  <div className="mt-1 justify-start">
+                    <p className="text-[#465049]">
+                      Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Activity Section */}
+          <div className="mb-8 mr-12 border-[1px] rounded-[8px]">
+            <div className="bg-[#A7BEAE] justify-between flex rounded-t-[8px] p-4 text-[20px] font-bold text-white">
+              <h3 className="text-[25px]">Activity</h3>
+              <div
+                onClick={() => setShowMedicalInfo(!showMedicalInfo)}
+                className="mr-5 mt-3 cursor-pointer"
+              >
+                {showMedicalInfo ? (
+                  <BsChevronUp className="text-white w-5 h-5" />
+                ) : (
+                  <BsChevronDown className="text-white w-5 h-5" />
+                )}
+              </div>
+            </div>
+            {showMedicalInfo && (
+              <div className="bg-transparent p-4">
+                <div className="mb-4 mt-3">
+                  <div className="text-[18px] justify-start">
+                    <span className="text-[#465049] font-semibold">Activity 45</span>
+                  </div>
+                  <div className="mt-2">
+                    <span className="font-bold text-[16px]">Board Work | 10 min</span> <br />
+                    <span className="font-semibold text-[#939393] text-[16px]">Lesson 11</span>
+                  </div>
+                  <div className="mt-3 gap-2 flex justify-start">
+                    <span className="text-[16px] font-semibold text-[#939393]">
+                      Topic 35 | Topic Title: 
+                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                  </div>
+                  <div className="mt-1 justify-start">
+                    <p className="text-[#465049]">
+                      Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
