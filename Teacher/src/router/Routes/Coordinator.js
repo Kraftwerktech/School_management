@@ -1,9 +1,9 @@
 import { lazy } from 'react'
-const AdminDashboard = lazy(() => import("../../views/admin/AdminDashboard"))
-const Profile = lazy(() => import("../../views/admin/Profile"))
+const CoordinatorDashboard = lazy(() => import("../../views/Coordinator/Dashboard"))
+const Studentdir = lazy(() => import("../../views/Coordinator/Student_directory"))
 
 
-export const adminRoutes = [
+export const Coordinator = [
     {
         path: 'admin/dashboard',
         element: <AdminDashboard />,

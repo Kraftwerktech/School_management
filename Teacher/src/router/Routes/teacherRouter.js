@@ -1,28 +1,25 @@
 import { lazy } from 'react'
 const TeacherDashboard = lazy(() => import("../../views/Teacher/TeacherDashboard"))
-const AcademicManagement = lazy(() => import("../../views/Teacher/Academic_Management"))
-const Announcement = lazy(() => import("../../views/Teacher/Announcement"))
-const ClassRoutine = lazy(() => import("../../views/Teacher/Class_Routine"))
-const ApplyForLeave = lazy(() => import("../../views/Teacher/Apply_For_Leave"))
-const StudentAttendance = lazy(() => import("../../views/Teacher/Student_Attendance"))
-const ParentsTeachersCollaboration = lazy(() => import("../../views/Teacher/Parents_Teachers_Collaboration"))
-const LessonPlan = lazy(() => import("../../views/Teacher/Lesson_Plan"))
-const StudentInformation = lazy(() => import("../../views/Teacher/Student_Information"))
-const SubstituteScheduling = lazy(() => import("../../views/Teacher/Substitute_Scheduling"))
+const AcademicManagement = lazy(() => import("../../views/Teacher/Student_Information"))
+const Announcement = lazy(() => import("../../views/Teacher/Myclass"))
+const ClassRoutine = lazy(() => import("../../views/Teacher/Academic_Management"))
+const ApplyForLeave = lazy(() => import("../../views/Teacher/Student_Attendance"))
+const StudentAttendance = lazy(() => import("../../views/Teacher/Student_Result"))
+const ParentsTeachersCollaboration = lazy(() => import("../../views/Teacher/Class_Routine"))
+const StudentInformation = lazy(() => import("../../views/Teacher/Substitute_Scheduling"))
+const SubstituteScheduling = lazy(() => import("../../views/Teacher/TeacherProfile"))
 const StudentResult = lazy(() => import("../../views/Teacher/Student_Result"))
 const Setting = lazy(() => import("../../views/Teacher/Setting"))
 const HomeWorks = lazy(() => import("../../views/Teacher/Home_Works"))
 
 export const teacherRouter = [
-
-    
     {
         path: '/teacher/dashboard',
         element: <TeacherDashboard />,
         role: 'teacher',
         status: 'active'
     },
-
+   
     {
         path: '/teacher/dashboard/academic-management',
         element: <AcademicManagement />,

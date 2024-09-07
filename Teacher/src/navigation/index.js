@@ -1,4 +1,5 @@
 import { allNav } from './allNav'
+
 export const getNavs = (role) => {
     const finalNavs = [];
 

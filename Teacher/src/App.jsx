@@ -39,6 +39,9 @@ import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
 import AddTropic from './views/Teacher/Syllabus/AddTropic';
 import AddActivity from './views/Teacher/Syllabus/AddActivity';
 import MessageColab from './views/Teacher/TeacherParentsCollaboration/MessageColab';
+import Colaboration from './views/Coordinator/Colaboration';
+import CoStudentdir from './views/Coordinator/Student_directory';
+import CoSyllabus from "./views/Coordinator/Syllabus";
 function App() {
   return (
     <BrowserRouter>
@@ -79,6 +82,12 @@ function App() {
           <Route path='notifications' element={<Notificationsall/>}/>
           <Route path='routineCalender' element={<RoutineCalanderScreen/>}/>
 
+        </Route>
+
+        <Route path="/coordinator/dasboard" element={<MainLayout/>}>
+        <Route path='colaboration' element={<Colaboration/>}/>
+        <Route path='student-dir' element={ <CoStudentdir/>}/>
+        <Route path='Cosyllabus' element={<CoSyllabus/>}/>
         </Route>
         <Route path="/" element={<Teacherlogin />} />
         <Route path="/verified" element={<Varified />} />
