@@ -28,13 +28,13 @@ import VarifyOTPbyprofile from './views/auth/varifyOTPbyprofile';
 import Notificationsall from './views/Teacher/Notificationall';
 import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
 import RequestMeeting from './views/Teacher/RequestMeeting';
+import AddLesson from './views/Teacher/Syllabus/AddLesson'
 import ArchiveMeeting from './views/Teacher/Archivemeeting';
 import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
 import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
 import NewCreateSyllabusDraft from './views/Teacher/Syllabus/NewCreateSyllabusDraft';
 import WaitingApproval from './views/Teacher/Syllabus/WaitingApproval';
-import AddLesson from './views/Teacher/Syllabus/AddLesson';
 import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
 import AddTropic from './views/Teacher/Syllabus/AddTropic';
 import AddActivity from './views/Teacher/Syllabus/AddActivity';
@@ -42,6 +42,10 @@ import MessageColab from './views/Teacher/TeacherParentsCollaboration/MessageCol
 import Colaboration from './views/Coordinator/Colaboration';
 import CoStudentdir from './views/Coordinator/Student_directory';
 import CoSyllabus from "./views/Coordinator/Syllabus";
+ import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
+import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
+import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
+
 function App() {
   return (
     <BrowserRouter>
@@ -62,10 +66,13 @@ function App() {
           <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
           <Route path="announcement" element={<Announcement />} />
           <Route path="syllabus" element={<Syllabus />} />
-          <Route path="approved" element={<ApprovedSyllabus />} />
-          <Route path="drafted" element={<DraftedSyllabus />} />
-          <Route path="newdrafted" element={<NewCreateSyllabusDraft />} />
           <Route path="addlesson" element={<AddLesson />} />
+          <Route path="approved" element={<ApprovedSyllabus />} />
+          <Route path="newdrafted" element={<NewCreateSyllabusDraft />} />
+          <Route path="drafted" element={<DraftedSyllabus />} />
+          <Route path="layoutlesson" element={<LayoutLesson />} />
+          <Route path="approveLesson" element={<ApprovedLesson />} />
+          <Route path="draftLesson" element={<DraftLesson />} />
           <Route path='addlessonaddtropic' element={<AddLesson_addtropic/>}/>
           <Route path="addTopic" element={<AddTropic/>}/>
           <Route path="addactivity" element={<AddActivity/>}/>
@@ -84,7 +91,10 @@ function App() {
 
         </Route>
 
-        <Route path="/coordinator/dasboard" element={<MainLayout/>}>
+
+
+
+        <Route path="coordinator/dasboard" element={<MainLayout/>}>
         <Route path='colaboration' element={<Colaboration/>}/>
         <Route path='student-dir' element={ <CoStudentdir/>}/>
         <Route path='Cosyllabus' element={<CoSyllabus/>}/>

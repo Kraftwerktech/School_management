@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillDashboard } from "react-icons/ai";
-import { MdOutlinePlayLesson, MdCoPresent } from "react-icons/md";
+import {  MdCoPresent } from "react-icons/md";
 import { PiStudentDuotone } from "react-icons/pi";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { SiMicrosoftacademic } from "react-icons/si";
@@ -12,11 +12,19 @@ import { GoPeople } from "react-icons/go";
 import { PiMessengerLogoLight } from "react-icons/pi";
 import { LuCalendarDays } from "react-icons/lu";
 import { GrAnnounce } from "react-icons/gr";
+import { MdOutlinePlayLesson } from "react-icons/md";
 import logo from '../assets/Teacher/logo1.png';
 
-const Sidebar = ({ showSidebar, setShowSidebar, userRole }) => {
+const Sidebar = () => {
+  // State to toggle the sidebar
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  // Assume we fetch the user role dynamically, e.g., from context or props
+  const userRole = "teacher"; // Example: 'teacher' or 'coordinator'
+  
   const location = useLocation();
 
+  // Define the menu items
   const menuItems = [
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
@@ -28,34 +36,50 @@ const Sidebar = ({ showSidebar, setShowSidebar, userRole }) => {
     { path: "substitute-scheduling", role: "teacher", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
     { path: "collaboration", role: "teacher", name: "Parents Teachers Collaboration", icon: <GoPeople /> },
     { path: "messagecollaboration", role: "teacher", name: "Messaging", icon: <PiMessengerLogoLight /> },
-    { path: "syllabus", role: "teacher", name: "Syllabus", icon: <LuCalendarDays /> },
+    { path: "approved", role: "teacher", name: "Syllabus", icon: <LuCalendarDays /> },
+    { path: "approveLesson", role: "teacher", name: "Lesson Plan", icon: <MdOutlinePlayLesson /> },
     { path: "announcement", role: "teacher", name: "Announcement", icon: <GrAnnounce /> },
     { path: "setting", role: "teacher", name: "Setting", icon: <IoSettingsOutline /> },
-    { path: "/coordinator/dashboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
+    { path: "coordinator/dashboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "Cosyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },
   ];
 
-  // Filter menu items based on the user role
+  // Filter menu items based on the user's role
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
 
   return (
     <div>
-      {/* Overlay to close sidebar */}
-      <div
-        onClick={() => setShowSidebar(false)}
-        className={`fixed inset-0 bg-[#22292f80] z-10 transition-opacity duration-200 ${showSidebar ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
-      ></div>
+      {/* Button to toggle sidebar visibility */}
+      <button
+        onClick={() => setShowSidebar(!showSidebar)}
+        className="fixed top-4 left-4 z-50 p-2 bg-blue-500 text-white rounded-lg"
+      >
+        {showSidebar ? 'Close' : 'Open'} Sidebar
+      </button>
+
+      {/* Overlay to close sidebar on outside click */}
+      {showSidebar && (
+        <div
+          onClick={() => setShowSidebar(false)}
+          className="fixed inset-0 bg-[#22292f80] z-10 transition-opacity duration-200"
+        />
+      )}
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 w-[260px] h-screen bg-[#F6F9F7] shadow-[0_0_15px_0_rgb(34_41_47_/_5%)] transition-transform duration-300 ${showSidebar ? 'translate-x-0' : '-translate-x-[260px]'} lg:translate-x-0 z-50`}
+        className={`fixed top-0 left-0 w-[260px] h-screen bg-[#F6F9F7] shadow-[0_0_15px_0_rgb(34_41_47_/_5%)] transition-transform duration-300 z-50 ${
+          showSidebar ? 'translate-x-0' : '-translate-x-[260px] lg:translate-x-0'
+        }`}
       >
+        {/* Sidebar Header with Logo */}
         <div className="h-[70px] flex justify-center items-center">
           <Link to="/" className="w-[180px] h-[50px]">
             <img className="w-full h-full" src={logo} alt="Logo" />
           </Link>
         </div>
+
+        {/* Sidebar Menu */}
         <div className="px-[16px] mt-2">
           <ul>
             {filteredMenuItems.map((item, index) => (
@@ -66,7 +90,7 @@ const Sidebar = ({ showSidebar, setShowSidebar, userRole }) => {
                     location.pathname === item.path ? 'bg-[#465049] text-white' : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                   }`}
                 >
-                  <span className="text-[22px]"> {item.icon}</span>
+                  <span className="text-[22px]">{item.icon}</span>
                   <span className="font-normal">{item.name}</span>
                 </Link>
               </li>
