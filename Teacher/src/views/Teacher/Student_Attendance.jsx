@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdExpandMore } from 'react-icons/md';
 import { PiStudent } from 'react-icons/pi';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-import { IoCloseCircleOutline } from 'react-icons/io5';
 import { BsClockHistory } from "react-icons/bs";
 import Absence from '../../assets/Teacher/icons/Absence.png'
-import Present from '../../assets/Teacher/icons/Present.png'
+import Present from '../../assets/Teacher/icons/Present.png';
+import { Link } from 'react-router-dom';
+
 // Dummy Data
 const initialStudents = [
   { id: 1, picture: 'https://randomuser.me/api/portraits/men/32.jpg', studentId: '37384587228', name: 'John Doe', class: 'IX', section: 'A', roll: '12', status: 'Present' },
@@ -57,13 +57,13 @@ function StudentInformation() {
 
   return (
     <div className="pr-8 pb-6 mt-0">
-      <h3 className="text-[31px] mb-[40px] font-semibold">Attendance</h3>
+      <h3 className="text-[31px] mb-[14px] font-semibold">Attendance</h3>
 
       <div className="w-full rounded-[12px] mb-[40px] bg-white border-[1px] h-[112px] mr-4 pb-2 mt-0">
         <div className="flex flex-wrap mt-[35px] ml-[20px] gap-[32px]">
           <div className="relative w-full md:w-[170px]">
             <select className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full">
-              <option value="">Select Class</option>
+              <option value="">Class</option>
               <option>Class IX</option>
               <option>Class X</option>
               <option>Class XI</option>
@@ -74,7 +74,7 @@ function StudentInformation() {
 
           <div className="relative w-full md:w-[170px]">
             <select className="appearance-none px-6 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-10">
-              <option value="">Select Section</option>
+              <option value="">Section</option>
               <option>A</option>
               <option>B</option>
               <option>C</option>
@@ -85,7 +85,7 @@ function StudentInformation() {
 
           <div className="relative w-full md:w-[170px]">
             <select className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-10">
-              <option value="">Select Subject</option>
+              <option value="">Subject</option>
               <option>Bangla</option>
               <option>English</option>
               <option>Math</option>
@@ -93,49 +93,67 @@ function StudentInformation() {
             </select>
             <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
           </div>
-
-          <button className="px-5 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto">
-            Search
-          </button>
+          <div className=' flex items-center px-5 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto'>
+          <Link className=" flex gap-2 items-center">
+          Filter
+          </Link>
+          
+          </div>
+        
+        
+        
+          
         </div>
       </div>
 
-      <div className="w-full border-[1px] mb-10 rounded-[12px] text-center bg-white">
-        <div className="grid grid-cols-3 gap-[16px] mb-10 mt-5 h-[190px] p-4">
-          <div className="flex items-center justify-between h-full rounded-[12px] bg-[#A7BEAE] p-4">
-            <div className="flex items-center">
-              <div className="flex justify-center items-center bg-[#77877C] w-[100px] h-[95px] rounded-[12px]">
+      <div className="w-full border-[1px] mb-5 rounded-[12px] text-center bg-white">
+        <div className="grid grid-cols-3 gap-[16px] mb-10 mt-5 h-[230px] p-4">
+          <div className="h-full rounded-[12px] bg-[#A7BEAE] p-4">
+            <div className=" flex flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Total Students</span>
+              </div>
+              <div className=' flex gap-[40px] items-center'>
+              <div className="flex items-center justify-center bg-[#77877C] w-[80px] h-[80px] rounded-full">
                 <PiStudent className="w-[50px] text-white h-[50px]" />
               </div>
-              <div className="ml-4 text-center">
-                <span className="block text-[25px] text-[#465049] font-semibold">Total Students</span>
-                <span className="block text-[49px] text-[#465049] font-bold">{studentData.length}</span>
+              <span className="block text-[49px] text-[#465049] font-bold">{studentData.length}</span>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between h-full rounded-[12px] bg-[#daefe0] p-4">
-            <div className="flex items-center">
-              <div className="flex ml-10 justify-center items-center bg-[#08A647] w-[80px] h-[80px] rounded-full">
+
+          <div className="h-full rounded-[12px] bg-[#daefe0] p-4">
+            <div className="flex flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Present Students</span>
+              </div>
+              <div className='flex gap-[40px] items-center'>
+              <div className="flex justify-center items-center bg-[#08A647] w-[80px] h-[80px] rounded-full">
                 <img src={Present} className="w-[50px] text-white h-[50px]" />
               </div>
-              <div className="ml-4 text-center">
-                <span className="block text-[25px] text-[#465049] font-semibold">Present Students</span>
-                <span className="block text-[49px] text-[#465049] font-bold">
+              <div>
+              <span className="block text-[49px] text-[#465049] font-bold">
                   {studentData.filter((student) => student.status === 'Present').length}
-                </span>
+              </span>
+              </div>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between h-full rounded-[12px] bg-[#F8EEEC] p-4">
-            <div className="flex items-center">
-              <div className="flex ml-10 justify-center items-center bg-[#CD1902] w-[80px] h-[80px] rounded-full">
+          <div className="h-full rounded-[12px] bg-[#F8EEEC] p-4">
+            <div className="flex  flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Absent Students</span>
+              </div>
+
+              <div className='flex gap-[40px] items-center'>
+              <div className="flex justify-center items-center bg-[#CD1902] w-[80px] h-[80px] rounded-full">
                 <img src={Absence} className="w-[50px] text-white h-[50px]" />
               </div>
-              <div className="ml-4 text-center">
-                <span className="block text-[25px] text-[#465049] font-semibold">Absent Students</span>
-                <span className="block text-[49px] text-[#465049] font-bold">
+              <div>
+              <span className="block text-[49px] text-[#465049] font-bold">
                   {studentData.filter((student) => student.status === 'Absent').length}
-                </span>
+                </span> 
+              </div>
               </div>
             </div>
           </div>
@@ -170,7 +188,7 @@ function StudentInformation() {
           <table className=" min-w-full items-center  table-auto  text-center">
             <thead className='bg-[#E4EBE6] h-[60px] text-center'>
               <tr className="text-[#465049] text-[16px] text-center">
-              <th className="px-4 py-2"><input type="checkbox" className='w-5 h-5' /></th>
+              <th className="px-4 py-2"><input type="checkbox" className='w-[14px] h-[14px]' /></th>
                 <th className="px-4 py-2">Picture</th>
                 <th className="px-4 py-2">Student ID</th>
                 <th className="px-4 py-2">Name</th>
@@ -182,7 +200,7 @@ function StudentInformation() {
             <tbody>
               {displayedStudents.map((student) => (
                 <tr key={student.id} className="border-b text-[16px] text-gray-700">
-                  <td className="px-4 py-2 text-center"><input type="checkbox" className='w-5 h-5' /></td>
+                  <td className="px-4 py-2 text-center"><input type="checkbox" className='w-[14px] h-[14px]' /></td>
                   
                   <td className="px-4 py-2 flex justify-center">
                     <img src={student.picture} alt={student.name} className="w-[60px] h-[60px] rounded-full" />

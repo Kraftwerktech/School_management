@@ -295,7 +295,7 @@ function AddActivity() {
                 </div>
             </div>
             <div className='mt-5 pl-[450px] mb-20'>
-                <Link to='/teacher/dashboard/drafted'>
+                <Link to='/teacher/dashboard/draftLesson'>
                     <button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button>
                 </Link>
             </div>

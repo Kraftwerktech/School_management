@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom';
 import { RxCrossCircled } from 'react-icons/rx';
 import { IoChevronDownSharp } from 'react-icons/io5';
-
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 // Modal Component
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -14,7 +15,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       aria-modal="true"
       aria-labelledby="modal-title"
     >
-      <div className="bg-white p-10 rounded-lg max-h-[90%] max-w-[700px] w-full relative overflow-auto">
+      <div className="bg-white p-10 rounded-lg max-w-[800px] h-[500px] relative overflow-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -29,37 +30,123 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-// CreateLessonModal Component
+
+import { IoCalendarClearOutline } from "react-icons/io5";
+
+import { IoIosArrowDown } from "react-icons/io";
+
 function CreateLessonModal({ isOpen, onClose }) {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedSection, setSelectedSection] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedLesson, setSelectedLesson] = useState('');
+
+  const subjects = ['Mathematics', 'Science', 'English', 'History']; // Replace with dynamic subjects if needed
+  const lessons = ['Lesson 1', 'Lesson 2', 'Lesson 3']; // Replace with dynamic lessons if needed
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="p-6">
-        <h2 id="modal-title" className="text-[31px] font-bold mt-6 mb-6 text-center">
+      <div className="p-10">
+        <h2 id="modal-title" className="text-[31px] font-bold mb-10 text-center">
           Create Lesson
         </h2>
         <div className="flex flex-col gap-6 mx-10">
           {/* Row 1 */}
           <div className="flex gap-10 justify-center">
-            <FormInput label="Clone from" type="date" placeholder="2024" />
-            <FormInput label="Lesson Year" type="text" placeholder="2025" />
+            {/* Date Picker */}
+            <div className="relative flex items-center">
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border border-[#B6B6B6] w-[150px] focus:border-[#BB5042] rounded-md px-5 py-3"
+                placeholderText="Date"
+              />
+              <IoCalendarClearOutline className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
+
+            {/* Class Dropdown */}
+            <div className="relative w-[150px]">
+              <select
+                value={selectedClass}
+                onChange={(e) => setSelectedClass(e.target.value)}
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+              >
+                <option value="">Class</option>
+                {Array.from({ length: 12 }, (_, i) => (
+                  <option key={i} value={i + 1}>
+                    Class {i + 1}
+                  </option>
+                ))}
+              </select>
+              <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
+
+            {/* Section Dropdown */}
+            <div className="relative w-[150px]">
+              <select
+                value={selectedSection}
+                onChange={(e) => setSelectedSection(e.target.value)}
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+              >
+                <option value="">Section</option>
+                {['A', 'B', 'C', 'D'].map((section, index) => (
+                  <option key={index} value={section}>
+                    {section}
+                  </option>
+                ))}
+              </select>
+              <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
           </div>
 
           {/* Row 2 */}
-          <div className="flex gap-10 justify-center">
-            <FormInput label="Select Class" type="text" placeholder="Select Class" />
-            <FormInput label="Select Subject" type="text" placeholder="Select Subject" />
+          <div className="flex mt-6 gap-10 justify-center">
+            {/* Subject Dropdown */}
+            <div className="relative w-[150px]">
+              <select
+                value={selectedSubject}
+                onChange={(e) => setSelectedSubject(e.target.value)}
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+              >
+                <option value="">Subject</option>
+                {subjects.map((subject, index) => (
+                  <option key={index} value={subject}>
+                    {subject}
+                  </option>
+                ))}
+              </select>
+              <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
+
+            {/* Lesson Dropdown */}
+            <div className="relative w-[150px]">
+              <select
+                value={selectedLesson}
+                onChange={(e) => setSelectedLesson(e.target.value)}
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+              >
+                <option value="">Lesson</option>
+                {lessons.map((lesson, index) => (
+                  <option key={index} value={lesson}>
+                    {lesson}
+                  </option>
+                ))}
+              </select>
+              <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Confirm Button */}
-      <div className="flex items-center justify-center gap-6 mt-6">
-        <Link
-          to="/teacher/dashboard/drafted"
-          className="bg-[#BB5042] w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
-        >
-          Confirm
-        </Link>
+        {/* Confirm Button */}
+        <div className="flex items-center justify-center gap-6 mt-12">
+          <Link
+            to="/teacher/dashboard/addlesson"
+            className="bg-[#BB5042] text-center font-semibold w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
+          >
+            Confirm
+          </Link>
+        </div>
       </div>
     </Modal>
   );
