@@ -2,7 +2,7 @@ import React from 'react'
 
 function Syllabus() {
   return (
-    <div>Syllabus</div>
+    <div>Coordinator Syllabus</div>
   )
 }
 

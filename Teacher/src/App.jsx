@@ -39,13 +39,15 @@ import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
 import AddTropic from './views/Teacher/Syllabus/AddTropic';
 import AddActivity from './views/Teacher/Syllabus/AddActivity';
 import MessageColab from './views/Teacher/TeacherParentsCollaboration/MessageColab';
+import CoordinatorDashboard from './views/Coordinator/Dashboard';
 import Colaboration from './views/Coordinator/Colaboration';
 import CoStudentdir from './views/Coordinator/Student_directory';
 import CoSyllabus from "./views/Coordinator/Syllabus";
  import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
 import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
 import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
-
+import CoOrdinatorlogin from './views/Coordinator/CoAuth/Login';
+import Homepage from './Homepage';
 function App() {
   return (
     <BrowserRouter>
@@ -91,19 +93,20 @@ function App() {
 
         </Route>
 
-
-
-
-        <Route path="coordinator/dasboard" element={<MainLayout/>}>
+        <Route path="/coordinator/dasboard" element={<MainLayout/>}>
+        <Route index element={<CoordinatorDashboard/>}/>
         <Route path='colaboration' element={<Colaboration/>}/>
         <Route path='student-dir' element={ <CoStudentdir/>}/>
         <Route path='Cosyllabus' element={<CoSyllabus/>}/>
         </Route>
-        <Route path="/" element={<Teacherlogin />} />
+        <Route path="/cologin" element={<CoOrdinatorlogin />} />
+        <Route path="/tlogin" element={<Teacherlogin />} />
         <Route path="/verified" element={<Varified />} />
         <Route path="/forget-password" element={<Forgetpassword />} />
         <Route path="/setnewpass" element={<Setnewpassword />} />
+        <Route path='/' element={<Homepage/>}/>
       </Routes>
+
     </BrowserRouter>
   );
 }

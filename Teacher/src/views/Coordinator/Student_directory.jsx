@@ -2,7 +2,7 @@ import React from 'react'
 
 function Student_directory() {
   return (
-    <div>Student_directory</div>
+    <div>Coordinator Student_directory</div>
   )
 }
 

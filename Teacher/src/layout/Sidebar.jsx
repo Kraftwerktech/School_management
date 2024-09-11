@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillDashboard } from "react-icons/ai";
-import {  MdCoPresent } from "react-icons/md";
+import { MdCoPresent } from "react-icons/md";
 import { PiStudentDuotone } from "react-icons/pi";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { SiMicrosoftacademic } from "react-icons/si";
@@ -16,12 +16,12 @@ import { MdOutlinePlayLesson } from "react-icons/md";
 import logo from '../assets/Teacher/logo1.png';
 
 const Sidebar = () => {
-  // State to toggle the sidebar
   const [showSidebar, setShowSidebar] = useState(false);
-
-  // Assume we fetch the user role dynamically, e.g., from context or props
-  const userRole = "teacher"; // Example: 'teacher' or 'coordinator'
   
+  // State to keep track of the currently selected menu item
+  const [selectedMenu, setSelectedMenu] = useState("/coordinator/dashboard");
+
+  const userRole = "teacher"; // Example: 'teacher' or 'coordinator'
   const location = useLocation();
 
   // Define the menu items
@@ -40,13 +40,18 @@ const Sidebar = () => {
     { path: "approveLesson", role: "teacher", name: "Lesson Plan", icon: <MdOutlinePlayLesson /> },
     { path: "announcement", role: "teacher", name: "Announcement", icon: <GrAnnounce /> },
     { path: "setting", role: "teacher", name: "Setting", icon: <IoSettingsOutline /> },
-    { path: "coordinator/dashboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
+    { path: "http://localhost:5173/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "Cosyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },
   ];
 
   // Filter menu items based on the user's role
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
+
+  const handleMenuClick = (path) => {
+    setSelectedMenu(path);
+    setShowSidebar(false); // Close sidebar when menu item is clicked
+  };
 
   return (
     <div>
@@ -86,8 +91,11 @@ const Sidebar = () => {
               <li key={index}>
                 <Link
                   to={item.path}
+                  onClick={() => handleMenuClick(item.path)}
                   className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all mb-1 ${
-                    location.pathname === item.path ? 'bg-[#465049] text-white' : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
+                    selectedMenu === item.path
+                      ? 'bg-[#465049] text-white'
+                      : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                   }`}
                 >
                   <span className="text-[22px]">{item.icon}</span>

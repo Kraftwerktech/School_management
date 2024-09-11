@@ -53,7 +53,7 @@ function Teacherlogin() {
         if (successMessage) {
             toast.success(successMessage);
             dispatch(clearMessages());
-            navigate('teacher/dashboard');
+            navigate('http://localhost:5173/teacher/dashboard');
         }
     }, [errorMessage, successMessage, dispatch, navigate]);
 
