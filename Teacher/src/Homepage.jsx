@@ -1,20 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Ensure you have react-router-dom installed
+import { Link } from 'react-router-dom';
+import { ReactTyped } from "react-typed";
 
 function Homepage() {
   return (
-    <div className="min-h-[600px] background flex flex-col items-center justify-center bg-gray-100 p-6">
-      <div className="max-w-[1200px] h-[600px] mt-[100px] w-full space-y-6 bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-[31px] font-bold mb-6 text-center mt-[100px]">Welcome to the Portal</h1>
-        <div className="flex justify-center items-center p-[100px] gap-[180px]">
-          <Link to="/admin" className="block bg-blue-500 text-white text-center text-[20px] font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-blue-600">
-            Admin Panel
+    <div className="min-h-screen background bg-cover flex flex-col items-center justify-center bg-transparent p-6">
+      <div className="max-w-[1410px] h-[600px] mt-[100px] w-full space-y-6 bg-transparent rounded-lg shadow-lg">
+        {/* Typewriter effect for welcome message */}
+        <h1 className="text-[44px] font-bold mb-6 text-center mt-[40px]">
+          <ReactTyped
+            strings={["Welcome to the Portal....",
+              "School Management System....",
+              
+            ]} // Text to be typed
+            typeSpeed={50} // Typing speed
+            backSpeed={30} // Speed of backspacing (if loop is true)
+            loop={true}   // Set to false to avoid looping
+            showCursor={true} // Show the cursor
+          />
+        </h1>
+
+        {/* Link buttons for different user roles */}
+        <div className="flex items-center justify-center p-[50px] gap-[120px]">
+          {/* Administration link */}
+          <Link to="/admin" className="flex gap-3 bg-blue-500 text-[24px] text-white items-center text-center font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-blue-600">
+            <img className='w-10 h-10' src='http://localhost:5173/admin (1).svg' alt="Admin Icon" />
+            <span>Administration</span>
           </Link>
-          <Link to="/cologin" className="block bg-green-500 text-white text-center  text-[20px] font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-green-600">
-            Coordinator Panel
+
+          {/* Coordinator's link */}
+          <Link to="/cologin" className="flex gap-3 bg-green-500 text-white text-center items-center text-[24px] font-bold py-[34px] px-[80px] rounded-lg shadow hover:bg-green-600">
+            <img className='w-10 h-10' src='http://localhost:5173/corodinator (1).svg' alt="Coordinator Icon" />
+            <span>Coordinator's</span>
           </Link>
-          <Link to="/tlogin" className="block bg-purple-500 text-white text-center  text-[20px] font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-purple-600">
-            Teacher Panel
+
+          {/* Teacher's link */}
+          <Link to="/tlogin" className="flex gap-3 bg-purple-500 text-white text-center items-center text-[24px] font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-purple-600">
+            <img className='w-10 h-10' src='http://localhost:5173/teacher (1).svg' alt="Teacher Icon" />
+            <span>Teacher's</span>
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillDashboard } from "react-icons/ai";
 import { MdCoPresent } from "react-icons/md";
@@ -19,12 +19,26 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   
   // State to keep track of the currently selected menu item
-  const [selectedMenu, setSelectedMenu] = useState("/coordinator/dashboard");
+  const [selectedMenu, setSelectedMenu] = useState("/dashboard");
 
-  const userRole = "teacher"; // Example: 'teacher' or 'coordinator'
-  const location = useLocation();
+  // Use context or API to dynamically set userRole
+  const [userRole, setUserRole] = useState(null); // 'teacher' or 'coordinator'
+  
+  useEffect(() => {
+    // Simulate fetching user role from API, local storage, or context
+    const fetchUserRole = async () => {
+      // Example: fetch from local storage or API
+      const role = localStorage.getItem('userRole') || 'teacher'; // Default to 'teacher' for this example
+      setUserRole(role);
+    };
 
-  // Define the menu items
+    fetchUserRole();
+  }, []);
+  
+
+const location = useLocation();
+// Define the menu items for both roles
+
   const menuItems = [
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
@@ -40,9 +54,14 @@ const Sidebar = () => {
     { path: "approveLesson", role: "teacher", name: "Lesson Plan", icon: <MdOutlinePlayLesson /> },
     { path: "announcement", role: "teacher", name: "Announcement", icon: <GrAnnounce /> },
     { path: "setting", role: "teacher", name: "Setting", icon: <IoSettingsOutline /> },
-    { path: "http://localhost:5173/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
+    { path: "/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
-    { path: "Cosyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },
+    { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },
+    { path: "CActivity", role: "coordinator", name: "Activities", icon: <HiOutlineUserGroup /> },
+    { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <HiOutlineUserGroup /> },
+    { path: "CReport", role: "coordinator", name: "Reports", icon: <HiOutlineUserGroup /> },
+    { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <HiOutlineUserGroup /> },
+    { path: "CTeacherList", role: "coordinator", name: "Teacher List", icon: <HiOutlineUserGroup /> },
   ];
 
   // Filter menu items based on the user's role
@@ -52,6 +71,8 @@ const Sidebar = () => {
     setSelectedMenu(path);
     setShowSidebar(false); // Close sidebar when menu item is clicked
   };
+
+  if (!userRole) return null; // Wait until userRole is fetched
 
   return (
     <div>

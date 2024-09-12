@@ -53,7 +53,7 @@ function CoOrdinatorlogin() {
         if (successMessage) {
             toast.success(successMessage);
             dispatch(clearMessages());
-            navigate('http://localhost:5173/coordinator/dasboard');
+            navigate('/coordinator/dasboard');
         }
     }, [errorMessage, successMessage, dispatch, navigate]);
 

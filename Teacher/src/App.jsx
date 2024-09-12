@@ -42,11 +42,25 @@ import MessageColab from './views/Teacher/TeacherParentsCollaboration/MessageCol
 import CoordinatorDashboard from './views/Coordinator/Dashboard';
 import Colaboration from './views/Coordinator/Colaboration';
 import CoStudentdir from './views/Coordinator/Student_directory';
-import CoSyllabus from "./views/Coordinator/Syllabus";
- import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
+import CoSyllabus from "./views/Coordinator/Syllabus/LayoutSyllabus";
+import CApprovedSyllabus from './views/Coordinator/Syllabus/ApprovedSyllabus';
+import CDraftedSyllabus from './views/Coordinator/Syllabus/DraftedSyllabus';
+import CNewCreateSyllabusDraft from './views/Coordinator/Syllabus/NewCreateSyllabusDraft';
+import CWaitingApproval from './views/Coordinator/Syllabus/WaitingApproval';
+import CAddLesson_addtropic from './views/Coordinator/Syllabus/AddLesson_addtropic';
+import CAddTropic from './views/Coordinator/Syllabus/AddTropic';
+import CAddActivity from './views/Coordinator/Syllabus/AddActivity';
+import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
 import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
 import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
 import CoOrdinatorlogin from './views/Coordinator/CoAuth/Login';
+import COActivity from './views/Coordinator/Activity';
+import COAnnuncement from './views/Coordinator/Announcements';
+import COMeeting from './views/Coordinator/Meetings';
+import COTeacherList from './views/Coordinator/TeacherList';
+import COReport from './views/Coordinator/Reports';
+
+
 import Homepage from './Homepage';
 function App() {
   return (
@@ -98,6 +112,17 @@ function App() {
         <Route path='colaboration' element={<Colaboration/>}/>
         <Route path='student-dir' element={ <CoStudentdir/>}/>
         <Route path='Cosyllabus' element={<CoSyllabus/>}/>
+        <Route path='CoApprovedsyllabus' element={<CApprovedSyllabus/>}/>
+        <Route path='CoDraftsyllabus' element={<CDraftedSyllabus/>}/>
+        <Route path='CoWaitingsyllabus' element={<CWaitingApproval/>}/>
+        <Route path='CAddActivitysyllabus' element={<CAddActivity/>}/>
+        <Route path='CAddTropicsyllabus' element={<CAddTropic/>}/>
+        <Route path='CAddlessonsyllabus' element={<CAddLesson_addtropic/>}/>
+        <Route path='CActivity' element={<COActivity/>}/>
+        <Route path='CAnnuncement' element={<COAnnuncement/>}/>
+        <Route path='CMeeting' element={<COMeeting/>}/>
+        <Route path='CReport' element={<COReport/>}/>
+        <Route path='CTeacherList' element={<COTeacherList/>}/>
         </Route>
         <Route path="/cologin" element={<CoOrdinatorlogin />} />
         <Route path="/tlogin" element={<Teacherlogin />} />
