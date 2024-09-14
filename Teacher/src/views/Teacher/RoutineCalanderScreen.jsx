@@ -131,13 +131,14 @@ function RoutineCalendarScreen() {
         </div>
       </div>
 
+
       {/* Modal for displaying class details */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Class Details"
-        className="fixed inset-0 flex items-center justify-center p-4 bg-gray-800 bg-opacity-75"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-0"
+        className="fixed inset-0 flex items-center justify-center p-4 bg-gray-800 bg-opacity-50"
+        overlayClassName="fixed z-50 inset-0 bg-black bg-opacity-0"
       >
         <div className="relative bg-white w-[700px] h-auto p-6 rounded-md shadow-lg max-w-lg mx-auto">
           <button 
@@ -171,6 +172,7 @@ function RoutineCalendarScreen() {
           </div>
         </div>
       </Modal>
+
     </div>
   );
 }

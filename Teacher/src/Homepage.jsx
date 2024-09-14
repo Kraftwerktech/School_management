@@ -23,7 +23,7 @@ function Homepage() {
         {/* Link buttons for different user roles */}
         <div className="flex items-center justify-center p-[50px] gap-[120px]">
           {/* Administration link */}
-          <Link to="/admin" className="flex gap-3 bg-blue-500 text-[24px] text-white items-center text-center font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-blue-600">
+          <Link to="http://localhost:5174/login" className="flex gap-3 bg-blue-500 text-[24px] text-white items-center text-center font-bold py-[34px] px-[60px] rounded-lg shadow hover:bg-blue-600">
             <img className='w-10 h-10' src='http://localhost:5173/admin (1).svg' alt="Admin Icon" />
             <span>Administration</span>
           </Link>

@@ -1,4 +1,4 @@
-# dashboard
+# Dashboard
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
@@ -42,7 +42,7 @@ To learn more about **Refine**, please check out the [Documentation](https://ref
 - **REST Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
 - **Tailwind CSS** [Docs](https://refine.dev/docs/guides-concepts/general-concepts/#headless-concept)
 - **React Router** [Docs](https://refine.dev/docs/core/providers/router-provider/)
-- **Google Auth Provider** [Docs](https://refine.dev/docs/core/providers/auth-provider/)
+- **Auth0 Auth Providder** [Docs](https://refine.dev/docs/guides-and-concepts/auth/auth0/)
 
 ## License
 
