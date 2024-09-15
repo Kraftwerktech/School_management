@@ -13,6 +13,8 @@ import { PiMessengerLogoLight } from "react-icons/pi";
 import { LuCalendarDays } from "react-icons/lu";
 import { GrAnnounce } from "react-icons/gr";
 import { MdOutlinePlayLesson } from "react-icons/md";
+import { MdOutlineAssignment } from "react-icons/md";
+
 import logo from '../assets/Teacher/logo1.png';
 
 const Sidebar = () => {
@@ -43,7 +45,7 @@ const location = useLocation();
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "my-class", role: "teacher", name: "My Class", icon: <HiOutlineUserGroup /> },
-    { path: "academic-management", role: "teacher", name: "Academic Management", icon: <SiMicrosoftacademic /> },
+    { path: "marked", role: "teacher", name: "Student Assessment", icon: <MdOutlineAssignment /> },
     { path: "student-attendance", role: "teacher", name: "Student Attendance", icon: <MdCoPresent /> },
     { path: "student-result", role: "teacher", name: "Student Result", icon: <HiOutlineUserGroup /> },
     { path: "class-routine", role: "teacher", name: "Class Routine", icon: <CiCalendar /> },
@@ -53,7 +55,7 @@ const location = useLocation();
     { path: "approved", role: "teacher", name: "Syllabus", icon: <LuCalendarDays /> },
     { path: "approveLesson", role: "teacher", name: "Lesson Plan", icon: <MdOutlinePlayLesson /> },
     { path: "announcement", role: "teacher", name: "Announcement", icon: <GrAnnounce /> },
-    { path: "setting", role: "teacher", name: "Setting", icon: <IoSettingsOutline /> },
+
     { path: "/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },

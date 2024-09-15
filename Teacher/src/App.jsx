@@ -59,9 +59,12 @@ import COAnnuncement from './views/Coordinator/Announcements';
 import COMeeting from './views/Coordinator/Meetings';
 import COTeacherList from './views/Coordinator/TeacherList';
 import COReport from './views/Coordinator/Reports';
-
-
+import AssmentLayout from './views/Teacher/Assesment/assesmentLayout';
+import Marked from './views/Teacher/Assesment/MarkesGiven';
+import Nomarked from './views/Teacher/Assesment/Nomarksgiven';
 import Homepage from './Homepage';
+import InputMark from './views/Teacher/Assesment/InputMark';
+import Disclousedmark from './views/Teacher/Assesment/Disclousedmark';
 function App() {
   return (
     <BrowserRouter>
@@ -104,7 +107,12 @@ function App() {
           <Route path='verifyotpbyprofile-pass-profile' element={<VarifyOTPbyprofile/>}/>
           <Route path='notifications' element={<Notificationsall/>}/>
           <Route path='routineCalender' element={<RoutineCalanderScreen/>}/>
-
+          <Route path='assemenstlayout' element={<AssmentLayout/>}/>
+          <Route path='marked' element={<Marked/>}/>
+          <Route path='unmarked' element={<Nomarked/>}/>
+          <Route path='inputmark' element={<InputMark/>}/>
+          <Route path='dismarked' element={<Disclousedmark/>}/>
+          
         </Route>
 
         <Route path="/coordinator/dasboard" element={<MainLayout/>}>
