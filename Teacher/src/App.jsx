@@ -4,7 +4,8 @@ import MainLayout from './layout/MainLayout';
 import TeacherDashboard from './views/Teacher/TeacherDashboard';
 import Lesson_Plan from './views/Teacher/Lesson_Plan';
 import Student_Information from './views/Teacher/Student_Information';
-import Student_Attendance from './views/Teacher/Student_Attendance';
+import Class_Attendance from './views/Teacher/StudentAttendances/ClassAttendances';
+import Subject_Attendance from './views/Teacher/StudentAttendances/SubjectAttendances';
 import Student_Result from './views/Teacher/Student_Result';
 import Setting from './views/Teacher/Setting';
 import Parents_Teachers_Collaboration from './views/Teacher/Parents_Teachers_Collaboration';
@@ -65,6 +66,9 @@ import Nomarked from './views/Teacher/Assesment/Nomarksgiven';
 import Homepage from './Homepage';
 import InputMark from './views/Teacher/Assesment/InputMark';
 import Disclousedmark from './views/Teacher/Assesment/Disclousedmark';
+import Editmark from './views/Teacher/Assesment/Editmark';
+import ActivityTracking from './views/Teacher/Activity Tracking/ActivityTracking';
+import TeacherSyllabus from './views/Teacher/Syllabus';
 function App() {
   return (
     <BrowserRouter>
@@ -73,7 +77,8 @@ function App() {
           <Route index element={<TeacherDashboard />} />
           <Route path="lesson-plan" element={<Lesson_Plan />} />
           <Route path="student-info" element={<Student_Information />} />
-          <Route path="student-attendance" element={<Student_Attendance />} />
+          <Route path="class-attendance" element={<Class_Attendance />} />
+          <Route path="subject-attendance" element={<Subject_Attendance />} />
           <Route path="student-result" element={<Student_Result />} />
           <Route path="setting" element={<Setting />} />
           <Route path="collaboration" element={<Parents_Teachers_Collaboration />} />
@@ -85,6 +90,7 @@ function App() {
           <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
           <Route path="announcement" element={<Announcement />} />
           <Route path="syllabus" element={<Syllabus />} />
+          <Route path="teacherSyllabus" element={<TeacherSyllabus />} />
           <Route path="addlesson" element={<AddLesson />} />
           <Route path="approved" element={<ApprovedSyllabus />} />
           <Route path="newdrafted" element={<NewCreateSyllabusDraft />} />
@@ -112,7 +118,10 @@ function App() {
           <Route path='unmarked' element={<Nomarked/>}/>
           <Route path='inputmark' element={<InputMark/>}/>
           <Route path='dismarked' element={<Disclousedmark/>}/>
-          
+          <Route path='editmarkes' element={<Editmark/>}/>
+          <Route path='activiyttrack' element={<ActivityTracking/>}/>
+
+    
         </Route>
 
         <Route path="/coordinator/dasboard" element={<MainLayout/>}>

@@ -127,7 +127,7 @@ const EditMarkModal = ({ isOpen, onClose }) => {
 
         {/* Proceed button */}
         <div className="flex justify-center mt-[60px]">
-          <Link to='/teacher/dashboard/editmarkes'>
+          <Link to='/teacher/dashboard/inputmark'>
           <button
             onClick={onClose} // You can change this to handle saving
             className="bg-[#BB5042] text-white w-[270px] px-5 py-4 rounded-[8px]"
@@ -147,7 +147,7 @@ const EditMarkModal = ({ isOpen, onClose }) => {
 const itemsPerPage = 8;
 
 
-function Unmarked() {
+function Editmark() {
 
   const [iseditModalOpened, seteditIsModalOpened] = useState(false);
 
@@ -377,4 +377,4 @@ function Unmarked() {
   );
 }
 
-export default Unmarked;
+export default Editmark;

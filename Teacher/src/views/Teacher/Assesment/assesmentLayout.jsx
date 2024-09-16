@@ -50,30 +50,19 @@ function CreateLessonModal({ isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="p-10">
         <h2 id="modal-title" className="text-[31px] font-bold mb-10 text-center">
-          Create Lesson
+        Select Filters
         </h2>
         <div className="flex flex-col gap-6 mx-10">
           {/* Row 1 */}
           <div className="flex gap-10 justify-center">
-            {/* Date Picker */}
-            <div className="relative flex items-center">
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                className="border border-[#B6B6B6] w-[150px] focus:border-[#BB5042] rounded-md px-5 py-3"
-                placeholderText="Date"
-              />
-              <IoCalendarClearOutline className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
-            </div>
-
             {/* Class Dropdown */}
-            <div className="relative w-[150px]">
+            <div className="relative w-[170px]">
               <select
                 value={selectedClass}
                 onChange={(e) => setSelectedClass(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
-                <option value="">Class</option>
+                <option value="">Subject</option>
                 {Array.from({ length: 12 }, (_, i) => (
                   <option key={i} value={i + 1}>
                     Class {i + 1}
@@ -84,13 +73,13 @@ function CreateLessonModal({ isOpen, onClose }) {
             </div>
 
             {/* Section Dropdown */}
-            <div className="relative w-[150px]">
+            <div className="relative w-[170px]">
               <select
                 value={selectedSection}
                 onChange={(e) => setSelectedSection(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
-                <option value="">Section</option>
+                <option value="">Class</option>
                 {['A', 'B', 'C', 'D'].map((section, index) => (
                   <option key={index} value={section}>
                     {section}
@@ -99,18 +88,13 @@ function CreateLessonModal({ isOpen, onClose }) {
               </select>
               <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
             </div>
-          </div>
-
-          {/* Row 2 */}
-          <div className="flex mt-6 gap-10 justify-center">
-            {/* Subject Dropdown */}
-            <div className="relative w-[150px]">
+            <div className="relative w-[170px]">
               <select
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
-                <option value="">Subject</option>
+                <option value="">Section/Group</option>
                 {subjects.map((subject, index) => (
                   <option key={index} value={subject}>
                     {subject}
@@ -120,14 +104,18 @@ function CreateLessonModal({ isOpen, onClose }) {
               <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
             </div>
 
+          </div>
+          {/* Row 2 */}
+          <div className="flex mt-6 gap-10 justify-center">
+            {/* Subject Dropdown */}
             {/* Lesson Dropdown */}
-            <div className="relative w-[150px]">
+            <div className="relative w-[200px]">
               <select
                 value={selectedLesson}
                 onChange={(e) => setSelectedLesson(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
-                <option value="">Lesson</option>
+                <option value="">Assessment Type</option>
                 {lessons.map((lesson, index) => (
                   <option key={index} value={lesson}>
                     {lesson}
@@ -136,16 +124,27 @@ function CreateLessonModal({ isOpen, onClose }) {
               </select>
               <IoIosArrowDown className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
             </div>
+            <div className="relative flex items-center">
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="border border-[#B6B6B6] w-[150px] focus:border-[#BB5042] rounded-md px-5 py-3"
+                placeholderText="Date"
+              />
+              <IoCalendarClearOutline className="absolute right-3 top-1/2 h-5 w-5 transform -translate-y-1/2 text-[#BB5042]" />
+            </div>
           </div>
+   {/* Date Picker */}
+        
         </div>
 
         {/* Confirm Button */}
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex  items-center justify-center gap-6 mt-12">
           <Link
-            to="/teacher/dashboard/addlesson"
-            className="bg-[#BB5042] text-center font-semibold w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
+            to="/teacher/dashboard/unmarked"
+            className="bg-[#BB5042] text-center w-[350px] font-semibold  text-white px-10 py-4 rounded-md hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
           >
-            Confirm
+            Filter
           </Link>
         </div>
       </div>
