@@ -87,7 +87,6 @@ function App() {
           <Route path="archive" element={<ArchiveMeeting />} />
           <Route path="home-work" element={<Home_Works />} />
           <Route path="group-student" element={<Group_Students_By_Class />} />
-          <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
           <Route path="announcement" element={<Announcement />} />
           <Route path="syllabus" element={<Syllabus />} />
           <Route path="teacherSyllabus" element={<TeacherSyllabus />} />
@@ -136,6 +135,7 @@ function App() {
         <Route path='CAddTropicsyllabus' element={<CAddTropic/>}/>
         <Route path='CAddlessonsyllabus' element={<CAddLesson_addtropic/>}/>
         <Route path='CActivity' element={<COActivity/>}/>
+        <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
         <Route path='CAnnuncement' element={<COAnnuncement/>}/>
         <Route path='CMeeting' element={<COMeeting/>}/>
         <Route path='CReport' element={<COReport/>}/>

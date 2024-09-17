@@ -17,6 +17,12 @@ import { MdOutlineClass } from "react-icons/md";
 import { MdSubject } from "react-icons/md";
 import { SiHtmlacademy } from "react-icons/si";
 import { SiGooglemeet } from "react-icons/si";
+import { VscRepo } from "react-icons/vsc";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
+
+
+import { PiChalkboardTeacherThin } from "react-icons/pi";
+
 import logo from '../assets/Teacher/logo1.png';
 
 const Sidebar = () => {
@@ -26,7 +32,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'teacher';
+      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
       setUserRole(role);
     };
 
@@ -59,7 +65,7 @@ const Sidebar = () => {
     { path: "marked", role: "teacher", name: "Assessment", icon: <MdOutlineAssignment /> },
     { path: "class-routine", role: "teacher", name: "Routine", icon: <CiCalendar /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
-    { path: "substitute-scheduling", role: "teacher", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
+    
     {
       name: "Guardian Teachers Collaboration",
       role: "teacher",
@@ -74,12 +80,13 @@ const Sidebar = () => {
 
     { path: "/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
-    { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <HiOutlineUserGroup /> },
-    { path: "CActivity", role: "coordinator", name: "Activities", icon: <HiOutlineUserGroup /> },
-    { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <HiOutlineUserGroup /> },
-    { path: "CReport", role: "coordinator", name: "Reports", icon: <HiOutlineUserGroup /> },
-    { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <HiOutlineUserGroup /> },
-    { path: "CTeacherList", role: "coordinator", name: "Teacher List", icon: <HiOutlineUserGroup /> }
+    { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <LuCalendarDays /> },
+    { path: "substitute-scheduling", role: "coordinator", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
+    { path: "CActivity", role: "coordinator", name: "Teacher Directory", icon: <LiaChalkboardTeacherSolid /> },
+    { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <SiGooglemeet /> },
+    { path: "CReport", role: "coordinator", name: "Reports", icon: <VscRepo /> },
+    { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
+    
   ];
 
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
