@@ -13,15 +13,13 @@ import { LuCalendarDays } from "react-icons/lu";
 import { GrAnnounce } from "react-icons/gr";
 import { MdOutlinePlayLesson, MdOutlineAssignment } from "react-icons/md";
 import { LuActivitySquare } from "react-icons/lu";
-import { MdOutlineClass } from "react-icons/md";
-import { MdSubject } from "react-icons/md";
+import { MdOutlineClass, MdSubject } from "react-icons/md";
 import { SiHtmlacademy } from "react-icons/si";
 import { SiGooglemeet } from "react-icons/si";
 import { VscRepo } from "react-icons/vsc";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
+import { IoMdArrowDropdown } from "react-icons/io";
 
-
-import { PiChalkboardTeacherThin } from "react-icons/pi";
 
 import logo from '../assets/Teacher/logo1.png';
 
@@ -67,11 +65,11 @@ const Sidebar = () => {
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
     
     {
-      name: "Guardian Teachers Collaboration",
+      name: "Guardian Collaboration",
       role: "teacher",
       icon: <GoPeople />,
       submenu: [
-        { path: "collaboration", role: "teacher", name: "Arrange Meeting", icon: <SiGooglemeet /> },
+        { path: "upcomming", role: "teacher", name: "Arrange Meeting", icon: <SiGooglemeet /> },
         { path: "messagecollaboration", role: "teacher", name: "Messaging", icon: <PiMessengerLogoLight /> },
       ]
     },
@@ -137,14 +135,18 @@ const Sidebar = () => {
                   <>
                     <div
                       onClick={() => handleSubmenuToggle(item.name)}
-                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all mb-1 cursor-pointer ${
+                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer ${
                         selectedMenu === item.name
                           ? 'bg-[#465049] text-white'
                           : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                       }`}
                     >
-                      <span className="text-[26px]">{item.icon}</span>
-                      <span className="font-normal">{item.name}</span>
+                      <div className="flex items-center gap-x-2">
+                        <span className="text-[26px]">{item.icon}</span>
+                        <span className="font-normal">{item.name}</span>
+                      </div>
+                      {/* Plus icon for submenu */}
+                      <IoMdArrowDropdown className="text-[20px]" />
                     </div>
                     {selectedMenu === item.name && (
                       <ul className="pl-6">

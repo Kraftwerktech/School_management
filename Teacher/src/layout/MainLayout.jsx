@@ -7,9 +7,6 @@ const MainLayout = () => {
   return (
     <div className=' bg-transparent w-full min-h-screen'>
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      
-      
-      
       <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <div className='ml-0 lg:ml-[280px] pt-[67px] transition-all'>
       <Outlet />

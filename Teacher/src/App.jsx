@@ -8,7 +8,7 @@ import Class_Attendance from './views/Teacher/StudentAttendances/ClassAttendance
 import Subject_Attendance from './views/Teacher/StudentAttendances/SubjectAttendances';
 import Student_Result from './views/Teacher/Student_Result';
 import Setting from './views/Teacher/Setting';
-import Parents_Teachers_Collaboration from './views/Teacher/Parents_Teachers_Collaboration';
+
 import Home_Works from './views/Teacher/Home_Works';
 import Group_Students_By_Class from './views/Teacher/Group_Students_By_Class';
 import Substitute_Scheduling from './views/Teacher/Substitute_Scheduling';
@@ -28,9 +28,9 @@ import VerifyIdentyByProfile from './views/auth/Varifyidentiybyprofile';
 import VarifyOTPbyprofile from './views/auth/varifyOTPbyprofile';
 import Notificationsall from './views/Teacher/Notificationall';
 import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
-import RequestMeeting from './views/Teacher/RequestMeeting';
+
 import AddLesson from './views/Teacher/Syllabus/AddLesson'
-import ArchiveMeeting from './views/Teacher/Archivemeeting';
+
 import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
 import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
@@ -46,7 +46,7 @@ import CoStudentdir from './views/Coordinator/Student_directory';
 import CoSyllabus from "./views/Coordinator/Syllabus/LayoutSyllabus";
 import CApprovedSyllabus from './views/Coordinator/Syllabus/ApprovedSyllabus';
 import CDraftedSyllabus from './views/Coordinator/Syllabus/DraftedSyllabus';
-import CNewCreateSyllabusDraft from './views/Coordinator/Syllabus/NewCreateSyllabusDraft';
+
 import CWaitingApproval from './views/Coordinator/Syllabus/WaitingApproval';
 import CAddLesson_addtropic from './views/Coordinator/Syllabus/AddLesson_addtropic';
 import CAddTropic from './views/Coordinator/Syllabus/AddTropic';
@@ -69,6 +69,10 @@ import Disclousedmark from './views/Teacher/Assesment/Disclousedmark';
 import Editmark from './views/Teacher/Assesment/Editmark';
 import ActivityTracking from './views/Teacher/Activity Tracking/ActivityTracking';
 import TeacherSyllabus from './views/Teacher/Syllabus';
+
+import RequestMeetings from './views/Teacher/Collaboration/Meeting/RequestMeeting';
+import ArchiveMeetings from './views/Teacher/Collaboration/Meeting/ArchiveMeeting';
+import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeting';
 function App() {
   return (
     <BrowserRouter>
@@ -81,10 +85,7 @@ function App() {
           <Route path="subject-attendance" element={<Subject_Attendance />} />
           <Route path="student-result" element={<Student_Result />} />
           <Route path="setting" element={<Setting />} />
-          <Route path="collaboration" element={<Parents_Teachers_Collaboration />} />
           <Route path="messagecollaboration" element={<MessageColab />} />
-          <Route path="requestmeeting" element={<RequestMeeting />} />
-          <Route path="archive" element={<ArchiveMeeting />} />
           <Route path="home-work" element={<Home_Works />} />
           <Route path="group-student" element={<Group_Students_By_Class />} />
           <Route path="announcement" element={<Announcement />} />
@@ -119,8 +120,9 @@ function App() {
           <Route path='dismarked' element={<Disclousedmark/>}/>
           <Route path='editmarkes' element={<Editmark/>}/>
           <Route path='activiyttrack' element={<ActivityTracking/>}/>
-
-    
+          <Route path='upcomming' element={<Upcomingmeeting/>}/>
+          <Route path='requestmeetings' element={<RequestMeetings/>}/>
+          <Route path='archived' element={<ArchiveMeetings/>}/>
         </Route>
 
         <Route path="/coordinator/dasboard" element={<MainLayout/>}>
