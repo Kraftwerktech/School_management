@@ -141,7 +141,7 @@ function CreateLessonModal({ isOpen, onClose }) {
         {/* Confirm Button */}
         <div className="flex items-center justify-center gap-6 mt-12">
           <Link
-            to="/teacher/dashboard/addlesson"
+            to="/teacher/dashboard/addlessonplan"
             className="bg-[#BB5042] text-center font-semibold w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
           >
             Confirm

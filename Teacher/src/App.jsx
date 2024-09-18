@@ -31,6 +31,12 @@ import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
 
 import AddLesson from './views/Teacher/Syllabus/AddLesson'
 
+
+import AddLessonplan from './views/Teacher/LessonPlan/addLesson';
+import AddActivityplan from './views/Teacher/LessonPlan/AddActivity';
+import AddTropicplan from './views/Teacher/LessonPlan/AddTropic';
+import AddLessonTropicplan from './views/Teacher/LessonPlan/AddLesson_addtropic';
+
 import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
 import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
@@ -123,6 +129,14 @@ function App() {
           <Route path='upcomming' element={<Upcomingmeeting/>}/>
           <Route path='requestmeetings' element={<RequestMeetings/>}/>
           <Route path='archived' element={<ArchiveMeetings/>}/>
+
+          <Route path='addlessonplan' element={<AddLessonplan/>}/>
+          <Route path='addlessontropicplan' element={<AddTropic/>}/>
+          <Route path='addplan' element={<AddActivityplan/>}/>
+
+
+
+
         </Route>
 
         <Route path="/coordinator/dasboard" element={<MainLayout/>}>

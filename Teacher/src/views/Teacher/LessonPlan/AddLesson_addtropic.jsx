@@ -159,9 +159,10 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
 </div>
 </div>
-</div>
-)}
-</div>
+
+            </div>
+          )}
+        </div>
 
 
 
@@ -245,8 +246,6 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
         </div>
       </div>
 
-
-
       <div>
       <div className='flex gap-3'>
         <span className='text-[16px] font-semibold text-[#465049]'>Select Topic</span>
@@ -274,12 +273,12 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
              <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 23</button>
              <button className=' py-2 px-5 bg-[#D7E1DA]'>Topic 24</button>
              </div>
-    
+             <Link to='/teacher/dashboard/addtropicplan'>
              <div className=' flex justify-end items-center'>
               
               <button className=' justify-end py-2 rounded-[8px] px-5 text-white bg-[#BB5042]'>Add Topic</button>
               </div>
-            
+             </Link>
             
             
              </div>
@@ -333,8 +332,6 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
         </div>
       )}
     </div>
-
-
       <div className='flex flex-wrap gap-2 mt-4'>
         {selectedLessons.map((lesson, index) => (
           <div key={index} className='flex items-center gap-2 bg-[#f5f5f5] p-2 rounded'>
@@ -347,44 +344,7 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
         ))}
       </div>
     </div>
-<div className='border-[2px] mr-5 rounded-[8px]'>
-<div className='mt-5  max-h-[350px] mr-5'>
-  <div className='flex justify-between mr-5 items-center'>
-    <div>
-    <span className=' ml-4 mt-5 mr-4 mb-3 text-[18px] text-[#939393] font-semibold'>Topic 22</span>
- <p className='ml-4 mt-2 mr-4 mb-3 text-[18px]'>
- <span className='font-semibold'>Topic Title:</span> Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent.
- </p>
-    </div>
-  <CiTrash className=' w-6 h-6 text-[#BB5042]'/>
-  </div>
 
-</div>
-<div className='mt-5  max-h-[350px] mr-5'>
-  <div className='flex justify-between mr-5 items-center'>
-    <div>
-    <span className=' ml-4 mt-5 mr-4 mb-3 text-[18px] text-[#939393] font-semibold'>Topic 23</span>
- <p className='ml-4 mt-2 mr-4 mb-3 text-[18px]'>
- <span className='font-semibold'>Topic Title:</span> Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent.
- </p>
-    </div>
-  <CiTrash className=' w-6 h-6 text-[#BB5042]'/>
-  </div>
-
-</div>
-<div className='mt-5  max-h-[350px] mr-5'>
-  <div className='flex justify-between mr-5 items-center'>
-    <div>
-    <span className=' ml-4 mt-5 mr-4 mb-3 text-[18px] text-[#939393] font-semibold'>Topic 25</span>
- <p className='ml-4 mt-2 mr-4 mb-3 text-[18px]'>
- <span className='font-semibold'>Topic Title:</span> Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper. Vitae in leo lorem molestie sit eget quis luctus praesent.
- </p>
-    </div>
-  <CiTrash className=' w-6 h-6 text-[#BB5042]'/>
-  </div>
-
-</div>
-</div>
 <div className='mt-10 max-w-full mr-5'>
 <textarea placeholder='Write Activity' 
   className='px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full h-[200px]'>
@@ -392,9 +352,7 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 <div className='flex mt-5 mr-5 justify-between mb-10'>
     <span className=' flex items-center text-[16px] text-[#465049]  gap-3'>Add Attachment <GrAttachment className='w-6 h-6 text-[#BB5042]'/></span>
-    <Link to="/teacher/dashboard/addactivityplan">
-    <button className=' bg-[#BB5042] font-bold text-[#FFFF] rounded-[8px]  px-5 py-2'>Add Activity</button>
-    </Link>
+<button className=' bg-[#B6B6B6] font-bold text-[#626262] rounded-[8px]  px-5 py-2'>Add Topic</button>
 </div>
           </div>
           )}
