@@ -28,7 +28,6 @@ import VerifyIdentyByProfile from './views/auth/Varifyidentiybyprofile';
 import VarifyOTPbyprofile from './views/auth/varifyOTPbyprofile';
 import Notificationsall from './views/Teacher/Notificationall';
 import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
-
 import AddLesson from './views/Teacher/Syllabus/AddLesson'
 
 
@@ -36,6 +35,7 @@ import AddLessonplan from './views/Teacher/LessonPlan/addLesson';
 import AddActivityplan from './views/Teacher/LessonPlan/AddActivity';
 import AddTropicplan from './views/Teacher/LessonPlan/AddTropic';
 import AddLessonTropicplan from './views/Teacher/LessonPlan/AddLesson_addtropic';
+
 
 import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
@@ -52,7 +52,6 @@ import CoStudentdir from './views/Coordinator/Student_directory';
 import CoSyllabus from "./views/Coordinator/Syllabus/LayoutSyllabus";
 import CApprovedSyllabus from './views/Coordinator/Syllabus/ApprovedSyllabus';
 import CDraftedSyllabus from './views/Coordinator/Syllabus/DraftedSyllabus';
-
 import CWaitingApproval from './views/Coordinator/Syllabus/WaitingApproval';
 import CAddLesson_addtropic from './views/Coordinator/Syllabus/AddLesson_addtropic';
 import CAddTropic from './views/Coordinator/Syllabus/AddTropic';
@@ -75,7 +74,6 @@ import Disclousedmark from './views/Teacher/Assesment/Disclousedmark';
 import Editmark from './views/Teacher/Assesment/Editmark';
 import ActivityTracking from './views/Teacher/Activity Tracking/ActivityTracking';
 import TeacherSyllabus from './views/Teacher/Syllabus';
-
 import RequestMeetings from './views/Teacher/Collaboration/Meeting/RequestMeeting';
 import ArchiveMeetings from './views/Teacher/Collaboration/Meeting/ArchiveMeeting';
 import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeting';
@@ -131,8 +129,9 @@ function App() {
           <Route path='archived' element={<ArchiveMeetings/>}/>
 
           <Route path='addlessonplan' element={<AddLessonplan/>}/>
-          <Route path='addlessontropicplan' element={<AddTropic/>}/>
-          <Route path='addplan' element={<AddActivityplan/>}/>
+          <Route path='addlessontropicplan' element={<AddTropicplan/>}/>
+          <Route path='addlessontropicplan' element={<AddTropic/>}/>   
+          <Route path='addplan' element={<AddLessonTropicplan/>}/>
 
 
 
