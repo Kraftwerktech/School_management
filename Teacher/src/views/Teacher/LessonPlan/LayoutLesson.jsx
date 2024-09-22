@@ -107,7 +107,7 @@ function CreateLessonModal({ isOpen, onClose }) {
               <select
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border  focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
               >
                 <option value="">Subject</option>
                 {subjects.map((subject, index) => (

@@ -309,10 +309,34 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 
 {/* Select Lesson for Tropic */}
-<div className=' flex items-center gap-4'>
+<div className=' flex  items-center gap-4'>
     <button className=' px-3 py-2 w-[100px] bg-[#D7E1DA] rounded-[8px]'> Lesson 1</button>
     <button className=' px-3 py-2 w-[100px] bg-[#D7E1DA] rounded-[8px]'> Lesson 2</button>
     </div>
+    <div className='border border-gray-400 rounded-lg max-w-full p-5 mt-5'>
+  <div className='space-y-6'>
+    {[...Array(4)].map((_, index) => (
+      <div key={index} className='flex flex-col gap-3'>
+        <span className='text-lg font-semibold text-gray-500'>
+          Topic {index + 22}
+        </span>
+        <div className='flex justify-between items-center'>
+          <div className='flex items-center gap-2'>
+            <span className='font-semibold text-md'>Topic Title:</span>
+            <span className='text-gray-700'>
+              Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a
+              ullamcorper. Vitae in leo lorem molestie sit eget quis luctus
+              praesent.
+            </span>
+          </div>
+          <CiTrash className='w-7 h-7 text-[#BB5042] cursor-pointer' />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
 <div className='mt-10 max-w-full mr-5'>
 <textarea placeholder='Write Activity' 
@@ -321,7 +345,7 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 <div className='flex mt-5 mr-5 justify-between mb-10'>
     <span className=' flex items-center text-[16px] text-[#465049]  gap-3'>Add Attachment <GrAttachment className='w-6 h-6 text-[#BB5042]'/></span>
-<button className=' bg-[#B6B6B6] font-bold text-[#626262] rounded-[8px]  px-5 py-2'>Add Topic</button>
+<button className=' bg-[#BB5042] font-bold text-[#FFFFFF] rounded-[8px]  px-5 py-2'>Add Topic</button>
 </div>
 
 
@@ -481,7 +505,11 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 
      
-      <div className='mt-5 pl-[450px] mb-20'><button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button></div>
+      <div className='mt-5 pl-[450px] mb-20'>
+        <Link to='/teacher/dashboard/draftLesson'>
+        <button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button>
+        </Link>
+        </div>
     </div>
   );
 }

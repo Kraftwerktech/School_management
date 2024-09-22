@@ -6,14 +6,14 @@ import MessageList from './MessageList';
 
 function MessageColab() {
   return (
-    <div className="flex gap-4 h-screen">
-        <div className='w-[27.5%]'>
+    <div className="flex gap-4 mr-10 h-screen">
+        <div className='w-[28%] h-full'>
          <MessageList/>
         </div>
-      <div className="w-[45%]">
+      <div className="w-[40%] h-full">
         <Message />
       </div>
-      <div className="w-[27.5%] h-full">
+      <div className="w-[28%] h-full">
         <Details />
       </div>
     </div>

@@ -50,7 +50,7 @@ const MessageList = () => {
     ];
 
     return (
-        <div className=" mt-5 bg-white w-96">
+        <div className=" mt-5 border-[1px] bg-white w-full">
             {/* Header Section */}
             <div className="flex bg-[#E4EBE6] rounded-t-[8px] pt-4 pb-4 items-center justify-between mb-4">
                 <h2 className="text-lg ml-4 font-semibold flex gap-1">Message List
@@ -62,13 +62,8 @@ const MessageList = () => {
                
             </div>
 
-            {/* Create Group */}
-            <div className="flex items-center  justify-between mb-4">
-                <span className="text-gray-600 ml-4 font-semibold">Create Group</span>
-                <button className='pr-2 mr-4'> 
-                    <BsPlusCircle size={24} className='text-[#BB5042] ' />
-                </button>
-            </div>
+           
+          
 
             {/* Search Bar */}
             <div className="relative mb-4 ml-5 items-center mr-5">
@@ -81,7 +76,7 @@ const MessageList = () => {
             </div>
 
             {/* Filter Buttons */}
-            <div className="flex justify-center gap-8 mb-4">
+            <div className="flex justify-center gap-5 mb-4">
                 <button className="px-7 py-2 bg-gray-200 rounded-full text-gray-700">All</button>
                 <button className="px-7 py-2 bg-gray-200 rounded-full text-gray-700">Group</button>
                 <button className="px-7 py-2 bg-gray-200 rounded-full text-gray-700">Unread</button>
