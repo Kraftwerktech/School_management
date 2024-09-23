@@ -8,90 +8,81 @@ const students = [
     picture: 'http://localhost:5173/teacher.jpg',
     studentId: 'DM 16000024',
     name: 'John Doe',
-    class: 'IX',
-    section: 'A',
-    roll: '12'
+    subject: 'Math',
+    Designation:"Senior Teacher"
   },
   {
     id: 2,
     picture: 'https://randomuser.me/api/portraits/women/44.jpg',
     studentId: 'DM 16000025',
     name: 'Jane Smith',
-    class: 'IX',
-    section: 'A',
-    roll: '13'
+    subject: 'Bangla',
+    Designation:"Trainee Teacher"
   },
   {
     id: 3,
     picture: 'https://randomuser.me/api/portraits/men/85.jpg',
     studentId: 'DM 16000026',
     name: 'Sam Johnson',
-    class: 'IX',
-    section: 'B',
-    roll: '14'
+    subject: 'English',
+    Designation:"Senior Teacher"
+ 
   },
   {
     id: 4,
     picture: 'https://randomuser.me/api/portraits/women/65.jpg',
     studentId: 'DM 16000027',
     name: 'Emily Davis',
-    class: 'IX',
-    section: 'C',
-    roll: '15'
+    subject: 'Science',
+   Designation:"Junior Teacher"
   },
   {
     id: 5,
     picture: 'https://randomuser.me/api/portraits/men/76.jpg',
     studentId: 'DM 16000028',
     name: 'Michael Brown',
-    class: 'IX',
-    section: 'A',
-    roll: '16'
+    subject: 'Geography',
+    Designation:"Senior Teacher"
   },
   {
     id: 6,
     picture: 'https://randomuser.me/api/portraits/women/88.jpg',
     studentId: 'DM 16000029',
     name: 'Sophia Wilson',
-    class: 'IX',
-    section: 'B',
-    roll: '17'
+    subject: 'Math',
+    Designation:"Teacher"
   },
   {
     id: 7,
     picture: 'https://randomuser.me/api/portraits/men/92.jpg',
     studentId: 'DM 16000030',
     name: 'James Anderson',
-    class: 'IX',
-    section: 'C',
-    roll: '18'
+    subject: 'English',
+    Designation:"Senior Teacher"
   },
   {
     id: 8,
     picture: 'https://randomuser.me/api/portraits/women/52.jpg',
     studentId: 'DM 16000031',
     name: 'Olivia Martinez',
-    class: 'IX',
-    section: 'A',
-    roll: '19'
+    subject: 'Math',
+   Designation:"Junior Teacher"
   },
   {
     id: 9,
     picture: 'https://randomuser.me/api/portraits/men/49.jpg',
     studentId: 'DM 16000032',
     name: 'Liam Taylor',
-    class: 'IX',
-    section: 'B',
-    roll: '20'
+    subject: 'Physics',
+    Designation:"Senior Teacher"
   },
   {
     id: 10,
     picture: 'https://randomuser.me/api/portraits/women/60.jpg',
     studentId: 'DM 16000033',
     name: 'Isabella Thomas',
-    class: 'IX',
-    section: 'C',
-    roll: '21'
+    subject: 'Chemistry',
+   Designation:"Senior Teacher"
   },
 ];
 
@@ -122,7 +113,7 @@ function StudentInformation() {
 
   return (
     <div className="pr-8 pb-6 mt-0">
-      <h3 className="text-[31px] font-semibold mb-6">Student Directory</h3>
+      <h3 className="text-[31px] font-semibold mb-6">Teacher Directory</h3>
       
       <div className="w-full bg-white mr-4 pb-2 mt-0">
         <div className="flex flex-wrap gap-3">
@@ -133,31 +124,8 @@ function StudentInformation() {
             placeholder="Search by Student Name or ID" 
           />
           
-          <div className="relative w-full md:w-[170px]">
-            <select 
-              className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
-            >
-              <option value="">Select Class</option>
-              <option>Class-ix</option>
-              <option>Class-x</option>
-              <option>Class-xi</option>
-              <option>Class-xii</option>
-            </select>
-            <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-          </div>
           
-          <div className="relative w-full md:w-[170px]">
-            <select 
-              className="appearance-none px-6 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-10"
-            >
-              <option value="">Select Section</option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-              <option>D</option>
-            </select>
-            <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-          </div>
+         
           
           <div className="relative w-full md:w-[170px]">
             <select 
@@ -171,6 +139,19 @@ function StudentInformation() {
             </select>
             <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
           </div>
+
+          <div className="relative w-full md:w-[170px]">
+            <select 
+              className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
+            >
+              <option value="">Designation</option>
+              <option>Junior Teacher</option>
+              <option>Senior Teacher</option>
+              <option>Trainne Teacher</option>
+              <option>Teaher</option>
+            </select>
+            <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+          </div>
           
           <button 
             className="px-5 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto"
@@ -180,7 +161,7 @@ function StudentInformation() {
           
         </div>
         <div className='mt-5'>
-          <span className="font-semibold text-[17px]">Total Number of Students: 535</span>
+          <span className="font-semibold text-[17px]">Total Number of Teachers: 535</span>
         </div>
        
       </div>
@@ -192,11 +173,10 @@ function StudentInformation() {
               <tr className="text-[#465049] text-[16px] text-center">
                 <th className="px-4 py-2">SL</th>
                 <th className="px-4 py-2">Picture</th>
-                <th className="px-4 py-2">Student ID</th>
-                <th className="px-4 py-2">Student Name</th>
-                <th className="px-4 py-2">Class</th>
-                <th className="px-4 py-2">Section</th>
-                <th className="px-4 py-2">Roll</th>
+        
+                <th className="px-4 py-2">Teacher Name</th>
+                <th className="px-4 py-2">Subject</th>
+                <th className="px-4 py-2">Designation</th>
               </tr>
             </thead>
             <tbody>
@@ -210,13 +190,13 @@ function StudentInformation() {
                       className="w-[60px] h-[60px] rounded-full"
                     />
                   </td>
-                  <td className="px-4 py-2 text-[#939393] text-center">{student.studentId}</td>
+                  <td className="px-4 py-2 text-[#939393] text-center">
+                  <a className='text-[#0318CF] font-medium text-[16px] hover:text-[#BB5042]' href='http://localhost:5173/teacher/dashboard/teacher-fullinfo'>{student.name}</a>
+                    </td>
                   <td className="px-4 py-2 text-center">
-                    <a className='text-[#0318CF] font-medium text-[16px] hover:text-[#BB5042]' href='http://localhost:5173/teacher/dashboard/student-dir'>{student.name}</a>
+                    {student.subject}
                   </td>
-                  <td className="px-4 py-2 text-center">{student.class}</td>
-                  <td className="px-4 py-2 text-center">{student.section}</td>
-                  <td className="px-4 py-2 text-center">{student.roll}</td>
+                  <td className="px-4 py-2 text-center">{student.Designation}</td>
                 </tr>
               ))}
             </tbody>

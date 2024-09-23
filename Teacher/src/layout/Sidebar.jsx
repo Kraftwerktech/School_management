@@ -19,6 +19,8 @@ import { SiGooglemeet } from "react-icons/si";
 import { VscRepo } from "react-icons/vsc";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { PiChalkboardTeacherDuotone } from "react-icons/pi";
+
 
 
 import logo from '../assets/Teacher/logo1.png';
@@ -30,7 +32,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'coordinator' || 'coordinator';
       setUserRole(role);
     };
 
@@ -63,6 +65,7 @@ const Sidebar = () => {
     { path: "marked", role: "teacher", name: "Assessment", icon: <MdOutlineAssignment /> },
     { path: "class-routine", role: "teacher", name: "Routine", icon: <CiCalendar /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
+    { path: "teacher-info", role: "teacher", name: "Teacher Directory", icon: <PiChalkboardTeacherDuotone /> },
     
     {
       name: "Guardian Collaboration",

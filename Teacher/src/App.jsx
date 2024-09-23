@@ -77,6 +77,10 @@ import TeacherSyllabus from './views/Teacher/Syllabus';
 import RequestMeetings from './views/Teacher/Collaboration/Meeting/RequestMeeting';
 import ArchiveMeetings from './views/Teacher/Collaboration/Meeting/ArchiveMeeting';
 import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeting';
+
+import AllTeachers from './views/Teacher/TeacherDir/AllTeacher';
+import TeacherFullInfo from './views/Teacher/TeacherDir/TeacherFullInfo';
+
 function App() {
   return (
     <BrowserRouter>
@@ -112,6 +116,10 @@ function App() {
           <Route path='class-routine' element={<Class_Routine/>}/>
           <Route path='my-class' element={<Myclass/>}/>
           <Route path='student-dir' element={<StudentDirctory/>}/>
+
+          <Route path='teacher-info' element={<AllTeachers/>}/>
+          <Route path='teacher-fullinfo' element={<TeacherFullInfo/>}/>
+
           <Route path='reset-pass-profile' element={<Resetpassbyprofile/>}/>
           <Route path='verifyidentybyprofile-pass-profile' element={<VerifyIdentyByProfile/>}/>
           <Route path='verifyotpbyprofile-pass-profile' element={<VarifyOTPbyprofile/>}/>

@@ -20,9 +20,9 @@ const Message = () => {
   ];
 
   return (
-    <div className="mt-5 border-[1px] max-h-[1700px] w-full flex flex-col">
+    <div className="mt-5 border-[1px] rounded-[8px] max-h-[1700px] w-full flex flex-col">
       <div className="bg-[#E4EBE6] p-4 rounded-t-md">
-        <h2 className="text-lg font-bold">Message</h2>
+        <h2 className="text-[20px] text-[#465049] font-bold">Message</h2>
       </div>
       <div className="flex-1 p-4 space-y-4 overflow-y-auto">
         {messages.map((msg, index) => (
@@ -63,7 +63,7 @@ const Message = () => {
           </div>
         ))}
       </div>
-      <div className="flex items-center mt-8 bg-white">
+      <div className="flex items-center ml-5 mr-5 mt-8 bg-white">
         <div className="flex items-center mb-10 bg-[#F8F8F1] flex-1 p-3 border border-gray-300 rounded-md">
           <input 
             type="text"
