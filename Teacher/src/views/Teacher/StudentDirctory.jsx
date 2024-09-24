@@ -9,20 +9,36 @@ import { PiMosqueThin } from "react-icons/pi";
 import { FaRegAddressCard } from "react-icons/fa";
 import { RiParentLine } from "react-icons/ri";
 import { HiOutlineHome } from "react-icons/hi2";
+import { PiStudent } from 'react-icons/pi';
+import Absence from '../../assets/Teacher/icons/Absence.png';
+import Present from '../../assets/Teacher/icons/Present.png';
 import teacher from '../../assets/Teacher/student.jpeg';
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+const totalDays = 24;
+const presentDays = 19;
+const absentDays = totalDays - presentDays;
+const presentPercentage = (presentDays / totalDays) * 100;
+const absentPercentage = (absentDays / totalDays) * 100;
+
 
 const StudentDirectory = () => {
 
   const [showAcademicReport, setShowAcademicReport] = useState(true);
+  const [showAttancencesReport, setAttancencesReport] = useState(true);
+  const [showAssesmentReport, setAssesmentReport] = useState(true);
+  const [showAchievement, setShowAchievement] = useState(true);
   const [showMedicalInfo, setShowMedicalInfo] = useState(true);
 
   return (
-    <div className="max-w-[1200px]">
+    <div className="w-full">
       <h3 className=' font-semibold text-[31px]  mb-8'>Student Information</h3>
       <div className="flex items-center justify-center bg-gray-50">
-        <div className="w-full max-w-[1200px] bg-white rounded-lg flex flex-col md:flex-row gap-6">
+        <div className="w-full mr-[47px] bg-white rounded-lg flex flex-col md:flex-row gap-6">
           {/* Profile Image and Name */}
-          <div className="flex flex-col items-center md:items-start w-[240px]">
+          <div className="flex flex-col items-center md:items-start w-[230px]">
             <div className='w-[220px] h-[250px]'>
               <img
                 src={teacher}
@@ -164,7 +180,175 @@ const StudentDirectory = () => {
         </div>
       </div>
 
-      <div className='mt-3'>
+      <div className='mt-3 mr-[47px]'>
+
+{/* Attendants Report */}
+       <div className='mb-8 border-[1px] rounded-[8px]'>
+          <div className='bg-[#A7BEAE] p-4 rounded-t-[8px] justify-between flex text-[20px] font-bold text-white'>
+            <h3 className=' text-[25px]'>Attendants Report</h3>
+            <div className='mr-5 mt-3' onClick={() => setAttancencesReport(!showAttancencesReport)}>
+              {showAttancencesReport ? (
+                <BsChevronUp className="text-white w-5 h-5" />
+              ) : (
+                <BsChevronDown className="text-white w-5 h-5" />
+              )}
+            </div>
+
+          </div>
+          {showAttancencesReport && (
+            <div className='bg-transparent p-4'>
+              {/**Month of Date */}
+              <div className=' mt-2 mb-4'>
+                <span className=' font-semibold text-[#465049] text-[20px]'>Month of August 2024</span>
+                </div>
+              <div>
+          <div className="grid grid-cols-3 gap-[16px] mb-10 mt-5 h-[180px]">
+          <div className="h-full rounded-[12px] bg-[#A7BEAE] p-4">
+            <div className=" flex flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Total Class Days</span>
+              </div>
+              <div className=' flex gap-[40px] items-center'>
+              <div className="flex items-center justify-center bg-[#77877C] w-[80px] h-[80px] rounded-full">
+                <LiaChalkboardTeacherSolid className="w-[50px] text-white h-[50px]" />
+              </div>
+              <span className="block text-[49px] text-[#465049] font-bold">24</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="h-full rounded-[12px] bg-[#daefe0] p-4">
+            <div className="flex flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Present Days</span>
+              </div>
+              <div className='flex gap-[40px] items-center'>
+              <div className="flex justify-center items-center bg-[#08A647] w-[80px] h-[80px] rounded-full">
+                <img src={Present} className="w-[50px] text-white h-[50px]" />
+              </div>
+              <div>
+              <span className="block text-[49px] text-[#465049] font-bold">
+                  19
+              </span>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div className="h-full rounded-[12px] bg-[#F8EEEC] p-4">
+            <div className="flex  flex-col items-center">
+              <div className=' mb-6 flex text-center'>
+              <span className="block text-[25px] text-[#465049] font-semibold">Percentage</span>
+              </div>
+
+              <div className='flex gap-[40px] items-center'>
+              <div className="flex justify-center items-center  w-[80px] h-[80px] rounded-full">
+              <CircularProgressbar
+  value={presentPercentage}
+  text={`${Math.round(presentPercentage)}%`}
+  styles={buildStyles({
+    textSize: '30px',
+    pathColor: '#08A647',   // Present percentage color
+    textColor: '#A7BEAE',
+    trailColor: '#EFF0E0',  // Absent percentage color
+    pathTransitionDuration: 1,
+    strokeLinecap: 'butt',  // Adjusts the shape of the path ends
+    pathWidth: 20,         // Path width proportional to the circle's radius (adjust for 80px)
+    trailWidth: 20,        // Trail width proportional to the circle's radius (matching pathWidth)
+  })}
+/>
+
+
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+              </div>
+
+               {/**Table Date */}
+              <table className="min-w-full table-auto">
+                <thead className="bg-[#E4EBE6]">
+                  <tr className="text-left text-[16px] text-[#465049]">
+                    <th className="px-4 py-2">Date</th>
+                    <th className="px-4 py-2">Status</th>
+                    <th className="px-4 py-2">period</th>
+                    <th className="px-4 py-2">Reason</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className='border-b-[1px] text-[16px]'>
+                    <td className="px-4 py-2">3 Aug 2024</td>
+                    <td className="px-4 py-2">Absence</td>
+                    <td className="px-4 py-2">Fullday</td>
+                    <td className="px-4 py-2">Sick</td>
+                  </tr>
+                  <tr className='text-[16px] border-b-[1px]'>
+                    <td className="px-4 py-2">27 Aug 2024</td>
+                    <td className="px-4 py-2">Absence</td>
+                    <td className="px-4 py-2">Halfday</td>
+                    <td className="px-4 py-2">Sick</td>
+                  </tr>
+                  <tr className='text-[16px]'>
+                    <td className="px-4 py-2">19 Aug 2024</td>
+                    <td className="px-4 py-2">Absence</td>
+                    <td className="px-4 py-2">Fullday</td>
+                    <td className="px-4 py-2">Sick</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+ 
+        {/* View Assessment Result */}
+        <div className='mb-8 border-[1px] rounded-[8px]'>
+          <div className='bg-[#A7BEAE] p-4 rounded-t-[8px] justify-between flex text-[20px] font-bold text-white'>
+            <h3 className=' text-[25px]'>View Assessment Result</h3>
+            <div className='mr-5 mt-3' onClick={() => setAssesmentReport(!showAssesmentReport)}>
+              {showAssesmentReport ? (
+                <BsChevronUp className="text-white w-5 h-5" />
+              ) : (
+                <BsChevronDown className="text-white w-5 h-5" />
+              )}
+            </div>
+
+          </div>
+          {showAssesmentReport && (
+            <div className='bg-transparent p-4'>
+              <table className="min-w-full table-auto">
+                <thead className="bg-[#E4EBE6]">
+                  <tr className="text-left text-[16px] text-[#465049]">
+                    <th className="px-4 py-2">Date</th>
+                    <th className="px-4 py-2">Assessment Type</th>
+                    <th className="px-4 py-2">Mark</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className='border-b-[1px] text-[16px]'>
+                    <td className="px-4 py-2">3 Mar 2024</td>
+                    <td className="px-4 py-2">H.W</td>
+                    <td className="px-4 py-2">29 (35)</td>
+                   
+                  </tr>
+                  <tr className='text-[16px] border-b-[1px]'>
+                    <td className="px-4 py-2">12 Mar 2024</td>
+                    <td className="px-4 py-2">Class Test -1</td>
+                    <td className="px-4 py-2">20 (50)</td>
+                    
+                  </tr>
+                  <tr className='text-[16px]'>
+                    <td className="px-4 py-2">30 Mar 2024</td>
+                    <td className="px-4 py-2">M.Test</td>
+                    <td className="px-4 py-2">25 (30)</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+
         {/* Academic Report */}
         <div className='mb-8 border-[1px] rounded-[8px]'>
           <div className='bg-[#A7BEAE] p-4 rounded-t-[8px] justify-between flex text-[20px] font-bold text-white'>
@@ -232,7 +416,56 @@ const StudentDirectory = () => {
           )}
         </div>
 
-        {/* Medical Information */}
+        {/*Achievement */}
+        <div className='mb-8 border-[1px] rounded-[8px]'>
+          <div className='bg-[#A7BEAE] justify-between flex rounded-t-[8px] p-4 text-[20px] font-bold text-white'>
+            <h3 className=' text-[25px]'>Achievement</h3>
+            <div onClick={() => setShowAchievement(!showAchievement)} className='mr-5 mt-3'>
+              {showAchievement ? (
+                <BsChevronUp className="text-white w-5 h-5" />
+              ) : (
+                <BsChevronDown className="text-white w-5 h-5" />
+              )}
+            </div>
+
+          </div>
+          {showAchievement && (
+            <div className='bg-[#F6F9F7] p-4 '>
+              <table className="min-w-full ">
+                <thead className="bg-[#E4EBE6]">
+                  <tr className="text-left text-[16px]  text-[#465049]">
+                  <th className="px-4 py-2">SL</th>
+                    <th className="px-4 py-2">Name of Competition/Organization</th>
+                    <th className="px-4 py-2">Achievement</th>
+                    <th className="px-4 py-2">Certificate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className='border-b-[1px] text-[16px]'>
+                    <td className="px-4 py-2">1</td>
+                    <td className="px-4 py-2">Math Olympiad 2023</td>
+                    <td className="px-4 py-2">3th Place</td>
+                    <td className="px-4 py-2 pl-7">
+                      <BsFiletypePdf className="text-red-500 ml-[5px] w-8 h-8 cursor-pointer" />
+                    </td>
+                  </tr>
+                  <tr className='text-[16px]'>
+                    <td className="px-4 py-2">2</td>
+                    <td className="px-4 py-2">Inter School Debate Competition 2023</td>
+                    <td className="px-4 py-2">5th Place</td>
+                    <td className="px-4 py-2 pl-7">
+                      <BsFiletypePdf className="text-red-500 ml-[5px] w-8 h-8  cursor-pointer" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+
+
+        {/* Medical Information*/}
         <div className='mb-8 border-[1px] rounded-[8px]'>
           <div className='bg-[#A7BEAE] justify-between flex rounded-t-[8px] p-4 text-[20px] font-bold text-white'>
             <h3 className=' text-[25px]'>Medical Information</h3>
@@ -286,6 +519,9 @@ const StudentDirectory = () => {
             </div>
           )}
         </div>
+
+
+
       </div>
     </div>
   );

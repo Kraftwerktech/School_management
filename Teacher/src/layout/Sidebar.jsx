@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AiFillDashboard } from "react-icons/ai";
 import { MdCoPresent } from "react-icons/md";
 import { PiStudentDuotone } from "react-icons/pi";
-import { HiOutlineUserGroup } from "react-icons/hi2";
 import { CiCalendar } from "react-icons/ci";
-import { IoSettingsOutline } from "react-icons/io5";
 import { TbCalendarTime } from "react-icons/tb";
 import { GoPeople } from "react-icons/go";
 import { PiMessengerLogoLight } from "react-icons/pi";
@@ -20,10 +18,8 @@ import { VscRepo } from "react-icons/vsc";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
-
-
-
 import logo from '../assets/Teacher/logo1.png';
+
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -32,7 +28,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'coordinator' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
       setUserRole(role);
     };
 

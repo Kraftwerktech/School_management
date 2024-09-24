@@ -131,7 +131,7 @@ function CreateSyllabusModal({ isOpen, onClose }) {
 
         {/* Add content for creating a syllabus */}
         <div className="flex items-center justify-center gap-6">
-          <Link to="/teacher/dashboard/drafted" className="bg-[#BB5042] w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e]">
+          <Link to="/coordinator/dasboard/CoDraftsyllabus" className="bg-[#BB5042] w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e]">
           <button>
             Confirm
           </button>
@@ -163,7 +163,7 @@ function CreateNewSyllabusModal({ isOpen, onClose }) {
       <h2 className="text-[31px] font-bold mt-6 mb-6 text-center">
         Create New Syllabus
       </h2>
-      <div className="flex flex-col space-y-[20px] gap-6 ml-10 mr-10">
+      <div className="flex flex-col  space-y-[20px] gap-6 ml-10 mr-10">
         {/* First Row */}
         <div className="flex gap-10 justify-center">
          
@@ -277,20 +277,23 @@ function LayoutSyllabus() {
       </div>
 
       {/* Tabbar */}
-      <div className="flex gap-16 mt-10 border-b-[1px]">
+      <div className="flex  mt-10 border-t-[1px] border-l-[1px] p-5 border-r-[1px] mr-5 rounded-t-[8px]">
+        <div className=' flex gap-16 border-b-[2px] w-full'>
         {tabs.map((tab) => (
           <NavLink
             key={tab.name}
             to={tab.path}
             className={({ isActive }) =>
               isActive || (tab.name === 'Approved Syllabus' && location.pathname === '/teacher/dashboard')
-                ? 'font-bold text-[20px] border-b-[5px] border-[#BB5042] pb-2'
-                : 'text-gray-600 text-[20px] hover:text-gray-900'
+                ? 'font-bold text-[20px] p-5 border-b-[5px] border-[#BB5042]'
+                : 'text-gray-600 text-[20px] p-5 hover:text-gray-900'
             }
           >
             {tab.name}
           </NavLink>
         ))}
+        </div>
+      
       </div>
 
       {/* Modals */}
