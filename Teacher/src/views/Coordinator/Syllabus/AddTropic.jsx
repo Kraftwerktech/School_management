@@ -384,6 +384,7 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
   </div>
 
 </div>
+
 </div>
 <div className='mt-10 max-w-full mr-5'>
 <textarea placeholder='Write Activity' 

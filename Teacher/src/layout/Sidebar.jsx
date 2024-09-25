@@ -79,7 +79,7 @@ const Sidebar = () => {
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <LuCalendarDays /> },
     { path: "substitute-scheduling", role: "coordinator", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
-    { path: "CActivity", role: "coordinator", name: "Teacher Directory", icon: <LiaChalkboardTeacherSolid /> },
+    { path: "teacherlist", role: "coordinator", name: "Teacher Directory", icon: <LiaChalkboardTeacherSolid /> },
     { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <SiGooglemeet /> },
     { path: "CReport", role: "coordinator", name: "Reports", icon: <VscRepo /> },
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },

@@ -60,7 +60,6 @@ import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
 import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
 
 import CoOrdinatorlogin from './views/Coordinator/CoAuth/Login';
-import COActivity from './views/Coordinator/Activity';
 import COAnnuncement from './views/Coordinator/Announcements';
 import COMeeting from './views/Coordinator/Meetings';
 import COTeacherList from './views/Coordinator/TeacherList';
@@ -77,7 +76,7 @@ import TeacherSyllabus from './views/Teacher/Syllabus';
 import RequestMeetings from './views/Teacher/Collaboration/Meeting/RequestMeeting';
 import ArchiveMeetings from './views/Teacher/Collaboration/Meeting/ArchiveMeeting';
 import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeting';
-
+import TeacherList from './views/Coordinator/TeacherList';
 import AllTeachers from './views/Teacher/TeacherDir/AllTeacher';
 import TeacherFullInfo from './views/Teacher/TeacherDir/TeacherFullInfo';
 
@@ -157,7 +156,7 @@ function App() {
         <Route path='CAddActivitysyllabus' element={<CAddActivity/>}/>
         <Route path='CAddTropicsyllabus' element={<CAddTropic/>}/>
         <Route path='CAddlessonsyllabus' element={<CAddLesson_addtropic/>}/>
-        <Route path='CActivity' element={<COActivity/>}/>
+        <Route path='teacherlist' element={<TeacherList/>}/>
         <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
         <Route path='CAnnuncement' element={<COAnnuncement/>}/>
         <Route path='CMeeting' element={<COMeeting/>}/>
