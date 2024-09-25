@@ -4,6 +4,7 @@ import { BsDownload } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { RxDotFilled } from "react-icons/rx";
 
 const demoClasses = ["Class IX", "Class X", "Class XI"];
 const demoSubjects = ["Science", "Mathematics", "English"];
@@ -126,7 +127,7 @@ function ApprovedSyllabus() {
   };
 
   return (
-    <div className='mb-8'>
+    <div className='mb-8 mr-5' id="syllabusTable">
       <div className='mt-5'>
         <h3 className=' text-[31px] font-bold'>Syllabus</h3>
       </div>
@@ -168,7 +169,7 @@ function ApprovedSyllabus() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-center mt-10">
+        <div className="flex justify-between items-center mt-5">
           <div className="flex items-center border border-slate-300 rounded-md w-[350px] md:max-w-[400px]">
             <CiSearch className="ml-3 w-5 h-5 text-[#BB5042]" />
             <input
@@ -184,10 +185,10 @@ function ApprovedSyllabus() {
           />
         </div>
 
-        <div className="w-full bg-white mt-6 rounded-md">
-          <div className="overflow-x-auto rounded-t-md" id="syllabusTable">
-            <table className="min-w-full table-auto">
-              <thead className="bg-[#E4EBE6] text-left h-[60px]">
+        <div className="w-full  bg-white mt-6 rounded-[8px]">
+          <div className="overflow-x-auto rounded-t-[8px]">
+            <table className="min-w-full border-l-[1px] border-r-[1px]  table-auto">
+              <thead className="bg-[#E4EBE6] text-left h-[70px]">
                 <tr className="text-[#465049] text-[16px]">
                   <th className="px-4 py-3">Lesson</th>
                   <th className="px-4 py-3">Resource</th>
@@ -205,9 +206,19 @@ function ApprovedSyllabus() {
                     <td className="px-4 max-w-[164px] py-3">{announcement.resource}</td>
                     <td className="px-4 max-w-[186px] py-3">{announcement.chapter}</td>
                     <td className="px-4 max-w-[100px] py-3">{announcement.pages}</td>
-                    <td className="px-4 max-w-[160px] py-3">{announcement.activityType}</td>
+                    <td className="px-4 max-w-[160px] py-3">
+                      <ul className=' space-y-4'>
+                        <li className=' flex items-center gap-2'>< RxDotFilled/>{announcement.activityType}</li>
+                        <li className=' flex items-center gap-2'> < RxDotFilled/>{announcement.activityType}</li>
+                      </ul>
+                      </td>
                     <td className="px-4 max-w-[100px] py-3">{announcement.topicNo}</td>
-                    <td className="px-4 max-w-[130px] py-3">{announcement.activityTime}</td>
+                    <td className="px-4 max-w-[130px] py-3">
+                      <ul className=' space-y-4'>
+                        <li>{announcement.activityTime}</li>
+                        <li>{announcement.activityTime}</li>
+                      </ul>
+                      </td>
                   </tr>
                 ))}
               </tbody>
