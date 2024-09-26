@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'coordinator' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
       setUserRole(role);
     };
 
@@ -81,7 +81,7 @@ const Sidebar = () => {
     { path: "substitute-scheduling", role: "coordinator", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
     { path: "teacherlist", role: "coordinator", name: "Teacher Directory", icon: <LiaChalkboardTeacherSolid /> },
     { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <SiGooglemeet /> },
-    { path: "CReport", role: "coordinator", name: "Lesson Plan", icon: <VscRepo /> },
+    { path: "coapprovedLesson", role: "coordinator", name: "Lesson Plan", icon: <VscRepo /> },
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
     
   ];

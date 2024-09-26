@@ -55,6 +55,12 @@ import CWaitingApproval from './views/Coordinator/Syllabus/WaitingApproval';
 import CAddLesson_addtropic from './views/Coordinator/Syllabus/AddLesson_addtropic';
 import CAddTropic from './views/Coordinator/Syllabus/AddTropic';
 import CAddActivity from './views/Coordinator/Syllabus/AddActivity';
+
+import CoLayoutLesson from './views/Coordinator/LessonPlan/LayoutLesson';
+import CoApprovedLesson from './views/Coordinator/LessonPlan/ApproviedLesson';
+import CoPendingLesson from './views/Coordinator/LessonPlan/PendingLesson';
+
+
 import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
 import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
 import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
@@ -158,6 +164,9 @@ function App() {
         <Route path='CAddlessonsyllabus' element={<CAddLesson_addtropic/>}/>
         <Route path='teacherlist' element={<TeacherList/>}/>
         <Route path="substitute-scheduling" element={<Substitute_Scheduling />} />
+        <Route path='coapprovedLesson' element={<CoApprovedLesson/>}/>
+        <Route path='copendingLesson' element={<CoPendingLesson/>}/>
+        <Route path='colayoutlesson' element={<CoLayoutLesson/>}/>
         <Route path='CAnnuncement' element={<COAnnuncement/>}/>
         <Route path='CMeeting' element={<COMeeting/>}/>
         <Route path='CReport' element={<COReport/>}/>
