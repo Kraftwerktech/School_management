@@ -85,6 +85,11 @@ import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeti
 import TeacherList from './views/Coordinator/TeacherList';
 import AllTeachers from './views/Teacher/TeacherDir/AllTeacher';
 import TeacherFullInfo from './views/Teacher/TeacherDir/TeacherFullInfo';
+import CreateSyllabusLayout from './views/Teacher/CreateSyllabus/LayoutSyllabus';
+import CreateSyllabusDraft from './views/Teacher/CreateSyllabus/DraftedSyllabus';
+import CreateSyllabusApproved from './views/Teacher/CreateSyllabus/ApprovedSyllabus';
+import CreateSyllabusAddtropic from './views/Teacher/CreateSyllabus/AddLesson_addtropic';
+
 
 function App() {
   return (
@@ -141,11 +146,15 @@ function App() {
           <Route path='requestmeetings' element={<RequestMeetings/>}/>
           <Route path='archived' element={<ArchiveMeetings/>}/>
 
-
           <Route path='addlessonplan' element={<AddLessonplan/>}/>
           <Route path='addactivityplan' element={<AddActivityplan/>}/>
          
+     {/* Create Syllabus Route here  */}
 
+     <Route path='createsyllabuslayout' element={<CreateSyllabusLayout/>}/>
+     <Route path='createsyllabusapproved' element={<CreateSyllabusApproved/>}/>
+     <Route path='createsyllabusDraft' element={<CreateSyllabusDraft/>}/>
+     <Route path='createsyllabusaddtropic' element={<CreateSyllabusAddtropic/>}/>
 
 
 

@@ -18,8 +18,9 @@ import { VscRepo } from "react-icons/vsc";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
-import logo from '../assets/Teacher/logo1.png';
+import { LuBookPlus } from "react-icons/lu";
 
+import logo from '../assets/Teacher/logo1.png';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -36,6 +37,7 @@ const Sidebar = () => {
   }, []);
 
   const location = useLocation();
+
 
   const menuItems = [
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
@@ -56,6 +58,7 @@ const Sidebar = () => {
         { path: "teacherSyllabus", role: "teacher", name: "Syllabus", icon: <LuCalendarDays /> },
         { path: "approveLesson", role: "teacher", name: "Lesson Plan", icon: <MdOutlinePlayLesson /> },
         { path: "activiyttrack", role: "teacher", name: "Activity Tracking", icon: <LuActivitySquare /> },
+        { path: "createsyllabusapproved", role: "teacher", name: "Create Syllabus", icon: <LuBookPlus /> },
       ]
     },
     { path: "marked", role: "teacher", name: "Assessment", icon: <MdOutlineAssignment /> },
@@ -85,6 +88,7 @@ const Sidebar = () => {
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
     
   ];
+
 
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
 
@@ -127,14 +131,14 @@ const Sidebar = () => {
         </div>
 
         <div className="px-[16px] mt-2">
-          <ul>
+          <ul className="space-y-2">
             {filteredMenuItems.map((item, index) => (
               <li key={index}>
                 {item.submenu ? (
                   <>
                     <div
                       onClick={() => handleSubmenuToggle(item.name)}
-                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer ${
+                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer relative ${
                         selectedMenu === item.name
                           ? 'bg-[#465049] text-white'
                           : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
@@ -144,8 +148,8 @@ const Sidebar = () => {
                         <span className="text-[26px]">{item.icon}</span>
                         <span className="font-normal">{item.name}</span>
                       </div>
-                      {/* Plus icon for submenu */}
                       <IoMdArrowDropdown className="text-[20px]" />
+                     
                     </div>
                     {selectedMenu === item.name && (
                       <ul className="pl-6">
@@ -154,13 +158,13 @@ const Sidebar = () => {
                             <Link
                               to={subItem.path}
                               onClick={() => handleMenuClick(subItem.path)}
-                              className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] mt-2 mb-2 pb-[16px] gap-x-2 flex justify-start items-center transition-all ${
+                              className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] mt-2 mb-2 pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
                                 selectedMenu === subItem.path
                                   ? 'bg-[#465049] text-white'
                                   : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                               }`}
                             >
-                              <span className="text-[18px]">{subItem.icon}</span>
+                              <span className="text-[20px]">{subItem.icon}</span>
                               <span className="font-normal">{subItem.name}</span>
                             </Link>
                           </li>

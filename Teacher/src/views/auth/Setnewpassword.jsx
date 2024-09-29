@@ -54,7 +54,7 @@ function Teacherlogin() {
                             </div>
 
 
-                            <Link to='/' className='w-[480px] mt-[35px] h-[60px] mb-[97px] p-3 bg-[#BB5042] text-[20px] text-white text-center rounded-lg'>
+                            <Link to='http://localhost:5173/tlogin' className='w-[480px] mt-[35px] h-[60px] mb-[97px] p-3 bg-[#BB5042] text-[20px] text-white text-center rounded-lg'>
 
                                 Continue
 

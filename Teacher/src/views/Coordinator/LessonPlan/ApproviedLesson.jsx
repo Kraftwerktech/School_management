@@ -10,6 +10,7 @@ import { RxCrossCircled } from 'react-icons/rx';
 import { IoIosArrowDown } from "react-icons/io";
 
 // Separate functional component for Filter Modal
+
 function FilterModal({ isOpen, onClose }) {
   if (!isOpen) return null; // If modal is not open, don't render anything
 
@@ -77,6 +78,7 @@ function FilterModal({ isOpen, onClose }) {
 
 
 function ApprovedLesson() {
+  
   const [selectedDate, setSelectedDate] = useState(null);
   const [isFilterModalOpen, setFilterModalOpen] = useState(false); // State for modal
 

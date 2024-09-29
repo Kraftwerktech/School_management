@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdExpandMore } from 'react-icons/md';
-import { PiStudent } from 'react-icons/pi';
+import { PiClock, PiStudent } from 'react-icons/pi';
 import { BsClockHistory } from "react-icons/bs";
 import Absence from '../../../assets/Teacher/icons/Absence.png'
 import Present from '../../../assets/Teacher/icons/Present.png';
 import { Link } from 'react-router-dom';
 import { IoIosSearch } from "react-icons/io";
 
+import { TfiAlarmClock } from "react-icons/tfi";
 
 // Dummy Data
 const initialStudents = [
@@ -22,6 +23,90 @@ const initialStudents = [
   { id: 10, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
   // More students if needed...
 ];
+
+
+const LateEntryModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      {/* Button to Open Modal */}
+      <button
+        className=" py-2 px-4 rounded  transition duration-300"
+        onClick={toggleModal}
+      >
+      <BsClockHistory className='w-7 h-7 text-[#BB5042]'/>
+      </button>
+
+      {/* Modal Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          {/* Modal Content */}
+          <div className="bg-white rounded-lg shadow-lg  w-11/12 md:w-1/2 lg:w-1/3 p-6 relative">
+            {/* Close Button */}
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              onClick={toggleModal}
+            >
+              ✕
+            </button>
+
+            {/* Modal Title */}
+            <h2 className="text-2xl font-bold mb-8 mt-8 text-center">Late Entry</h2>
+
+            {/* Modal Form */}
+            <form className=' flex flex-col items-center'>
+  {/* Late Entry Time Input */}
+  <div className="mb-6 flex gap-4 items-center">
+    <div className="relative w-[400px]">
+      <input
+        type="text"
+        className="placeholder:text-[13px] py-2 px-5 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pl-10"
+        placeholder="Late Entry Time"
+      />
+      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+        <TfiAlarmClock  className=' w-6 h-6 text-[#BB5042]'/>
+      </span>
+    </div>
+  </div>
+
+  {/* Reason Input */}
+  <div className=" flex gap-4 items-center">
+    <div className="w-[400px]">
+      <input
+        type="text"
+        id="reason"
+        className="placeholder:text-[13px] py-2 px-5 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
+        placeholder="Reason"
+      />
+    </div>
+  </div>
+
+  {/* Submit Button */}
+  <div className="text-center mb-[30px] mt-[50px]">
+    <button
+      type="submit"
+      className="bg-[#BB5042] text-white py-2 px-6 rounded hover:bg-green-600 transition duration-300"
+    >
+      Submit
+    </button>
+  </div>
+           </form>
+
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+
+
+
 
 const itemsPerPage = 8;
 
@@ -40,6 +125,17 @@ function ClassAttendances() {
 
   const handlePageClick = (page) => {
     setCurrentPage(page);
+  };
+
+
+   // Set all students to 'Present'
+   const markAllAsPresent = () => {
+    setStudentData((prevData) =>
+      prevData.map((student) => ({
+        ...student,
+        status: 'Present',
+      }))
+    );
   };
 
   const toggleAttendance = (id) => {
@@ -61,40 +157,10 @@ function ClassAttendances() {
     <div className="pr-8 pb-6 mt-0">
       <h3 className="text-[31px] mb-[14px] font-semibold">Class Attendance</h3>
 
-      <div className="w-full rounded-[12px] mb-[40px] bg-white border-[1px] h-[112px] mr-4 pb-2 mt-0">
-        <div className="flex flex-wrap mt-[35px] ml-[20px] gap-[32px]">
-          <div className="relative w-full md:w-[170px]">
-            <select className="appearance-none px-4 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full">
-              <option value="">Class</option>
-              <option>Class IX</option>
-              <option>Class X</option>
-              <option>Class XI</option>
-              <option>Class XII</option>
-            </select>
-            <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-          </div>
-
-          <div className="relative w-full md:w-[170px]">
-            <select className="appearance-none px-6 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-10">
-              <option value="">Section</option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-              <option>D</option>
-            </select>
-            <MdExpandMore className="absolute text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-          </div>
-          <div className=' flex items-center px-5 py-2 bg-[#BB5042] text-white rounded-md w-full md:w-auto'>
-          <Link className=" flex gap-2 items-center">
-          Filter
-          </Link>
-          
-          </div>
-        
-        
-        
-          
-        </div>
+      <div className='mt-5 mb-5 flex gap-2 text-[#686060] items-center'>
+      <span className=' text-[24px] font-semibold'>Class IX</span>
+      <span>|</span>
+      <span className=' text-[24px] font-semibold'>Section D</span>
       </div>
 
       <div className="w-full border-[1px] mb-5 rounded-[12px] text-center bg-white">
@@ -164,7 +230,7 @@ function ClassAttendances() {
     </div>
 
   <div>
-      <button className="px-5 py-2 bg-[#BB5042] text-white rounded-md">
+      <button onClick={markAllAsPresent} className="px-5 py-2 bg-[#BB5042] text-white rounded-md">
         Mark as Present
       </button>
   </div>
@@ -175,7 +241,6 @@ function ClassAttendances() {
           <table className=" min-w-full items-center  table-auto  text-center">
             <thead className='bg-[#E4EBE6] h-[60px] text-center'>
               <tr className="text-[#465049] text-[16px] text-center">
-              <th className="px-4 py-2"><input type="checkbox" className='w-[14px] h-[14px]' /></th>
                 <th className="px-4 py-2">Picture</th>
                 <th className="px-4 py-2">Student ID</th>
                 <th className="px-4 py-2">Student Name</th>
@@ -187,7 +252,7 @@ function ClassAttendances() {
             <tbody>
               {displayedStudents.map((student) => (
                 <tr key={student.id} className="border-b text-[16px] text-gray-700">
-                  <td className="px-4 py-2 text-center"><input type="checkbox" className='w-[14px] h-[14px]' /></td>
+                  
                   
                   <td className="px-4 py-2 flex justify-center">
                     <img src={student.picture} alt={student.name} className="w-[60px] h-[60px] rounded-full" />
@@ -217,13 +282,12 @@ function ClassAttendances() {
   </div>
 </td>
       <td className="px-4 py-2 text-center">
-                  <span
-                      className={`inline-flex items-center text-xs font-medium rounded-full ${
-                        student.status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      <BsClockHistory className='w-6 h-6'/>
-                    </span>
+                  
+<div>
+      <LateEntryModal/>
+     
+    </div>
+        
                   </td>
                 </tr>
               ))}

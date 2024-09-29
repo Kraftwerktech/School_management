@@ -38,12 +38,23 @@ const SyllabusCard = ({
   return (
     <div className={`bg-white border-b-[1px] mb-4 ${status === 'Rejected' ? 'border-red-500 border-[1px]' : ''}`}>
       <div className="flex items-center mb-4">
+
+      <div className="flex justify-end gap-4">
+              <span>
+                <SlCheck className="text-[#08A647] w-6 h-6" />
+              </span>
+              <span className="text-[#B6B6B6] font-semibold text-[22px]">|</span>
+              <span onClick={onReject} className="cursor-pointer">
+                <RxCrossCircled className="text-[#BB5042] w-7 h-7" />
+              </span>
+            </div>
         
         <div className="flex mt-5">
           <div className="text-white font-semibold max-w-[250px] text-[18px] pl-5 rounded-[8px] py-2 border-[1.5px] bg-[#A4A594]">
             {date}
           </div>
-
+          
+          </div>
           <div className="flex justify-between mt-5 items-center">
             <div className="flex gap-4">
               <span className="font-semibold text-[20px] flex items-center gap-2 text-[#98AD9E]">
@@ -55,7 +66,7 @@ const SyllabusCard = ({
             </div>
           </div>
           
-        </div>
+      
      
       </div>
 
