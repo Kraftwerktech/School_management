@@ -104,16 +104,7 @@ function CreateSyllabusModal({ isOpen, onClose }) {
               <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
             </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Subject"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
-              <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
-            </div>
-          </div>
+         
           <div className="flex gap-2 items-center">
             <div className="relative">
               <input
@@ -194,16 +185,7 @@ function CreateNewSyllabusModal({ isOpen, onClose }) {
               <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
             </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Subject"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
-              <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
-            </div>
-          </div>
+        
           <div className="flex gap-2 items-center">
             <div className="relative">
               <input

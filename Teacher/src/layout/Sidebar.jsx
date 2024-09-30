@@ -19,12 +19,13 @@ import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
 import { LuBookPlus } from "react-icons/lu";
+import { FiMinus } from "react-icons/fi";
 
 import logo from '../assets/Teacher/logo1.png';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [openMenus, setOpenMenus] = useState({});
   const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
@@ -37,7 +38,6 @@ const Sidebar = () => {
   }, []);
 
   const location = useLocation();
-
 
   const menuItems = [
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
@@ -65,7 +65,6 @@ const Sidebar = () => {
     { path: "class-routine", role: "teacher", name: "Routine", icon: <CiCalendar /> },
     { path: "student-info", role: "teacher", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "teacher-info", role: "teacher", name: "Teacher Directory", icon: <PiChalkboardTeacherDuotone /> },
-    
     {
       name: "Guardian Collaboration",
       role: "teacher",
@@ -75,9 +74,7 @@ const Sidebar = () => {
         { path: "messagecollaboration", role: "teacher", name: "Messaging", icon: <PiMessengerLogoLight /> },
       ]
     },
-   
     { path: "announcement", role: "teacher", name: "Announcement", icon: <GrAnnounce /> },
-
     { path: "/coordinator/dasboard", role: "coordinator", name: "Dashboard", icon: <AiFillDashboard /> },
     { path: "student-dir", role: "coordinator", name: "Student Directory", icon: <PiStudentDuotone /> },
     { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <LuCalendarDays /> },
@@ -86,19 +83,19 @@ const Sidebar = () => {
     { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <SiGooglemeet /> },
     { path: "coapprovedLesson", role: "coordinator", name: "Lesson Plan", icon: <VscRepo /> },
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
-    
   ];
-
 
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
 
   const handleMenuClick = (path) => {
-    setSelectedMenu(path);
     setShowSidebar(false);
   };
 
   const handleSubmenuToggle = (name) => {
-    setSelectedMenu(prev => (prev === name ? null : name));
+    setOpenMenus(prevState => ({
+      ...prevState,
+      [name]: !prevState[name]
+    }));
   };
 
   if (!userRole) return null;
@@ -139,7 +136,7 @@ const Sidebar = () => {
                     <div
                       onClick={() => handleSubmenuToggle(item.name)}
                       className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer relative ${
-                        selectedMenu === item.name
+                        openMenus[item.name]
                           ? 'bg-[#465049] text-white'
                           : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                       }`}
@@ -149,25 +146,29 @@ const Sidebar = () => {
                         <span className="font-normal">{item.name}</span>
                       </div>
                       <IoMdArrowDropdown className="text-[20px]" />
-                     
                     </div>
-                    {selectedMenu === item.name && (
-                      <ul className="pl-6">
+                    {openMenus[item.name] && (
+                      <ul className="pl-2">
                         {item.submenu.map((subItem, subIndex) => (
-                          <li key={subIndex}>
-                            <Link
-                              to={subItem.path}
-                              onClick={() => handleMenuClick(subItem.path)}
-                              className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] mt-2 mb-2 pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
-                                selectedMenu === subItem.path
-                                  ? 'bg-[#465049] text-white'
-                                  : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
-                              }`}
-                            >
-                              <span className="text-[20px]">{subItem.icon}</span>
-                              <span className="font-normal">{subItem.name}</span>
-                            </Link>
-                          </li>
+                          <div className="flex items-center" key={subIndex}>
+                            <FiMinus />
+                            <li>
+                              <Link
+                                to={subItem.path}
+                                onClick={() => handleMenuClick(subItem.path)}
+                                className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] mt-1 mb-1 pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
+                                  location.pathname === subItem.path
+                                    ? 'bg-[#465049] text-white'
+                                    : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
+                                }`}
+                              >
+                                <span className="text-[24px]">
+                                  {subItem.icon}
+                                </span>
+                                <span>{subItem.name}</span>
+                              </Link>
+                            </li>
+                          </div>
                         ))}
                       </ul>
                     )}
@@ -176,14 +177,14 @@ const Sidebar = () => {
                   <Link
                     to={item.path}
                     onClick={() => handleMenuClick(item.path)}
-                    className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all mb-1 ${
-                      selectedMenu === item.path
+                    className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
+                      location.pathname === item.path
                         ? 'bg-[#465049] text-white'
                         : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                     }`}
                   >
                     <span className="text-[26px]">{item.icon}</span>
-                    <span className="font-normal">{item.name}</span>
+                    <span>{item.name}</span>
                   </Link>
                 )}
               </li>
