@@ -13,40 +13,6 @@ const CreateSyllabus = new Schema({
         type: String,
         required: true
     },
-    resources: {
-        type: String,
-        required: true,
-        select: false
-    },
-    Chaptername: {
-        type: String,
-        required: true
-    },
-    assingclass: {
-        type: String,
-        required: true
-    },
-    joiningDate: {
-        type: String
-    },
-    bloodgroup: {
-        type: String
-    },
-    address: {
-        type: String
-    },
-    education: {
-        type: String
-    },
-    designation: {
-        type: String
-    },
-    nid: {
-        type: String
-    },
-    image: {
-        type: String
-    },
     role: {
         type: String,
         default: 'teacher'

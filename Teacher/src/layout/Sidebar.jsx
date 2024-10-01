@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'coordinator' || 'coordinator';
       setUserRole(role);
     };
 
