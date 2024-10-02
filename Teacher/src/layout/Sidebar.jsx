@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'coordinator' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
       setUserRole(role);
     };
 
@@ -85,8 +85,10 @@ const Sidebar = () => {
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
   ];
 
+
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
 
+  
   const handleMenuClick = (path) => {
     setShowSidebar(false);
   };
@@ -151,7 +153,7 @@ const Sidebar = () => {
                       <ul className="pl-2">
                         {item.submenu.map((subItem, subIndex) => (
                           <div className="flex items-center" key={subIndex}>
-                            <FiMinus />
+                            <FiMinus className="text-[#868987]"/>
                             <li>
                               <Link
                                 to={subItem.path}

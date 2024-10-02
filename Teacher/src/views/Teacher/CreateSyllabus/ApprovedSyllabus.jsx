@@ -1,113 +1,140 @@
 import React, { useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { BsDownload } from 'react-icons/bs';
+import { CiSearch } from 'react-icons/ci';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import LayoutSyllabus from './LayoutSyllabus';
-import { IoIosArrowDown } from "react-icons/io";
-import { BsDownload} from "react-icons/bs";
-import { CiSearch } from "react-icons/ci";
-import { GoDotFill } from "react-icons/go";
 
-const announcements = [
+const demoClasses = ['Class IX', 'Class X', 'Class XI'];
+const demoSubjects = ['Science', 'Mathematics', 'English'];
+
+const dummyData = [
   {
-    lesson: "Lesson 1",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "10 to 20",
-    activityType: "Lecture",
-    topicNo: "1",
-    activityTime: "45 mins"
+    lesson: 'Lesson 1',
+    resources: [
+      {
+        resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
+        chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
+        topics: [
+          'Forms of Energy and Their Interconversion',
+          'Defining the System and its Surroundings',
+          'The Law of Energy Conservation',
+          'Units of Energy',
+        ],
+      },
+      {
+        resource: 'TB- Oxford Science 9 Student Book',
+        chapter: 'Chapter 2: Energy',
+        topics: [
+          'Units of Energy',
+          'State Functions and the Path Independence of the Energy Change',
+        ],
+      },
+    ],
   },
   {
-    lesson: "Lesson 2",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 7: Science toolkit 2: Control and regulation",
-    pages: "21 to 30",
-    activityType: "Lab",
-    topicNo: "2",
-    activityTime: "1 hour"
+    lesson: 'Lesson 2',
+    resources: [
+      {
+        resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
+        chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
+        topics: [
+          'Forms of Energy and Their Interconversion',
+          'Energy Change: Energy Transfer to or from a System',
+          'Heat and Work: Two Forms of Energy Transfer',
+          'The Law of Energy Conservation',
+        ],
+      },
+      {
+        resource: 'TB- Oxford Science 9 Student Book',
+        chapter: 'Chapter 2: Energy',
+        topics: [
+          'Units of Energy',
+          'State Functions and the Path Independence of the Energy Change',
+        ],
+      },
+    ],
   },
   {
-    lesson: "Lesson 3",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 8: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
+    lesson: 'Lesson 3',
+    resources: [
+      {
+        resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
+        chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
+        topics: [
+          'Forms of Energy and Their Interconversion',
+          'Defining the System and its Surroundings',
+          'The Law of Energy Conservation',
+          'Units of Energy',
+        ],
+      },
+    ],
   },
-  {
-    lesson: "Lesson 4",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },
-  {
-    lesson: "Lesson 5",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 6",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 7",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 8",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 9",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  },{
-    lesson: "Lesson 10",
-    resource: "TB- Cambridge Checkpoint Science Coursebook 9",
-    chapter: "Chapter 5: Science toolkit 2: Control and regulation",
-    pages: "31 to 40",
-    activityType: "Discussion",
-    topicNo: "3",
-    activityTime: "30 mins"
-  }
 ];
 
-
 function ApprovedSyllabus() {
+  const [selectedClass, setSelectedClass] = useState(demoClasses[0]);
+  const [selectedSubject, setSelectedSubject] = useState(demoSubjects[0]);
+  const [expandedLessons, setExpandedLessons] = useState({});
+
+  const toggleLesson = (index) => {
+    setExpandedLessons((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
+
+  const downloadPDF = () => {
+    const input = document.getElementById('syllabusTable');
+    html2canvas(input, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgWidth = 210;
+      const pageHeight = 297;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      pdf.save('syllabus.pdf');
+    });
+  };
+
   return (
-    <div className=' mb-10'>
+    <div>
       <LayoutSyllabus />
-      <div className="border-r-[1px] border-l-[1px]  mr-5 max-w-full">
-        <div className="flex items-center justify-between">
-          <div className="flex text-[20px] mt-8 ml-5 font-bold gap-2">
-            <span>Class IX</span>
-            <span>| Science</span>
-            <span>| 2024</span>
-          </div>
-          <div className="flex mt-10 mr-5 gap-8">
-  <div className="relative inline-block">
-  <select className="border-[1px] flex gap-3 items-center w-[277px] rounded-[8px] px-6 py-3 cursor-pointer outline-none  border-[#B6B6B6] hover:border-[#BB5042] appearance-none bg-white text-gray-700">
+      <div className='mb-8 mr-5' id="syllabusTable">
+        <div className="max-w-full border-l-[1px] border-r-[1px]">
+
+          {/* Header Section */}
+          <div className="flex items-center justify-between">
+            <div className="flex text-[20px] mt-8 ml-5 font-bold gap-2">
+              <span>{selectedClass}</span>
+              <span>| {selectedSubject}</span>
+              <span>| 2024</span>
+            </div>
+
+            <div className="flex mt-10 items-center mr-5 gap-8">
+            <div className="relative inline-block">
+  <select
+    className="border-[1px] w-[250px] rounded-[8px] px-6 py-3 outline-none border-[#B6B6B6] hover:border-[#BB5042] bg-white text-gray-700 cursor-pointer appearance-none" // added appearance-none
+    value={`${selectedClass} | ${selectedSubject} | 2024`}
+    onChange={(e) => {
+      const [cls, subj] = e.target.value.split(' | ');
+      setSelectedClass(cls);
+      setSelectedSubject(subj);
+    }}
+  >
     <option>Class X | Biology | 2024</option>
     <option>Class IX | Science | 2024</option>
     <option>Class VIII | Chemistry | 2024</option>
@@ -117,67 +144,100 @@ function ApprovedSyllabus() {
     <option>Class IX | English | 2024</option>
     <option>Class XI | History | 2024</option>
   </select>
-  <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042] pointer-events-none" />
+  <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042] pointer-events-none" /> 
+  {/* Use pointer-events-none to ensure clicking works on the select */}
 </div>
 
-            <button className="border-[1px] rounded-[8px] text-[#BB5042] border-[#BB5042] px-6 py-2">
-              Change Request
-            </button>
-          </div>
-        </div>
 
-        <div className="flex justify-between items-center mt-10">
-          <div className="flex items-center border ml-5 border-slate-300 rounded-md w-[350px] md:max-w-[400px]">
-            <CiSearch className="ml-3 w-5 h-5 text-[#BB5042]" />
-            <input
-              className="flex-1 px-4 py-2 placeholder:text-[13px] outline-none bg-transparent text-gray-700"
-              type="text"
-              name="search"
-              placeholder="Search by Lesson or Chapter"
+              <button className="border-[1px] rounded-[8px] w-[250px]      text-[#BB5042] border-[#BB5042] px-6 py-3">
+              Request for Change 
+              </button>
+            </div>
+          </div>
+
+          {/* Search and Download Section */}
+          <div className="flex justify-between mr-5 items-center mt-5">
+            <div className="flex ml-5 items-center border border-slate-300 rounded-md w-[350px] md:max-w-[400px]">
+              <CiSearch className="ml-3 w-5 h-5 text-[#BB5042]" />
+              <input
+                className="flex-1 px-4 py-2 placeholder:text-[13px] outline-none bg-transparent text-gray-700"
+                type="text"
+                name="search"
+                placeholder="Search by Lesson or Chapter"
+              />
+            </div>
+            <BsDownload
+              className="w-5 h-5 text-[#BB5042] cursor-pointer"
+              onClick={downloadPDF}
             />
           </div>
-          <BsDownload className="w-5 h-5 text-[#BB5042] mr-5 cursor-pointer" />
-        </div>
 
-        <div className="w-full p-5 bg-white mt-6 rounded-md">
-          <div className="overflow-x-auto rounded-t-md">
-            <table className="min-w-full table-auto">
-              <thead className="bg-[#E4EBE6] text-left h-[60px]">
-                <tr className="text-[#465049] text-[16px]">
-                  <th className="px-4 py-3">Lesson</th>
-                  <th className="px-4 py-3">Resource</th>
-                  <th className="px-4 py-3">Chapter</th>
-                  <th className="px-4 py-3">Pages</th>
-                  <th className="px-4 py-3">Activity Type</th>
-                  <th className="px-4 py-3">Topic No.</th>
-                  <th className="px-4 py-3">Activity Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {announcements.map((announcement, index) => (
-                  <tr key={index} className="border-b-[1px] text-[16px] text-gray-700">
-                  <td className="px-4 py-3">{announcement.lesson}</td>
-                  <td className="px-4 max-w-[164px] py-3">{announcement.resource}</td>
-                  <td className="px-4 max-w-[186px] py-3">{announcement.chapter}</td>
-                  <td className="px-4 max-w-[100px] py-3">{announcement.pages}</td>
-                  <td className="px-4 max-w-[160px] py-3">
-                    <ul className="space-y-3 mt-[10px] mb-[10px]">
-                      <li className='flex gap-2 items-center'> <GoDotFill className='w-3 h-3'/>{announcement.activityType}</li>
-                      <li className='flex gap-2 items-center'>  <GoDotFill className='w-3 h-3'/>{announcement.activityType}</li>
-                    </ul>
-                  </td>
-                  <td className="px-4 max-w-[100px] py-3">{announcement.topicNo}</td>
-                  <td className="px-4 max-w-[130px] py-3">
-                    <ul className="space-y-3 mt-[10px] mb-[10px]">
-                      <li>{announcement.activityTime}</li>
-                      <li>{announcement.activityTime}</li>
-                    </ul>
-                  </td>
-                </tr>
-                
-                ))}
-              </tbody>
-            </table>
+          {/* Table Section */}
+          <div className="w-full bg-white mt-6 p-5 rounded-[8px]">
+            <div className="overflow-x-auto rounded-t-[8px]">
+              <table className="min-w-full table-auto">
+                <thead className="bg-[#E4EBE6] text-left h-[70px]">
+                  <tr className="text-[#465049] text-[16px]">
+                    <th className="py-4 px-8">Lesson</th>
+                    <th className="px-4 py-3">Resource</th>
+                    <th className="px-4 py-3">Chapter</th>
+                    <th className="px-4 py-3">Topic Title</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[#465049]">
+                  {dummyData.map((lessonData, index) => (
+                    <React.Fragment key={index}>
+                      <tr>
+                        <td className="py-4 font-bold pb-3 pt-3 w-[140px] px-8">{lessonData.lesson}</td>
+                        <td className="py-2 px-4 pb-3 pt-3 ">
+                          {lessonData.resources[0].resource}
+                        </td>
+                        <td className="py-2 pb-3 pt-3 px-4 ">
+                          {lessonData.resources[0].chapter}
+                        </td>
+                        <td className="py-2 pb-3 pt-3 px-4 ">
+                          <ul className="list-disc space-y-2 pl-4">
+                            {lessonData.resources[0].topics.slice(0, 3).map((topic, topicIndex) => (
+                              <li key={topicIndex}>{topic}</li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+
+                      {expandedLessons[index] && lessonData.resources.slice(1).map((resource, resIndex) => (
+                        <tr key={resIndex} className="bg-gray-100 pb-3 pt-3">
+                          <td className="py-4 px-8" />
+                          <td className="py-2 px-4 ">
+                            {resource.resource}
+                          </td>
+                          <td className="py-2 px-4 ">
+                            {resource.chapter}
+                          </td>
+                          <td className="py-2 px-4">
+                            <ul className="list-disc space-y-2 pl-4">
+                              {resource.topics.map((topic, topicIndex) => (
+                                <li key={topicIndex}>{topic}</li>
+                              ))}
+                            </ul>
+                          </td>
+                        </tr>
+                      ))}
+
+                      <tr>
+                        <td colSpan={4} className="py-3 px-8 text-left border-b-[1px]">
+                          <button
+                            className="text-[#98AD9E] font-semibold"
+                            onClick={() => toggleLesson(index)}
+                          >
+                            {expandedLessons[index] ? 'Less...' : 'More...'}
+                          </button>
+                        </td>
+                      </tr>
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
