@@ -8,6 +8,8 @@ import { GrAttachment } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { FaRegHandPointRight } from "react-icons/fa";
+
 function AddLesson_addtropic() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,7 +28,7 @@ const toggleTopic = (index) => {
  const topics = [
   {
     id: 35,
-    title: 'Topic 35',
+    title: 'Topic 35: Lorem ipsum dolor sit amet consectetur.',
     bookDetails: 'Oxford textbooks Science, Class IX | Chapter 5 | Page 20-35',
     topicTitle: 'Lorem ipsum dolor sit amet consectetur.',
     description:
@@ -34,7 +36,7 @@ const toggleTopic = (index) => {
   },
   {
     id: 36,
-    title: 'Topic 36',
+    title: 'Topic 36: Lorem ipsum dolor sit amet consectetur.',
     bookDetails: 'Oxford textbooks Science, Class IX | Chapter 5 | Page 20-35',
     topicTitle: 'Lorem ipsum dolor sit amet consectetur.',
     description:
@@ -42,7 +44,7 @@ const toggleTopic = (index) => {
   },
   {
     id: 37,
-    title: 'Topic 37',
+    title: 'Topic 37: Lorem ipsum dolor sit amet consectetur.',
     bookDetails: 'Oxford textbooks Science, Class IX | Chapter 5 | Page 20-35',
     topicTitle: 'Lorem ipsum dolor sit amet consectetur.',
     description:
@@ -191,15 +193,13 @@ const toggleTopic = (index) => {
           {/* Conditional rendering of topic content based on toggle */}
           {isTopicOpen[index] && (
             <div className='mt-4'>
-              <span className='text-[16px] text-[#939393] font-semibold'>
+              <span className='text-[16px] flex items-center gap-3 text-[#939393] font-semibold'>
+                <FaRegHandPointRight className=' w-5 h-5'/>
                 {topic.bookDetails}
               </span>
-              <div className='flex mt-2 items-center gap-2'>
-                <span className='text-[#465049] font-semibold'>Topic Title:</span>
-                <span>{topic.topicTitle}</span>
-              </div>
+              
               <div className='pb-7 border-b-[1px]'>
-                <div className='text-[16px] mt-2 mr-[70px] text-[#465049]'>
+                <div className='text-[16px] mt-2 ml-8 mr-[70px] text-[#465049]'>
                   {topic.description}
                 </div>
               </div>

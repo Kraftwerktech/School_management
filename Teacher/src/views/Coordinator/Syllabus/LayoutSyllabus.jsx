@@ -259,7 +259,6 @@ function LayoutSyllabus() {
   const tabs = [
 
     { name: 'Approved Syllabus', path: '/coordinator/dasboard/CoApprovedsyllabus' },
-    { name: 'Drafted Syllabus', path: '/coordinator/dasboard/CoDraftsyllabus' },
     { name: 'Waiting for your Approval', path: '/coordinator/dasboard/CoWaitingsyllabus' },
 
   ];

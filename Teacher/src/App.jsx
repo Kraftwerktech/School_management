@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
-import TeacherDashboard from './views/Teacher/TeacherDashboard';
+import TeacherDashboard from './views/Teacher/Dashboard/TeacherDashboard';
 import Lesson_Plan from './views/Teacher/Lesson_Plan';
 import Student_Information from './views/Teacher/Student_Information';
 import Class_Attendance from './views/Teacher/StudentAttendances/ClassAttendances';

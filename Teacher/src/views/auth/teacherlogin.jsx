@@ -58,7 +58,7 @@ function Teacherlogin() {
     }, [errorMessage, successMessage, dispatch, navigate]);
 
     return (
-        <div className="min-h-screen inset-0 bg-cover bg-[#A7BEAE]">
+        <div className="min-h-screen w-full inset-0 bg-cover bg-[#A7BEAE]">
             <div className="absolute top-2 left-4 md:left-10 mt-3 lg:left-14 pt-7">
                 <img src={logo} alt="Logo" className="h-16 w-full" />
             </div>

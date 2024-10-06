@@ -247,7 +247,7 @@ function LayoutSyllabus() {
   ];
   
   return (
-    <div className="max-w-full">
+    <div className="max-w-full"> 
       <div className="flex justify-between items-center mt-5 h-[52px]">
         <span className="text-[31px] font-bold">Syllabus</span>
         <button

@@ -1,71 +1,89 @@
 import React, { useState } from 'react';
 import LayoutSyllabus from './LayoutSyllabus';
-import { IoIosArrowDown } from "react-icons/io";
-import { IoAddCircleOutline } from "react-icons/io5";
-import { CiTrash } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
-import { CiSearch } from "react-icons/ci";
-import { Link } from 'react-router-dom';
+import { CiTrash } from "react-icons/ci";
+import { IoChevronDownSharp } from "react-icons/io5";
 
+
+// Dummy Data for Syllabus with rejection status
 const dummyData = [
   {
     lesson: 'Lesson 1',
+    status: 'In Progress',
     resources: [
       {
         resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
         chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
-        topics: [
-          'Forms of Energy and Their Interconversion',
-          'Defining the System and its Surroundings',
-          'The Law of Energy Conservation',
-          'Units of Energy',
-        ],
+        topics: ['Forms of Energy', 'Energy Interconversion', 'Energy Conservation'],
       },
       {
         resource: 'TB- Oxford Science 9 Student Book',
         chapter: 'Chapter 2: Energy',
-        topics: [
-          'Units of Energy',
-          'State Functions and the Path Independence of the Energy Change',
-        ],
+        topics: ['Units of Energy', 'Energy Transfer', 'Heat and Work'],
       },
     ],
   },
   {
     lesson: 'Lesson 2',
+    status: 'Rejected', // Rejected lesson example
     resources: [
       {
         resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
         chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
-        topics: [
-          'Forms of Energy and Their Interconversion',
-          'Energy Change: Energy Transfer to or from a System',
-          'Heat and Work: Two Forms of Energy Transfer',
-          'The Law of Energy Conservation',
-        ],
+        topics: ['Forms of Energy', 'Defining the System', 'Energy Transfer'],
       },
       {
         resource: 'TB- Oxford Science 9 Student Book',
         chapter: 'Chapter 2: Energy',
-        topics: [
-          'Units of Energy',
-          'State Functions and the Path Independence of the Energy Change',
-        ],
+        topics: ['Units of Energy', 'Path Independence'],
       },
     ],
   },
   {
     lesson: 'Lesson 3',
+    status: 'In Progress',
+    resources: [
+      {
+        resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
+        chapter: 'Chapter 5: Control and regulation',
+        topics: ['Energy Change', 'Heat and Work'],
+      },
+      {
+        resource: 'TB- Oxford Science 9 Student Book',
+        chapter: 'Chapter 2: Energy',
+        topics: ['State Functions', 'Energy Pathways'],
+      },
+    ],
+  },
+  {
+    lesson: 'Lesson 4',
+    status: 'Rejected',
+    resources: [
+      {
+        resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
+        chapter: 'Chapter 5: Control and regulation',
+        topics: ['Forms of Energy', 'Energy Conservation'],
+      },
+      {
+        resource: 'TB- Oxford Science 9 Student Book',
+        chapter: 'Chapter 2: Energy',
+        topics: ['Heat Transfer', 'Thermodynamics'],
+      },
+    ],
+  },
+  {
+    lesson: 'Lesson 5',
+    status: 'In Progress',
     resources: [
       {
         resource: 'TB- Cambridge Checkpoint Science Coursebook 9',
         chapter: 'Chapter 5: Science toolkit 2: Control and regulation',
-        topics: [
-          'Forms of Energy and Their Interconversion',
-          'Defining the System and its Surroundings',
-          'The Law of Energy Conservation',
-          'Units of Energy',
-        ],
+        topics: ['Energy Conversion', 'Conservation'],
+      },
+      {
+        resource: 'TB- Oxford Science 9 Student Book',
+        chapter: 'Chapter 2: Energy',
+        topics: ['Units of Energy', 'System Path'],
       },
     ],
   },
@@ -73,8 +91,9 @@ const dummyData = [
 
 function DraftedSyllabus() {
   const [expandedLessons, setExpandedLessons] = useState({});
+  const [rejectedLessons, setRejectedLessons] = useState(dummyData);
 
-  // Toggle Lesson to expand/collapse resources
+  // Toggle Lesson to expand/collapse chapters
   const toggleLesson = (index) => {
     setExpandedLessons((prevState) => ({
       ...prevState,
@@ -82,65 +101,102 @@ function DraftedSyllabus() {
     }));
   };
 
+  // Handle resolving a rejected lesson
+  const resolveLesson = (index) => {
+    const updatedLessons = rejectedLessons.map((lesson, lessonIndex) => {
+      if (lessonIndex === index) {
+        return { ...lesson, status: 'In Progress' }; // Resolves the rejected status
+      }
+      return lesson;
+    });
+    setRejectedLessons(updatedLessons);
+  };
+
   // Render Table Rows for each lesson
   const renderLessonRows = () =>
-    dummyData.map((lessonData, index) => (
-      <React.Fragment key={index}>
-        <tr className="">
-          <td className="py-4 px-4 w-[120px] font-bold">{lessonData.lesson}</td>
-          <td className="py-2 px-4">{lessonData.resources[0].resource}</td>
-          <td className="py-2 px-4">{lessonData.resources[0].chapter}</td>
-          <td className="py-2 px-4">
-            <ul className="list-disc space-y-2 pl-4">
-              {lessonData.resources[0].topics.slice(0, 3).map((topic, topicIndex) => (
-                <li key={topicIndex}>{topic}</li>
-              ))}
-            </ul>
-          </td>
-          <td className="py-2 px-4 mt-8 items-center flex gap-[9px]">
-            <FiEdit className="cursor-pointer h-6 w-6 text-[#BB5042] hover:text-red-800" />
-            <span className=' text-[22px] text-[#B6B6B6]'>|</span>
-            <CiTrash className="cursor-pointer h-6 w-6 text-[#BB5042] hover:text-red-800" />
-          </td>
-        </tr>
+    rejectedLessons.map((lessonData, index) => {
+      const isRejected = lessonData.status === 'Rejected';
 
-        {/* Expanded Resources */}
-        {expandedLessons[index] &&
-          lessonData.resources.slice(1).map((resource, resIndex) => (
-            <tr key={resIndex} className="bg-gray-100">
-              <td className="py-4 px-8" />
-              <td className="py-2 px-4">{resource.resource}</td>
-              <td className="py-2 px-4">{resource.chapter}</td>
-              <td className="py-2 px-4">
-                <ul className="list-disc space-y-2 pl-4">
-                  {resource.topics.map((topic, topicIndex) => (
-                    <li key={topicIndex}>{topic}</li>
-                  ))}
-                </ul>
+      return (
+
+        <React.Fragment key={index}>
+
+          <tr></tr>
+          <tr
+            className={`${isRejected
+                ? 'border-[1.5px] border-red-500' // Apply red borders for rejected lessons
+                : ''
+              }`}
+          >
+            <td className="py-4 px-4 w-[120px] font-bold">{lessonData.lesson}</td>
+            <td className="py-2 px-4">{lessonData.resources[0].resource}</td>
+            <td className="py-2 px-4">{lessonData.resources[0].chapter}</td>
+            <td className="py-2 px-4">
+              <ul className="list-disc space-y-2 pl-4">
+                {lessonData.resources[0].topics.slice(0, 3).map((topic, topicIndex) => (
+                  <li key={topicIndex}>{topic}</li>
+                ))}
+              </ul>
+            </td>
+            <td className="py-2 px-4 items-center flex gap-[9px]">
+              <FiEdit className="cursor-pointer h-6 w-6 text-[#BB5042] hover:text-red-800" />
+              <span className="text-[22px] text-[#B6B6B6]">|</span>
+              <CiTrash className="cursor-pointer h-6 w-6 text-[#BB5042] hover:text-red-800" />
+            </td>
+          </tr>
+
+          {/* Expanded Resources */}
+          {expandedLessons[index] &&
+            lessonData.resources.slice(1).map((resource, resIndex) => (
+              <tr key={resIndex} className="bg-gray-100">
+                <td className="py-4 px-8" />
+                <td className="py-2 px-4">{resource.resource}</td>
+                <td className="py-2 px-4">{resource.chapter}</td>
+                <td className="py-2 px-4">
+                  <ul className="list-disc space-y-2 pl-4">
+                    {resource.topics.map((topic, topicIndex) => (
+                      <li key={topicIndex}>{topic}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td className="py-4 px-8"></td>
+              </tr>
+            ))}
+
+          {/* Toggle More/Less Button */}
+          <tr>
+            <td colSpan={5} className="py-3 px-4 text-left border-b-[1px]">
+              <button
+                className="text-[#98AD9E] font-semibold"
+                onClick={() => toggleLesson(index)}
+              >
+                {expandedLessons[index] ? 'Less...' : 'More...'}
+              </button>
+            </td>
+          </tr>
+
+          {/* Rejected Lesson Resolve Section */}
+          {isRejected && (
+            <tr className="bg-[#F8EEEC] rounded-[8px]">
+              <td colSpan={5} className="py-3 px-4 text-red-700   border-red-500">
+                <div className="flex gap-3 items-center">
+                  <input onClick={() => resolveLesson(index)}  type='checkbox' className='w-5 h-5'/>
+                  <span>Resolve</span>
+                
+                  
+                </div>
               </td>
-              <td className="py-4 px-8"></td>
             </tr>
-          ))}
-
-        {/* Toggle More/Less Button */}
-        <tr>
-          <td colSpan={5} className="py-3 px-4 text-left border-b-[1px]">
-            <button
-              className="text-[#98AD9E] font-semibold"
-              onClick={() => toggleLesson(index)}
-            >
-              {expandedLessons[index] ? 'Less...' : 'More...'}
-            </button>
-          </td>
-        </tr>
-      </React.Fragment>
-    ));
+          )}
+        </React.Fragment>
+      );
+    });
 
   return (
     <div className="mb-10">
       <LayoutSyllabus />
-      <div className="border-r border-l mr-5 max-w-full">
-        <div className="flex items-center justify-between mt-8 px-5">
+      <div className="border-r-[1px]   border-l-[1px]  mr-5 max-w-full">
+        <div className="flex mb-5 items-center justify-between  px-5">
           {/* Class Information */}
           <div className="flex items-center text-[20px] font-bold gap-2">
             <span>Class IX</span>
@@ -154,56 +210,45 @@ function DraftedSyllabus() {
           {/* Select & Submit */}
           <div className="flex items-center gap-8">
             <div className="relative inline-block">
-              <select className="border flex items-center w-[277px] rounded-[8px] px-6 py-3 outline-none border-gray-300 hover:border-[#BB5042] bg-white text-gray-700">
+              <select className="border-[1px] w-[250px] rounded-[8px] px-6 py-3 outline-none border-[#B6B6B6] hover:border-[#BB5042] bg-white text-gray-700 cursor-pointer appearance-none">
+                <option>Select Syllabus</option>
                 <option>Class X | Biology | 2024</option>
                 <option>Class IX | Science | 2024</option>
                 <option>Class VIII | Chemistry | 2024</option>
-                {/* Add more options here */}
+                <option>Class VII | Physics | 2024</option>
+                <option>Class VI | Math | 2024</option>
+                <option>Class X | CS | 2024</option>
+                <option>Class IX | English | 2024</option>
+                <option>Class XI | History | 2024</option>
               </select>
-              <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+            <IoChevronDownSharp className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042] pointer-events-none"/>
             </div>
-
-            <button className="border rounded-[8px] text-white font-semibold bg-[#BB5042] px-6 py-2">
+            <button className="bg-[#BB5042] w-[200px] hover:bg-red-800 text-white font-semibold px-4 py-3 rounded-md">
               Submit Syllabus
             </button>
           </div>
         </div>
 
-        {/* Search & Add Lesson */}
-        <div className="flex justify-between items-center mt-10 px-5">
-          <div className="flex items-center border rounded-md w-[350px] md:max-w-[400px] border-slate-300">
-            <CiSearch className="ml-3 w-5 h-5 text-[#BB5042]" />
-            <input
-              className="flex-1 px-4 py-2 placeholder:text-[13px] outline-none bg-transparent text-gray-700"
-              type="text"
-              name="search"
-              placeholder="Search by Lesson or Chapter"
-            />
-          </div>
 
-          <Link className="flex items-center gap-2" to="/teacher/dashboard/createsyllabusaddtropic">
-            <span className="text-[19px] text-[#465049]">Add Lesson</span>
-            <IoAddCircleOutline className="w-7 h-7 text-[#BB5042]" />
-          </Link>
-        </div>
+        {/* Table Section */}
 
-        {/* Lessons Table */}
-        <div className="w-full bg-white mt-6 p-5">
+        <div className="w-full bg-white p-5 rounded-[8px]">
           <div className="overflow-x-auto rounded-t-[8px]">
             <table className="min-w-full table-auto">
-              <thead className="bg-[#E4EBE6] text-left h-[60px]">
+              <thead className="bg-[#E4EBE6] text-left h-[70px]">
                 <tr className="text-[#465049] text-[16px]">
-                  <th className="px-4 py-3">Lesson</th>
-                  <th className="px-4 py-3">Resource</th>
-                  <th className="px-4 py-3">Chapter</th>
-                  <th className="px-4 py-3">Topic Title</th>
-                  <th className="px-4 py-3">Actions</th>
+                  <th className="py-2 px-4">Lesson</th>
+                  <th className="py-2 px-4">Resources</th>
+                  <th className="py-2 px-4">Chapters</th>
+                  <th className="py-2 px-4">Topics</th>
+                  <th className="py-2 px-4">Actions</th>
                 </tr>
               </thead>
-              <tbody className="text-[#465049]">{renderLessonRows()}</tbody>
+              <tbody>{renderLessonRows()}</tbody>
             </table>
           </div>
         </div>
+
       </div>
     </div>
   );
