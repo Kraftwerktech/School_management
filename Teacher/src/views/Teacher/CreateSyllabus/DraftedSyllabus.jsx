@@ -3,6 +3,9 @@ import LayoutSyllabus from './LayoutSyllabus';
 import { FiEdit } from "react-icons/fi";
 import { CiTrash } from "react-icons/ci";
 import { IoChevronDownSharp } from "react-icons/io5";
+import { CiCirclePlus } from "react-icons/ci";
+import { BsPlusSquare } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 
 // Dummy Data for Syllabus with rejection status
@@ -208,7 +211,7 @@ function DraftedSyllabus() {
           </div>
 
           {/* Select & Submit */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center mt-5 gap-8">
             <div className="relative inline-block">
               <select className="border-[1px] w-[250px] rounded-[8px] px-6 py-3 outline-none border-[#B6B6B6] hover:border-[#BB5042] bg-white text-gray-700 cursor-pointer appearance-none">
                 <option>Select Syllabus</option>
@@ -228,7 +231,11 @@ function DraftedSyllabus() {
             </button>
           </div>
         </div>
-
+        <div className=' flex gap-2 items-center mr-5 mt-10 mb-7  justify-end text-end font-medium text-[20px]'>
+          
+          <span>Add Lesson</span>
+          <span><Link to='/teacher/dashboard/createsyllabusaddtropic'><CiCirclePlus className=' w-7 h-7 text-[#BB5042]'/></Link></span>
+         </div>
 
         {/* Table Section */}
 

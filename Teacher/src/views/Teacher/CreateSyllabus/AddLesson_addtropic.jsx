@@ -81,7 +81,7 @@ const toggleTopic = (index) => {
     <div className='max-w-full mb-10'>
       {/* Header Section */}
       <div className='flex gap-4 items-center mt-5'>
-        <Link to='/coordinator/dasboard/CoDraftsyllabus'>
+        <Link to='/teacher/dashboard/createsyllabusDraft'>
         <SlArrowLeftCircle className='text-[#BB5042] w-7 h-7' />
         </Link>
        

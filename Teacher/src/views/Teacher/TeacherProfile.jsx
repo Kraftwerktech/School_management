@@ -14,8 +14,8 @@ const TeacherProfile = () => {
   return (
     <div className='max-w-full'>
         <h3 className=' font-semibold text-[31px]'>Profile</h3>
-         <div className=" max-w-full mr-[47px] mt-5  flex items-center justify-center">
-      <div className=" w-[1200px] h-[566px] pt-2 bg-white rounded-lg  flex flex-col md:flex-row gap-6">
+         <div className=" max-w-full  mt-5  flex items-center justify-center">
+      <div className=" w-full mr-[47px] h-[566px] pt-2 bg-white rounded-lg  flex flex-col md:flex-row gap-6">
         {/* Profile Image and Name */}
         <div className="flex flex-col  items-center md:items-start  w-[238px]">
         <div className='w-[220px] h-[250px]'>
@@ -27,8 +27,6 @@ const TeacherProfile = () => {
           <div className='bg-[#BB5042] p-2 rounded-b-lg  text-center text-white'><h2 className="text-xl font-semibold  text-white">Mohammad Ibrahim</h2>
           <span className="text-sm">Assistant Teacher</span></div>
         </div>
-          
-          
         </div>
 
         {/* Profile Information */}

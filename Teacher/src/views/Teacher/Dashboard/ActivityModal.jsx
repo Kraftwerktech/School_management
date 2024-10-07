@@ -1,38 +1,79 @@
+
 import React from 'react';
+import { RxCrossCircled } from "react-icons/rx";
 
 const ActivityModal = ({ isOpen, onClose, activity }) => {
   if (!isOpen) return null; // Don't render if modal is closed
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg w-[500px] p-5">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-[#465049]">Activity Details</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-800"
-          >
-            X {/* Close button */}
-          </button>
-        </div>
-
-        {/* Demo activity details */}
-        <div>
-          <p className="text-lg text-[#BB5042] mb-3 font-semibold">{activity.subject}</p>
-          <p className="text-sm text-gray-700 mb-2">Class: {activity.class}</p>
-          <p className="text-sm text-gray-700 mb-2">Time: {activity.time}</p>
-          <p className="text-sm text-gray-700 mb-4">Period: {activity.period}</p>
-          <p className="text-sm text-gray-600">
-            Here is some demo content for the activity. You can replace this text with actual details of the activity.
-          </p>
-        </div>
-
-        <button
-          onClick={onClose}
-          className="mt-4 bg-[#BB5042] text-white px-4 py-2 rounded-lg"
-        >
-          Close
+      <div className="bg-white w-[1000px] p-10 rounded-lg relative">
+        
+        {/* Close Button */}
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <RxCrossCircled size={24} />
         </button>
+        
+        {/* Header */}
+        <div className="mb-4">
+          <h3 className="text-center text-[28px] font-bold">Activity</h3>
+          <div className=" text-start font-semibold text-[20px] flex gap-1 text-[#98AD9E]">
+           <span>{activity.subject}</span>
+           <span>|</span>
+           <span>Class:{activity.class}</span>
+           <span>|</span>
+           <span>Period:{activity.period}</span>
+          </div>
+        </div>
+
+        {/* Activity Content */}
+        <div className="mb-6">
+          <div className="mb-4 space-y-2">
+            <h4 className="font-semibold text-[16px]">Board Work | 10 min</h4>
+            <p className="text-[16px] text-[#939393] font-medium ">Lesson 11</p>
+            <p className=" text-[16px] text-[#939393]">
+              <strong className='  font-semibold text-[16px]'>Topic 35 | Topic Title: </strong>
+             Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper.
+            </p>
+            <p className=" text-[16px]">Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+
+          <div className="mb-5 space-y-3">
+            <h4 className="font-semibold text-[16px]">M. Test | 30 marks | 20 min</h4>
+            <p className="text-[16px] text-[#939393]">Lesson 7 | Lesson 30</p>
+            <p className="text-[16px] text-[#939393]">
+              <strong>Topic 22 | Topic Title: </strong>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper.
+            </p>
+            <p className="text-[16px] text-[#939393]">
+              <strong>Topic 23 | Topic Title: </strong>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper.
+            </p>
+            <p className="text-[16px] text-[#939393]">
+              <strong>Topic 27 | Topic Title: </strong>Lorem ipsum dolor sit amet consectetur. Quis risus egestas nisl a ullamcorper.
+            </p>
+            <p className="text-[16px] ">Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+        </div>
+
+        {/* Attached Files */}
+        <div className="mb-6">
+          <h4 className="font-semibold">Attached Files</h4>
+          <div className="flex gap-4 mt-2">
+            <button className="bg-gray-100 p-4 border-[2px] rounded-md text-[14px]">Document.pdf</button>
+            <button className="bg-gray-100 p-4 border-[2px] rounded-md text-[14px]">Document 2.pdf</button>
+          </div>
+        </div>
+
+        {/* Homework and Additional Note */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <h4 className="font-semibold">H.W</h4>
+            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+          <div>
+            <h4 className="font-semibold">Additional Note</h4>
+            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+        </div>
       </div>
     </div>
   );

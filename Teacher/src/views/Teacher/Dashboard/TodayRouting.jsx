@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ActivityModal from './ActivityModal'; // Import Modal Component
-
+import {Link} from 'react-router-dom';
 const TodayRouting = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false); // Control modal visibility
@@ -40,8 +40,11 @@ const TodayRouting = () => {
             onChange={handleDateChange}
             className="mt-5 mb-5 mr-5 rounded-[8px] border-[0.5px] border-[#F6F9F7] font-semibold p-5"
           />
-          {/* Show the selected date */}
-          <p className="text-center text-sm text-gray-500">Selected Date: {selectedDate.toDateString()}</p>
+          <Link to='/teacher/dashboard/routineCalender'>
+          <button className=' hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]'>View Academic Calendar</button>
+          </Link>
+         
+          
         </div>
 
         {/* Right side - Subject schedule */}

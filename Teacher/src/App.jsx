@@ -1,40 +1,42 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
-import TeacherDashboard from './views/Teacher/Dashboard/TeacherDashboard';
-import Lesson_Plan from './views/Teacher/Lesson_Plan';
-import Student_Information from './views/Teacher/Student_Information';
-import Class_Attendance from './views/Teacher/StudentAttendances/ClassAttendances';
-import Subject_Attendance from './views/Teacher/StudentAttendances/SubjectAttendances';
-import Student_Result from './views/Teacher/Student_Result';
-import Setting from './views/Teacher/Setting';
 
-import Home_Works from './views/Teacher/Home_Works';
-import Group_Students_By_Class from './views/Teacher/Group_Students_By_Class';
-import Substitute_Scheduling from './views/Teacher/Substitute_Scheduling';
-import Announcement from './views/Teacher/Announcement';
-import Academic_Management from './views/Teacher/Academic_Management';
-import Apply_For_Leave from './views/Teacher/Apply_For_Leave';
-import Teacherlogin from './views/auth/teacherlogin';
-import Varified from './views/auth/Varified';
-import Setnewpassword from './views/auth/Setnewpassword';
-import Forgetpassword from './views/auth/Forgetpassword';
-import TeacherProfile from './views/Teacher/TeacherProfile';
-import Class_Routine from './views/Teacher/Class_Routine';
-import Myclass from './views/Teacher/myclass';
-import StudentDirctory from './views/Teacher/StudentDirctory';
-import Resetpassbyprofile from './views/auth/resetpassbyprofile';
-import VerifyIdentyByProfile from './views/auth/Varifyidentiybyprofile';
-import VarifyOTPbyprofile from './views/auth/varifyOTPbyprofile';
-import Notificationsall from './views/Teacher/Notificationall';
-import RoutineCalanderScreen from './views/Teacher/RoutineCalanderScreen';
-import AddLesson from './views/Teacher/Syllabus/AddLesson'
+const MainLayout = lazy(() => import('./layout/MainLayout'));
+const TeacherDashboard = lazy(() => import('./views/Teacher/Dashboard/TeacherDashboard'));
+const Lesson_Plan = lazy(() => import('./views/Teacher/Lesson_Plan'));
+const Student_Information = lazy(() => import('./views/Teacher/Student_Information'));
+const Class_Attendance = lazy(() => import('./views/Teacher/StudentAttendances/ClassAttendances'));
+const Subject_Attendance = lazy(() => import('./views/Teacher/StudentAttendances/SubjectAttendances'));
+const Student_Result = lazy(() => import('./views/Teacher/Student_Result'));
+const Setting = lazy(() => import('./views/Teacher/Setting'));
+
+const  Home_Works = lazy(() => import('./views/Teacher/Home_Works'));
+const  Group_Students_By_Class = lazy(() => import('./views/Teacher/Group_Students_By_Class'));
+const  Substitute_Scheduling = lazy(() => import('./views/Teacher/Substitute_Scheduling'));
+const  Announcement = lazy(() => import('./views/Teacher/Announcement'));
+const  Academic_Management = lazy(() => import('./views/Teacher/Academic_Management'));
+const  Apply_For_Leave = lazy(() => import('./views/Teacher/Apply_For_Leave'));
+const  Teacherlogin = lazy(() => import('./views/auth/teacherlogin'));
+const  Varified = lazy(() => import('./views/auth/Varified'));
+const  Setnewpassword = lazy(() => import('./views/auth/Setnewpassword'));
+const  Forgetpassword = lazy(() => import('./views/auth/Forgetpassword'));
+const  TeacherProfile = lazy(() => import('./views/Teacher/TeacherProfile'));
+const  Class_Routine = lazy(() => import('./views/Teacher/Class_Routine'));
+const  Myclass = lazy(() => import('./views/Teacher/myclass'));
+const  StudentDirctory = lazy(() => import('./views/Teacher/StudentDirctory'));
+const  Resetpassbyprofile = lazy(() => import('./views/auth/resetpassbyprofile'));
+const  VerifyIdentyByProfile = lazy(() => import('./views/auth/Varifyidentiybyprofile'));
+const  VarifyOTPbyprofile = lazy(() => import('./views/auth/varifyOTPbyprofile'));
+const  Notificationsall = lazy(() => import('./views/Teacher/Notificationall'));
+const  RoutineCalanderScreen = lazy(() => import('./views/Teacher/RoutineCalanderScreen'));
+const  AddLesson = lazy(() => import('./views/Teacher/Syllabus/AddLesson'));
 
 
-import AddLessonplan from './views/Teacher/LessonPlan/addLesson';
-import AddActivityplan from './views/Teacher/LessonPlan/AddLessonAddtropic';
+const  AddLessonplan = lazy(() => import('./views/Teacher/LessonPlan/addLesson'));
+const  AddActivityplan = lazy(() => import('./views/Teacher/LessonPlan/AddLessonAddtropic'));
+const  Syllabus = lazy(() => import('./views/Teacher/Syllabus/LayoutSyllabus'));
 
-import Syllabus from './views/Teacher/Syllabus/LayoutSyllabus';
+
 import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
 import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
 import NewCreateSyllabusDraft from './views/Teacher/Syllabus/NewCreateSyllabusDraft';
