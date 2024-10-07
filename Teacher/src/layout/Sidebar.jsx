@@ -27,17 +27,20 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [openMenus, setOpenMenus] = useState({});
   const [userRole, setUserRole] = useState(null);
+  const location = useLocation();
+  const currentPath = location.pathname; // Get current path
+
+  // Set initial activeMenu based on location.pathname
+  const [activeMenu, setActiveMenu] = useState(currentPath);
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = localStorage.getItem('userRole') || 'teacher' || 'coordinator';
+      const role = localStorage.getItem('userRole') || 'teacher';
       setUserRole(role);
     };
 
     fetchUserRole();
   }, []);
-
-  const location = useLocation();
 
   const menuItems = [
     { path: "/teacher/dashboard", role: "teacher", name: "Dashboard", icon: <AiFillDashboard /> },
@@ -85,12 +88,11 @@ const Sidebar = () => {
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },
   ];
 
-
   const filteredMenuItems = menuItems.filter(item => item.role === userRole);
 
-  
   const handleMenuClick = (path) => {
     setShowSidebar(false);
+    setActiveMenu(path); // Update the active menu with the path
   };
 
   const handleSubmenuToggle = (name) => {
@@ -137,8 +139,8 @@ const Sidebar = () => {
                   <>
                     <div
                       onClick={() => handleSubmenuToggle(item.name)}
-                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer relative ${
-                        openMenus[item.name]
+                      className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[14px]  pr-[12px] pt-[18px] pb-[18px] gap-x-2 flex justify-between items-center transition-all mb-1 cursor-pointer relative ${
+                        openMenus[item.name] || activeMenu.includes(item.name)
                           ? 'bg-[#465049] text-white'
                           : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                       }`}
@@ -153,21 +155,19 @@ const Sidebar = () => {
                       <ul className="pl-2">
                         {item.submenu.map((subItem, subIndex) => (
                           <div className="flex items-center" key={subIndex}>
-                            <FiMinus className="text-[#868987]"/>
+                            <FiMinus className="text-[#868987]" />
                             <li>
                               <Link
                                 to={subItem.path}
                                 onClick={() => handleMenuClick(subItem.path)}
-                                className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] mt-1 mb-1 pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
-                                  location.pathname === subItem.path
+                                className={`text-[#465049] w-[200px] h-[35px] rounded-[8px] font-normal duration-200 pl-[16px] pr-[16px] pt-[10px] pb-[10px] gap-x-2 flex  items-center transition-all mb-1 cursor-pointer relative ${
+                                  activeMenu === subItem.path
                                     ? 'bg-[#465049] text-white'
                                     : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                                 }`}
                               >
-                                <span className="text-[24px]">
-                                  {subItem.icon}
-                                </span>
-                                <span>{subItem.name}</span>
+                                <span className="text-[26px]">{subItem.icon}</span>
+                                <span className="font-normal text-[15px]">{subItem.name}</span>
                               </Link>
                             </li>
                           </div>
@@ -179,14 +179,14 @@ const Sidebar = () => {
                   <Link
                     to={item.path}
                     onClick={() => handleMenuClick(item.path)}
-                    className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all relative ${
-                      location.pathname === item.path
+                    className={`text-[#465049] w-[224px] h-[48px] rounded-lg font-normal duration-200 pl-[12px] pr-[12px] pt-[16px] pb-[16px] gap-x-2 flex justify-start items-center transition-all mb-1 cursor-pointer relative ${
+                      activeMenu === item.path
                         ? 'bg-[#465049] text-white'
                         : 'bg-[#E4EBE6] hover:bg-[#465049] hover:text-white'
                     }`}
                   >
                     <span className="text-[26px]">{item.icon}</span>
-                    <span>{item.name}</span>
+                    <span className="font-normal">{item.name}</span>
                   </Link>
                 )}
               </li>

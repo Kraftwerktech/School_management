@@ -95,6 +95,7 @@ const ActivityTracking = () => {
       <div className="p-6 bg-white h-[420px] rounded-[8px] w-[100%] border-[1px]">
         <p className="text-[#465049] text-[20px] font-semibold text-center mb-4">Weekly Activity Tracking Progress</p>
         <div className="my-4">
+          <div></div>
           {/* Bar Chart */}
           <ResponsiveContainer width="96%" height={320}>
             <BarChart data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

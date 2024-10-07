@@ -7,7 +7,7 @@ import ExamRoutine from './ExamRoutine';
 
 const Dashboard = () => {
   return (
-    <div className=" w-full mx-auto mt-5">
+    <div className=" w-full mr-10 mx-auto mt-5">
       <h1 className="text-3xl font-semibold mb-4">Dashboard</h1>
       <ReminderSection />
       <AttendanceOverview />

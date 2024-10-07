@@ -40,7 +40,7 @@ const TodayRouting = () => {
             onChange={handleDateChange}
             className="mt-5 mb-5 mr-5 rounded-[8px] border-[0.5px] border-[#F6F9F7] font-semibold p-5"
           />
-          <Link to='/teacher/dashboard/routineCalender'>
+          <Link to='/teacher/dashboard/addlessonaddtropic'>
           <button className=' hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]'>View Academic Calendar</button>
           </Link>
          
