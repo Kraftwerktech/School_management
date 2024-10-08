@@ -17,7 +17,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 // Pie chart data
 const pieData = [
-  { name: '2 activities are incomplete in the last week.', value: 85 },
+  { name: '2 activities are incomplete ', value: 85 },
   { name: '2 activities are incomplete', value: 5 },
   { name: '2 activities are incomplete', value: 7 },
   { name: '2 activities are incomplete', value: 3 },
@@ -87,31 +87,41 @@ const ActivityTracking = () => {
                 ))}
               </Pie>
               <Tooltip
-                contentStyle={{
-                  backgroundColor: '#B9CBBE',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                  padding: '10px',
-                  border: 'none',
-                  width: '220px',
-                  margin: '20px',
-                  position: 'relative',
-                  textAlign: 'center',
-                  textShadow: '#465049',
-                }}
-                formatter={(value, name) => [value, name]}
-                cursor={false}
-                wrapperStyle={{ 
-                  pointerEvents: 'none',
-                  overflow: 'visible',
-                }}
-                position={{ x: 140, y: 47 }}
-                itemStyle={{
-                  color: '#3E6259',
-                  fontWeight: '500',
-                }}
-                separator=""
-              />
+  contentStyle={{
+    backgroundColor: '#B9CBBE',
+    borderRadius: '8px',
+    padding: '20px',
+    border: 'none',
+    width: '290px',
+    textAlign: 'center', // Center the text
+    textShadow: '0 1px 1px #465049', // Added shadow for better visibility
+    position: 'relative', // Position for arrow placement
+    boxSizing: 'border-box', // Ensure padding is included in total width/height
+  }}
+  formatter={(value, name) => [value, name]}
+  cursor={false}
+  wrapperStyle={{
+    pointerEvents: 'none',
+    overflow: 'visible',
+  }}
+  position={{ x: 140, y: 30 }}
+  itemStyle={{
+    color: '#3E6259',
+    fontWeight: '500',
+  }}
+  separator=""
+  arrow={true} // Ensure arrow is displayed
+  arrowStyle={{
+    position: 'absolute',
+    bottom: '-5px', // Position arrow below the tooltip
+    left: '50%',
+    transform: 'translateX(-50%)', // Center the arrow
+    borderWidth: '5px',
+    borderStyle: 'solid',
+    borderColor: '#B9CBBE transparent transparent transparent', // Arrow color
+  }}
+/>
+
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -148,7 +158,7 @@ const ActivityTracking = () => {
         <div className="my-4">
           <ResponsiveContainer width="100%" height={450}>
             <BarChart data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 10 }}>
-              <XAxis dataKey="name" tick={{ fontWeight: '600' }} />
+              <XAxis dataKey="name" tick={{ fontWeight: '700' }} />
               <YAxis  label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10 }} />
               <Legend
   align="right"

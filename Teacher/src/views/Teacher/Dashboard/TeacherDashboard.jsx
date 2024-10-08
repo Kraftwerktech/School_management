@@ -7,13 +7,15 @@ import ExamRoutine from './ExamRoutine';
 
 const Dashboard = () => {
   return (
-    <div className=" w-full mr-10 mx-auto mt-5">
-      <h1 className="text-3xl font-semibold mb-4">Dashboard</h1>
-      <ReminderSection />
-      <AttendanceOverview />
-      <TodayRouting />
-      <ActivityTracking />
-      <ExamRoutine />
+    <div className="mx-auto w-full mt-5">
+      <div className="mr-[47px]">
+        <h1 className="text-[31px] font-semibold mb-4">Dashboard</h1>
+        <ReminderSection />
+        <AttendanceOverview />
+        <TodayRouting />
+        <ActivityTracking />
+        <ExamRoutine />
+      </div>
     </div>
   );
 };
