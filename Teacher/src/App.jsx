@@ -36,62 +36,60 @@ const  AddLessonplan = lazy(() => import('./views/Teacher/LessonPlan/addLesson')
 const  AddActivityplan = lazy(() => import('./views/Teacher/LessonPlan/AddLessonAddtropic'));
 const  Syllabus = lazy(() => import('./views/Teacher/Syllabus/LayoutSyllabus'));
 
-
-import ApprovedSyllabus from './views/Teacher/Syllabus/ApprovedSyllabus';
-import DraftedSyllabus from './views/Teacher/Syllabus/DraftedSyllabus';
-import NewCreateSyllabusDraft from './views/Teacher/Syllabus/NewCreateSyllabusDraft';
-import WaitingApproval from './views/Teacher/Syllabus/WaitingApproval';
-import AddLesson_addtropic from './views/Teacher/Syllabus/AddLesson_addtropic';
-import AddTropic from './views/Teacher/Syllabus/AddTropic';
-import AddActivity from './views/Teacher/Syllabus/AddActivity';
-
-import MessageColab from './views/Teacher/Collaboration/Messageing/MessageColab';
-
-import CoordinatorDashboard from './views/Coordinator/Dashboard';
-import Colaboration from './views/Coordinator/Colaboration';
-import CoStudentdir from './views/Coordinator/Student_directory';
-import CoSyllabus from "./views/Coordinator/Syllabus/LayoutSyllabus";
-import CApprovedSyllabus from './views/Coordinator/Syllabus/ApprovedSyllabus';
-import CDraftedSyllabus from './views/Coordinator/Syllabus/DraftedSyllabus';
-import CWaitingApproval from './views/Coordinator/Syllabus/WaitingApproval';
-import CAddLesson_addtropic from './views/Coordinator/Syllabus/AddLesson_addtropic';
-import CAddTropic from './views/Coordinator/Syllabus/AddTropic';
-import CAddActivity from './views/Coordinator/Syllabus/AddActivity';
-
-import CoLayoutLesson from './views/Coordinator/LessonPlan/LayoutLesson';
-import CoApprovedLesson from './views/Coordinator/LessonPlan/ApproviedLesson';
-import CoPendingLesson from './views/Coordinator/LessonPlan/PendingLesson';
+const  ApprovedSyllabus = lazy(() => import('./views/Teacher/Syllabus/ApprovedSyllabus'));
+const  DraftedSyllabus = lazy(() => import('./views/Teacher/Syllabus/DraftedSyllabus'));
+const  NewCreateSyllabusDraft = lazy(() => import('./views/Teacher/Syllabus/NewCreateSyllabusDraft'));
+const  WaitingApproval = lazy(() => import('./views/Teacher/Syllabus/WaitingApproval'));
+const  AddLesson_addtropic = lazy(() => import('./views/Teacher/Syllabus/AddLesson_addtropic'));
+const  AddTropic = lazy(() => import('./views/Teacher/Syllabus/AddTropic'));
+const  AddActivity = lazy(() => import('./views/Teacher/Syllabus/AddActivity'));
+const  MessageColab = lazy(() => import('./views/Teacher/Collaboration/Messageing/MessageColab'));
 
 
-import ApprovedLesson from './views/Teacher/LessonPlan/ApprovedLesson';
-import DraftLesson from './views/Teacher/LessonPlan/DraftLesson';
-import LayoutLesson from './views/Teacher/LessonPlan/LayoutLesson';
+const CoordinatorDashboard = lazy(() => import('./views/Coordinator/Dashboard'));
+const Colaboration = lazy(() => import('./views/Coordinator/Colaboration'));
+const CoStudentdir = lazy(() => import('./views/Coordinator/Student_directory'));
+const CoSyllabus = lazy(() => import('./views/Coordinator/Syllabus/LayoutSyllabus'));
+const CApprovedSyllabus = lazy(() => import('./views/Coordinator/Syllabus/ApprovedSyllabus'));
+const CDraftedSyllabus = lazy(() => import('./views/Coordinator/Syllabus/DraftedSyllabus'));
+const CWaitingApproval = lazy(() => import('./views/Coordinator/Syllabus/WaitingApproval'));
+const CAddLesson_addtropic = lazy(() => import('./views/Coordinator/Syllabus/AddLesson_addtropic'));
+const CAddTropic = lazy(() => import('./views/Coordinator/Syllabus/AddTropic'));
+const CAddActivity = lazy(() => import('./views/Coordinator/Syllabus/AddActivity'));
 
-import CoOrdinatorlogin from './views/Coordinator/CoAuth/Login';
-import COAnnuncement from './views/Coordinator/Announcements';
-import COMeeting from './views/Coordinator/Meetings';
-import COTeacherList from './views/Coordinator/TeacherList';
-import COReport from './views/Coordinator/Reports';
-import AssmentLayout from './views/Teacher/Assesment/assesmentLayout';
-import Marked from './views/Teacher/Assesment/MarkesGiven';
-import Nomarked from './views/Teacher/Assesment/Nomarksgiven';
-import Homepage from './Homepage';
-import InputMark from './views/Teacher/Assesment/InputMark';
-import Disclousedmark from './views/Teacher/Assesment/Disclousedmark';
-import Editmark from './views/Teacher/Assesment/Editmark';
-import ActivityTracking from './views/Teacher/Activity Tracking/ActivityTracking';
-import TeacherSyllabus from './views/Teacher/Syllabus';
-import RequestMeetings from './views/Teacher/Collaboration/Meeting/RequestMeeting';
-import ArchiveMeetings from './views/Teacher/Collaboration/Meeting/ArchiveMeeting';
-import Upcomingmeeting from './views/Teacher/Collaboration/Meeting/Upcomingmeeting';
-import TeacherList from './views/Coordinator/TeacherList';
-import AllTeachers from './views/Teacher/TeacherDir/AllTeacher';
-import TeacherFullInfo from './views/Teacher/TeacherDir/TeacherFullInfo';
-import CreateSyllabusLayout from './views/Teacher/CreateSyllabus/LayoutSyllabus';
-import CreateSyllabusDraft from './views/Teacher/CreateSyllabus/DraftedSyllabus';
-import CreateSyllabusApproved from './views/Teacher/CreateSyllabus/ApprovedSyllabus';
-import CreateSyllabusAddtropic from './views/Teacher/CreateSyllabus/AddLesson_addtropic';
+const CoLayoutLesson = lazy(() => import('./views/Coordinator/LessonPlan/LayoutLesson'));
+const CoApprovedLesson = lazy(() => import('./views/Coordinator/LessonPlan/ApproviedLesson'));
+const CoPendingLesson = lazy(() => import('./views/Coordinator/LessonPlan/PendingLesson'));
 
+
+const ApprovedLesson = lazy(() => import('./views/Teacher/LessonPlan/ApprovedLesson'));
+const DraftLesson = lazy(() => import('./views/Teacher/LessonPlan/DraftLesson'));
+const LayoutLesson = lazy(() => import('./views/Teacher/LessonPlan/LayoutLesson'));
+
+const CoOrdinatorlogin = lazy(() => import('./views/Coordinator/CoAuth/Login'));
+const COAnnuncement = lazy(() => import('./views/Coordinator/Announcements'));
+const COMeeting = lazy(() => import('./views/Coordinator/Meetings'));
+const COTeacherList = lazy(() => import('./views/Coordinator/TeacherList'));
+const COReport = lazy(() => import('./views/Coordinator/Reports'));
+const AssmentLayout = lazy(() => import('./views/Teacher/Assesment/assesmentLayout'));
+const Marked = lazy(() => import('./views/Teacher/Assesment/MarkesGiven'));
+const Nomarked = lazy(() => import('./views/Teacher/Assesment/Nomarksgiven'));
+const Homepage = lazy(() => import('./Homepage'));
+const InputMark = lazy(() => import('./views/Teacher/Assesment/InputMark'));
+const Disclousedmark = lazy(() => import('./views/Teacher/Assesment/Disclousedmark'));
+const Editmark = lazy(() => import('./views/Teacher/Assesment/Editmark'));
+const ActivityTracking = lazy(() => import('./views/Teacher/Activity Tracking/ActivityTracking'));
+const TeacherSyllabus = lazy(() => import('./views/Teacher/Syllabus'));
+const RequestMeetings = lazy(() => import('./views/Teacher/Collaboration/Meeting/RequestMeeting'));
+const ArchiveMeetings = lazy(() => import('./views/Teacher/Collaboration/Meeting/ArchiveMeeting'));
+const Upcomingmeeting = lazy(() => import('./views/Teacher/Collaboration/Meeting/Upcomingmeeting'));
+const TeacherList = lazy(() => import('./views/Coordinator/TeacherList'));
+const AllTeachers = lazy(() => import('./views/Teacher/TeacherDir/AllTeacher'));
+const TeacherFullInfo = lazy(() => import('./views/Teacher/TeacherDir/TeacherFullInfo'));
+const CreateSyllabusLayout = lazy(() => import('./views/Teacher/CreateSyllabus/LayoutSyllabus'));
+const CreateSyllabusDraft = lazy(() => import('./views/Teacher/CreateSyllabus/DraftedSyllabus'));
+const CreateSyllabusApproved = lazy(() => import('./views/Teacher/CreateSyllabus/ApprovedSyllabus'));
+const CreateSyllabusAddtropic = lazy(() => import('./views/Teacher/CreateSyllabus/AddLesson_addtropic'));
 
 function App() {
   return (
