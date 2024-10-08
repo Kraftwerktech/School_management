@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ActivityModal from './ActivityModal'; // Import Modal Component
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 const TodayRouting = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false); // Control modal visibility
@@ -41,27 +42,39 @@ const TodayRouting = () => {
             className="mt-5 mb-5 mr-5 rounded-[8px] border-[0.5px] border-[#F6F9F7] font-semibold p-5"
           />
           <Link to='/teacher/dashboard/addlessonaddtropic'>
-          <button className=' hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]'>View Academic Calendar</button>
+            <button className="hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]">
+              View Academic Calendar
+            </button>
           </Link>
-         
-          
         </div>
 
         {/* Right side - Subject schedule */}
-        <div className="w-full mt-14">
-          <div className="grid grid-cols-5 md:grid-cols-6 gap-4">
+        <div className="w-full">
+          <h3 className="text-end mr-[47px] text-[18px] text-[#A4A594]">Weekly Routine</h3>
+          <div className="grid grid-cols-5 mt-[30px] md:grid-cols-6 gap-4">
             {subjects.map((subject, index) => (
               <div key={index} className="text-center bg-[#F6F9F7] p-4 rounded-lg">
                 <p className="font-bold text-[31px] mb-3 text-gray-800">{subject.period}</p>
                 <p className="font-medium items-center ml-8 w-[90px] text-[18px] mb-5 text-[#465049]">{subject.time}</p>
-                <p className="text-[#BB5042] font-bold text-[26px]">{subject.subject}</p>
+                <p className="text-[#BB5042] font-bold text-[26px]">{subject.subject !== 'n/a' ? subject.subject : 'N/A'}</p>
                 <p className="text-[#465049] text-[20px] mb-8 font-bold">{subject.class}</p>
-                <button
-                  onClick={() => handleActivityClick(subject)} // Pass subject data to modal
-                  className="mt-2 bg-transparent border-[1px] border-[#BB5042] text-[#BB5042] text-[16px] rounded-[8px] px-6 py-3"
-                >
-                  {subject.buttonText}
-                </button>
+
+                {/* Conditionally render the button based on the subject */}
+                {subject.subject !== 'n/a' ? (
+                  <button
+                    onClick={() => handleActivityClick(subject)} // Pass subject data to modal
+                    className="mt-2 bg-transparent border-[1px] border-[#BB5042] text-[#BB5042] text-[16px] rounded-[8px] px-6 py-3"
+                  >
+                    {subject.buttonText}
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="mt-2 bg-transparent border-[1px] border-[#939393] text-[#939393] text-[16px] rounded-[8px] px-6 py-3 cursor-not-allowed"
+                  >
+                    {subject.buttonText}
+                  </button>
+                )}
               </div>
             ))}
           </div>

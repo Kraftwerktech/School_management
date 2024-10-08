@@ -19,8 +19,8 @@ const ReminderSection = () => {
         <div className="grid ml-10 mt-3 mr-10 grid-cols-1 lg:grid-cols-3 gap-4 mb-2">
           {reminders.map((reminder, index) => (
             <div key={index} className="bg-[#F8EEEC] p-4 rounded-lg">
-              <p className="text-sm">{reminder.text}</p>
-              <a href="#" className="text-blue-500">{reminder.link}</a>
+              <p className="text-[13px] text-[#465049]">{reminder.text}</p>
+              <a href="#" className="text-[#0318CF]">{reminder.link}</a>
             </div>
           ))}
         </div>

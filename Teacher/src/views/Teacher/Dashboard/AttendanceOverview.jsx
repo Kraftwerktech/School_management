@@ -1,6 +1,6 @@
 import React from 'react';
 import Absence from '../../../assets/Teacher/icons/Absence.png';
-import Present from '../../../assets/Teacher/icons/Present.png';
+import Present from '../../../assets/Teacher/icons/Vector.png';
 import { PiStudent } from 'react-icons/pi';
 const AttendanceOverview = () => {
   
@@ -25,7 +25,7 @@ const AttendanceOverview = () => {
           <div className="h-full rounded-[12px] bg-[#daefe0] p-4">
             <div className="flex flex-col items-center">
               <div className=' mb-6 flex text-center'>
-              <span className="block text-[25px] text-[#465049] font-semibold">Present Students</span>
+              <span className="block text-[25px] text-[#465049] font-semibold">Today’s Present </span>
               </div>
               <div className='flex gap-[40px] items-center'>
               <div className="flex justify-center items-center bg-[#08A647] w-[80px] h-[80px] rounded-full">
@@ -42,11 +42,11 @@ const AttendanceOverview = () => {
           <div className="h-full rounded-[12px] bg-[#F8EEEC] p-4">
             <div className="flex  flex-col items-center">
               <div className=' mb-6 flex text-center'>
-              <span className="block text-[25px] text-[#465049] font-semibold">Absent Students</span>
+              <span className="block text-[25px] text-[#465049] font-semibold">Today’s Absence</span>
               </div>
 
               <div className='flex gap-[40px] items-center'>
-              <div className="flex justify-center items-center bg-[#CD1902] w-[80px] h-[80px] rounded-full">
+              <div className="flex justify-center items-center bg-[#C97368] w-[80px] h-[80px] rounded-full">
                 <img src={Absence} className="w-[50px] text-white h-[50px]" />
               </div>
               <div>
