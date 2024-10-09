@@ -6,7 +6,7 @@ import Absence from '../../../assets/Teacher/icons/Absence.png';
 import Present from '../../../assets/Teacher/icons/Present.png';
 import { Link } from 'react-router-dom';
 import { IoIosSearch } from "react-icons/io";
-
+import { TfiAlarmClock } from "react-icons/tfi";
 
 // Dummy Data
 const initialStudents = [
@@ -22,6 +22,90 @@ const initialStudents = [
   { id: 10, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
   // More students if needed...
 ];
+
+//Late Entry Model
+
+const LateEntryModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      {/* Button to Open Modal */}
+      <button
+        className=" py-2 px-4 rounded  transition duration-300"
+        onClick={toggleModal}
+      >
+      <BsClockHistory className='w-7 h-7 text-[#BB5042]'/>
+      </button>
+
+      {/* Modal Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          {/* Modal Content */}
+          <div className="bg-white rounded-lg shadow-lg  w-11/12 md:w-1/2 lg:w-1/3 p-6 relative">
+            {/* Close Button */}
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              onClick={toggleModal}
+            >
+              ✕
+            </button>
+
+            {/* Modal Title */}
+            <h2 className="text-2xl font-bold mb-8 mt-8 text-center">Late Entry</h2>
+
+            {/* Modal Form */}
+            <form className=' flex flex-col items-center'>
+  {/* Late Entry Time Input */}
+  <div className="mb-6 flex gap-4 items-center">
+    <div className="relative w-[400px]">
+      <input
+        type="text"
+        className="placeholder:text-[13px] py-2 px-5 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pl-10"
+        placeholder="Late Entry Time"
+      />
+      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+        <TfiAlarmClock  className=' w-6 h-6 text-[#BB5042]'/>
+      </span>
+    </div>
+  </div>
+
+  {/* Reason Input */}
+  <div className=" flex gap-4 items-center">
+    <div className="w-[400px]">
+      <input
+        type="text"
+        id="reason"
+        className="placeholder:text-[13px] py-2 px-5 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
+        placeholder="Reason"
+      />
+    </div>
+  </div>
+
+  {/* Submit Button */}
+  <div className="text-center mb-[30px] mt-[50px]">
+    <button
+      type="submit"
+      className="bg-[#BB5042] text-white py-2 px-6 rounded hover:bg-green-600 transition duration-300"
+    >
+      Submit
+    </button>
+  </div>
+           </form>
+
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+
+
 
 const itemsPerPage = 8;
 
@@ -40,6 +124,16 @@ function SubjectAttendances() {
 
   const handlePageClick = (page) => {
     setCurrentPage(page);
+  };
+
+  // Set all students to 'Present'
+  const markAllAsPresent = () => {
+    setStudentData((prevData) =>
+      prevData.map((student) => ({
+        ...student,
+        status: 'Present',
+      }))
+    );
   };
 
   const toggleAttendance = (id) => {
@@ -173,8 +267,8 @@ function SubjectAttendances() {
     
     </div>
 
-  <div>
-      <button className="px-5 py-2 bg-[#BB5042] text-white rounded-md">
+    <div>
+      <button onClick={markAllAsPresent} className="px-5 py-2 bg-[#BB5042] text-white rounded-md">
         Mark as Present
       </button>
   </div>
@@ -227,13 +321,7 @@ function SubjectAttendances() {
   </div>
 </td>
       <td className="px-4 py-2 text-center">
-                  <span
-                      className={`inline-flex items-center text-xs font-medium rounded-full ${
-                        student.status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      <BsClockHistory className='w-6 h-6'/>
-                    </span>
+      <LateEntryModal/>
                   </td>
                 </tr>
               ))}
