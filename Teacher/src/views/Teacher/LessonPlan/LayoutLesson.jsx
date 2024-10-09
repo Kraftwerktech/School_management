@@ -186,7 +186,7 @@ function LayoutLesson() {
         <h1 className="text-[31px] font-bold">Lesson Plan</h1>
         <button
           onClick={openCreateModal}
-          className="border rounded-lg text-white bg-[#BB5042] px-6 py-2 hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
+          className="border rounded-lg text-white bg-[#BB5042] px-6 py-2 h-[55px] w-[150px] hover:bg-[#a9432e] focus:outline-none focus:ring-2 focus:ring-[#a9432e] focus:ring-opacity-50"
           aria-label="Create Lesson"
         >
           Create
@@ -201,8 +201,8 @@ function LayoutLesson() {
             to={tab.path}
             className={({ isActive }) =>
               (isActive || (tab.name === 'Approved Lesson' && location.pathname === '/teacher/dashboard'))
-                ? 'font-bold text-[20px] border-b-[5px] border-[#BB5042] pb-2'
-                : 'text-gray-600 text-[20px] hover:text-gray-900'
+                ? 'font-bold text-[24px] border-b-[5px] border-[#BB5042] pb-2'
+                : 'text-gray-600 text-[24px] hover:text-gray-900'
             }
           >
             {tab.name}

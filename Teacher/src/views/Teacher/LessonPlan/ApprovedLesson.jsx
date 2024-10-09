@@ -91,7 +91,7 @@ function ApprovedLesson() {
           {/* Filter Button */}
           <div className='flex gap-2 items-center'>
             <button
-              className='py-2 gap-2 px-6 w-[150px] font-medium bg-[#BB5042] text-white flex items-center rounded-[8px]'
+              className='py-2 gap-2 h-[55px] text-[18px] px-6 w-[150px] font-medium bg-[#BB5042] text-white flex items-center rounded-[8px]'
               onClick={() => setFilterModalOpen(true)} // Open modal on click
             >
               <CiFilter className='w-6 h-6' /> Filter
@@ -103,9 +103,9 @@ function ApprovedLesson() {
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-[60px] h-[44px]"
+              className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-[200px] pr-[60px] h-[55px]"
               placeholderText="Select Date"
-              dateFormat="dd MMMM yyyy"
+              dateFormat="dd MMM yyyy"
             />
             {/* Calendar Icon positioned inside the DatePicker input */}
             <CiCalendar className="absolute w-7 h-7 text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -117,9 +117,9 @@ function ApprovedLesson() {
           <span className='text-[20px] font-semibold text-[#98AD9E]'>Economics | Class IX | Group 1</span>
           <span><TbExchange className='text-[#BB5042] w-10 h-7' /></span>
         </div>
-<div className='mb-5 border-b-[2px] border-[#B6B6B6]'>
-<div className=' mb-[50px] border-b-[1.5px]'>
-          <div className='mt-5 flex justify-between border-b-[1px] mr-5'>
+<div className='mb-5 border-b-[1.5px] border-[#B6B6B6]'>
+<div className=' mb-[50px] border-b-[1px]'>
+          <div className='mt-5 flex justify-between mr-5'>
             <span className='text-[20px] font-bold mb-2'>Activity</span>
           </div>
           <div className='mt-2'>
@@ -138,7 +138,7 @@ function ApprovedLesson() {
           </div>
 
           <div className='mt-2'>
-            <div className='flex justify-between border-b-[1px] items-center mt-5 mr-5'>
+            <div className='flex justify-between  items-center mt-5 mr-5'>
               <span className='text-[18px] text-[#465049] mb-3 font-bold'>M.Test | 30 marks | 20 min</span>
             </div>
             <div className='mt-3'>
@@ -192,8 +192,8 @@ function ApprovedLesson() {
           <span><TbExchange className='text-[#BB5042] w-10 h-7' /></span>
         </div>
 <div className='mb-5'>
-<div className=' mb-[50px] border-b-[1.5px]'>
-          <div className='mt-5 flex justify-between border-b-[1px] mr-5'>
+<div className=' mb-[50px] border-b-[1px]'>
+          <div className='mt-5 flex justify-betwee mr-5'>
             <span className='text-[20px] font-bold mb-2'>Activity</span>
           </div>
           <div className='mt-2'>
@@ -212,7 +212,7 @@ function ApprovedLesson() {
           </div>
 
           <div className='mt-2'>
-            <div className='flex justify-between border-b-[1px] items-center mt-5 mr-5'>
+            <div className='flex justify-between items-center mt-5 mr-5'>
               <span className='text-[18px] text-[#465049] mb-3 font-bold'>M.Test | 30 marks | 20 min</span>
             </div>
             <div className='mt-3'>

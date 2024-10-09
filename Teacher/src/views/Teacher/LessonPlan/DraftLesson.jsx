@@ -5,17 +5,19 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { CiTrash } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
-
+import { Link } from 'react-router-dom';
+import { RxCrossCircled } from 'react-icons/rx';
+import { IoIosArrowDown } from "react-icons/io";
 
 const SyllabusCard = ({ status, date, title, test, mark, time, lesson, topicno, topictitle, details, activityDetails, attachedFiles }) => {
   const getStatusStyles = () => {
     switch (status) {
       case 'In Progress':
-        return 'bg-[#98AD9E] text-white font-bold';
+        return 'bg-[#98AD9E] rounded-lg text-white font-bold';
       case 'Submitted':
-        return 'bg-[#A4A594] text-white font-bold';
+        return 'bg-[#A4A594] rounded-lg text-white font-bold';
       case 'Rejected':
-        return 'border-[#CD1902] bg-[#CD1902] text-white font-bold'; // Red border and background for rejected status
+        return 'border-[#CD1902]  bg-[#CD1902] rounded-lg text-white font-bold'; // Red border and background for rejected status
       default:
         return '';
     }
@@ -176,7 +178,76 @@ const SyllabusList = () => {
   );
 };
 
+
+
+// Separate functional component for Filter Modal
+function FilterModal({ isOpen, onClose }) {
+  if (!isOpen) return null; // If modal is not open, don't render anything
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="relative bg-white p-20 rounded-[8px] w-[700px]">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+          aria-label="Close modal"
+        >
+          <RxCrossCircled size={24} />
+        </button>
+        
+        <h2 className="text-[31px] text-center font-bold mt-5 mb-4">Select Filters</h2>
+        
+        {/* Filter form */}
+        <div className="flex mt-10 gap-4">
+          {/* Subject Filter */}
+          <div className="relative w-full flex items-center border-[1px] rounded-[8px] border-[#B6B6B6]">
+            <select className="w-full px-4 py-4 border-none rounded-md outline-none appearance-none">
+              <option value="" selected>Subject</option>
+              <option value="math">Mathematics</option>
+              <option value="english">English</option>
+              <option value="science">Science</option>
+            </select>
+            <IoIosArrowDown className='mr-5 w-5 h-5 text-[#BB5042]'/>
+          </div>
+
+          {/* Class Filter */}
+          <div className="relative w-full  flex items-center border-[1px] rounded-[8px] border-[#B6B6B6]">
+            <select className="w-full px-4 py-4 border-none rounded-md outline-none appearance-none">
+              <option value="" selected>Class</option>
+              <option value="six">Class Six</option>
+              <option value="seven">Class Seven</option>
+              <option value="eight">Class Eight</option>
+            </select>
+            <IoIosArrowDown className='mr-5 w-5 h-5 text-[#BB5042]'/>
+          </div>
+
+          {/* Section/Group Filter */}
+          <div className="relative w-full  flex items-center border-[1px] rounded-[8px] border-[#B6B6B6]">
+            <select className="w-full px-4 py-4 border-none rounded-md outline-none appearance-none">
+              <option value=""  selected>Section</option>
+              <option value="A">Section A</option>
+              <option value="B">Section B</option>
+              <option value="C">Section C</option>
+            </select>
+            <IoIosArrowDown className='mr-5 w-5 h-5 text-[#BB5042]'/>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex justify-center gap-4 mt-14 mb-10">
+          <button className="px-7 py-4 w-[450px] bg-[#BB5042] text-white rounded-md">
+            Filter
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function DraftLesson() {
+  const [isFilterModalOpen, setFilterModalOpen] = useState(false); // State for modal
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
@@ -189,7 +260,8 @@ function DraftLesson() {
 
           {/* Filter Button */}
           <div className="flex gap-2 items-center">
-            <button className="py-2 px-6 w-[150px] font-medium border border-[#BB5042] text-[#BB5042] flex items-center rounded-md">
+            
+            <button onClick={() => setFilterModalOpen(true)} className="py-2 px-6 w-[150px] h-[55px] text-[18px] font-medium border border-[#BB5042] text-[#BB5042] flex items-center rounded-[8px]">
               <CiFilter className="w-6 h-6" /> Filter
             </button>
           </div>
@@ -199,9 +271,9 @@ function DraftLesson() {
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full pr-[60px] h-[44px]"
+              className="appearance-none px-8 w-[200px] py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] h-[55px] pr-[60px]"
               placeholderText="Select Date"
-              dateFormat="dd MMMM yyyy"
+              dateFormat="dd MMM yyyy"
             />
             <CiCalendar className="absolute w-7 h-7 text-[#BB5042] right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
           </div>
@@ -213,6 +285,8 @@ function DraftLesson() {
       <div className="mt-6">
         <SyllabusList />
       </div>
+       {/* Render Filter Modal */}
+       <FilterModal isOpen={isFilterModalOpen} onClose={() => setFilterModalOpen(false)} />
     </div>
   );
 }
