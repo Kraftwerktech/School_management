@@ -21,6 +21,46 @@ const initialStudents = [
   { id: 8, picture: 'http://localhost:5173/08.jpg', studentId: 'DM37384587235', name: 'Laura Miller', class: 'X', section: 'B', roll: '19', status: 'Absent' },
   { id: 9, picture: 'http://localhost:5173/09.jpg', studentId: 'DM37384587236', name: 'Robert Anderson', class: 'XI', section: 'A', roll: '20', status: 'Present' },
   { id: 10, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
+  { id: 11, picture: 'http://localhost:5173/01.jpg', studentId: 'DM37384587228', name: 'John Doe', class: 'IX', section: 'A', roll: '12', status: 'Present' },
+  { id: 11, picture: 'http://localhost:5173/02.jpg', studentId: 'DM37384587229', name: 'Jane Smith', class: 'IX', section: 'A', roll: '13', status: 'Absent' },
+  { id: 13, picture: 'http://localhost:5173/03.jpg', studentId: 'DM37384587230', name: 'Michael Johnson', class: 'IX', section: 'B', roll: '14', status: 'Present' },
+  { id: 14, picture: 'http://localhost:5173/04.jpg', studentId: 'DM37384587231', name: 'Emily Davis', class: 'IX', section: 'B', roll: '15', status: 'Absent' },
+  { id: 15, picture: 'http://localhost:5173/05.jpg', studentId: 'DM37384587232', name: 'David Brown', class: 'X', section: 'A', roll: '16', status: 'Present' },
+  { id: 16, picture: 'http://localhost:5173/06.jpg', studentId: 'DM37384587233', name: 'Sarah Wilson', class: 'X', section: 'A', roll: '17', status: 'Absent' },
+  { id: 17, picture: 'http://localhost:5173/07.jpg', studentId: 'DM37384587234', name: 'James Lee', class: 'X', section: 'B', roll: '18', status: 'Present' },
+  { id: 18, picture: 'http://localhost:5173/08.jpg', studentId: 'DM37384587235', name: 'Laura Miller', class: 'X', section: 'B', roll: '19', status: 'Absent' },
+  { id: 19, picture: 'http://localhost:5173/09.jpg', studentId: 'DM37384587236', name: 'Robert Anderson', class: 'XI', section: 'A', roll: '20', status: 'Present' },
+  { id: 20, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
+  { id: 21, picture: 'http://localhost:5173/01.jpg', studentId: 'DM37384587228', name: 'John Doe', class: 'IX', section: 'A', roll: '12', status: 'Present' },
+  { id: 22, picture: 'http://localhost:5173/02.jpg', studentId: 'DM37384587229', name: 'Jane Smith', class: 'IX', section: 'A', roll: '13', status: 'Absent' },
+  { id: 23, picture: 'http://localhost:5173/03.jpg', studentId: 'DM37384587230', name: 'Michael Johnson', class: 'IX', section: 'B', roll: '14', status: 'Present' },
+  { id: 24, picture: 'http://localhost:5173/04.jpg', studentId: 'DM37384587231', name: 'Emily Davis', class: 'IX', section: 'B', roll: '15', status: 'Absent' },
+  { id: 25, picture: 'http://localhost:5173/05.jpg', studentId: 'DM37384587232', name: 'David Brown', class: 'X', section: 'A', roll: '16', status: 'Present' },
+  { id: 26, picture: 'http://localhost:5173/06.jpg', studentId: 'DM37384587233', name: 'Sarah Wilson', class: 'X', section: 'A', roll: '17', status: 'Absent' },
+  { id: 27, picture: 'http://localhost:5173/07.jpg', studentId: 'DM37384587234', name: 'James Lee', class: 'X', section: 'B', roll: '18', status: 'Present' },
+  { id: 28, picture: 'http://localhost:5173/08.jpg', studentId: 'DM37384587235', name: 'Laura Miller', class: 'X', section: 'B', roll: '19', status: 'Absent' },
+  { id: 29, picture: 'http://localhost:5173/09.jpg', studentId: 'DM37384587236', name: 'Robert Anderson', class: 'XI', section: 'A', roll: '20', status: 'Present' },
+  { id: 30, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
+  { id: 31, picture: 'http://localhost:5173/01.jpg', studentId: 'DM37384587228', name: 'John Doe', class: 'IX', section: 'A', roll: '12', status: 'Present' },
+  { id: 32, picture: 'http://localhost:5173/02.jpg', studentId: 'DM37384587229', name: 'Jane Smith', class: 'IX', section: 'A', roll: '13', status: 'Absent' },
+  { id: 33, picture: 'http://localhost:5173/03.jpg', studentId: 'DM37384587230', name: 'Michael Johnson', class: 'IX', section: 'B', roll: '14', status: 'Present' },
+  { id: 34, picture: 'http://localhost:5173/04.jpg', studentId: 'DM37384587231', name: 'Emily Davis', class: 'IX', section: 'B', roll: '15', status: 'Absent' },
+  { id: 35, picture: 'http://localhost:5173/05.jpg', studentId: 'DM37384587232', name: 'David Brown', class: 'X', section: 'A', roll: '16', status: 'Present' },
+  { id: 36, picture: 'http://localhost:5173/06.jpg', studentId: 'DM37384587233', name: 'Sarah Wilson', class: 'X', section: 'A', roll: '17', status: 'Absent' },
+  { id: 37, picture: 'http://localhost:5173/07.jpg', studentId: 'DM37384587234', name: 'James Lee', class: 'X', section: 'B', roll: '18', status: 'Present' },
+  { id: 38, picture: 'http://localhost:5173/08.jpg', studentId: 'DM37384587235', name: 'Laura Miller', class: 'X', section: 'B', roll: '19', status: 'Absent' },
+  { id: 39, picture: 'http://localhost:5173/09.jpg', studentId: 'DM37384587236', name: 'Robert Anderson', class: 'XI', section: 'A', roll: '20', status: 'Present' },
+  { id: 40, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
+  { id: 41, picture: 'http://localhost:5173/01.jpg', studentId: 'DM37384587228', name: 'John Doe', class: 'IX', section: 'A', roll: '12', status: 'Present' },
+  { id: 42, picture: 'http://localhost:5173/02.jpg', studentId: 'DM37384587229', name: 'Jane Smith', class: 'IX', section: 'A', roll: '13', status: 'Absent' },
+  { id: 43, picture: 'http://localhost:5173/03.jpg', studentId: 'DM37384587230', name: 'Michael Johnson', class: 'IX', section: 'B', roll: '14', status: 'Present' },
+  { id: 44, picture: 'http://localhost:5173/04.jpg', studentId: 'DM37384587231', name: 'Emily Davis', class: 'IX', section: 'B', roll: '15', status: 'Absent' },
+  { id: 45, picture: 'http://localhost:5173/05.jpg', studentId: 'DM37384587232', name: 'David Brown', class: 'X', section: 'A', roll: '16', status: 'Present' },
+  { id: 46, picture: 'http://localhost:5173/06.jpg', studentId: 'DM37384587233', name: 'Sarah Wilson', class: 'X', section: 'A', roll: '17', status: 'Absent' },
+  { id: 47, picture: 'http://localhost:5173/07.jpg', studentId: 'DM37384587234', name: 'James Lee', class: 'X', section: 'B', roll: '18', status: 'Present' },
+  { id: 48, picture: 'http://localhost:5173/08.jpg', studentId: 'DM37384587235', name: 'Laura Miller', class: 'X', section: 'B', roll: '19', status: 'Absent' },
+  { id: 49, picture: 'http://localhost:5173/09.jpg', studentId: 'DM37384587236', name: 'Robert Anderson', class: 'XI', section: 'A', roll: '20', status: 'Present' },
+  { id: 50, picture: 'http://localhost:5173/10.jpg', studentId: 'DM37384587237', name: 'Olivia Martinez', class: 'XI', section: 'A', roll: '21', status: 'Absent' },
   // More students if needed...
 ];
 
@@ -108,7 +148,7 @@ const LateEntryModal = () => {
 
 
 
-const itemsPerPage = 8;
+const itemsPerPage = 100;
 
 function ClassAttendances() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -287,8 +327,7 @@ function ClassAttendances() {
       <LateEntryModal/>
      
     </div>
-        
-                  </td>
+            </td>
                 </tr>
               ))}
             </tbody>
@@ -297,39 +336,10 @@ function ClassAttendances() {
       </div>
 
       
-     <div className="flex justify-end mr-5 mt-10 mb-10 items-center space-x-2">
-            <button
-              onClick={handlePrevPage}
-              className={`w-10 h-10 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
-                currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-              disabled={currentPage === 1}
-            >
-              <MdKeyboardArrowLeft className="text-xl" />
-            </button>
-
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageClick(index + 1)}
-                className={`w-10 h-10 flex items-center justify-center border-[1px] border-[#BB5042] rounded ${
-                  currentPage === index + 1 ? 'bg-[#BB5042] text-white' : 'bg-transparent text-[#BB5042] hover:bg-[#BB5042] hover:text-white'
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-
-            <button
-              onClick={handleNextPage}
-              className={`w-10 h-10 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
-                currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-              disabled={currentPage === totalPages}
-            >
-              <MdKeyboardArrowRight className="text-xl" />
-            </button>
-          </div>
+   
+      </div>
+      <div className=' justify-end mt-10 mb-24 flex items-center'>
+        <button className=' text-white hover:bg-[#c7847b] font-semibold border-[1px] bg-[#BB5042] w-[170px] h-[50px] rounded-[8px]'>Conifrm</button>
       </div>
     </div>
   );
