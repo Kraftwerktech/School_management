@@ -35,12 +35,12 @@ function NomarksGiven() {
       <AssessmentLayout />
       <div className="flex flex-col gap-5 justify-start mr-[57px] mt-5">
         {[...Array(4)].map((_, index) => (
-          <div key={index} className="h-[225px] border-[1px] rounded-[8px]">
+          <div key={index} className="h-[240px] border-[1px] rounded-[8px]">
             <div className="mt-5 mr-5 ml-5">
               <span className="font-bold text-[20px] text-[#465049]">
                 Economics | Class IX | Group 1
               </span>
-              <div className="grid h-[150px] grid-cols-4 gap-5 mt-8">
+              <div className="grid h-[170px] grid-cols-4 gap-5 mt-8">
                 {assessments.map((assessment, idx) => (
                   <AssessmentCard
                     key={idx}

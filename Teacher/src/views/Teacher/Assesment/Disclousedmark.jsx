@@ -227,7 +227,7 @@ function Unmarked() {
           {/* Submit Button */}
           <button
             onClick={handleSubmitClick}
-            className="px-5 py-2 w-[150px] font-bold bg-[#BB5042] text-white rounded-[8px]"
+            className="px-5 py-3 w-[150px] font-bold bg-[#BB5042] text-white rounded-[8px]"
           >
             Submit
           </button>
@@ -262,7 +262,7 @@ function Unmarked() {
         </div>
       </div>
 
-      <div className="p-2 border-[1px] rounded-[16px]">
+      <div className="p-5 border-[1px] rounded-[16px]">
         <div className="mt-4 mb-5">
           <span className="text-[18px] font-semibold">
             Monthly Test | 40 Marks | 8th Aug 2024
@@ -271,7 +271,7 @@ function Unmarked() {
         <div className="w-full text-center bg-white">
           <div className="overflow-x-auto rounded-t-[12px]">
             <table className="min-w-full table-auto text-center">
-              <thead className="bg-[#E4EBE6] h-[60px] text-center">
+              <thead className="bg-[#E4EBE6] h-[70px] text-center">
                 <tr className="text-[#465049] text-[16px] text-center">
                   <th className="px-4 py-2">Picture</th>
                   <th className="px-4 py-2">Student ID</th>
@@ -290,15 +290,15 @@ function Unmarked() {
                       <img
                         src={student.picture}
                         alt={student.name}
-                        className="w-[60px] h-[60px] rounded-full mx-auto"
+                        className="w-[70px] h-[70px] rounded-full mx-auto"
                       />
                     </td>
-                    <td className="px-4 py-2">{student.studentId}</td>
-                    <td className="px-4 py-2">{student.name}</td>
+                    <td className="px-4 text-[18px] py-2">{student.studentId}</td>
+                    <td className="px-4 text-[17px] py-2">{student.name}</td>
                     <td className="px-4 py-2">
                       <input
                         type="number"
-                        className="border-[1px] w-[160px] py-2 rounded-[8px] text-center placeholder:text-start px-3 placeholder:text-[11px] border-[#151515] focus:border-[#BB5042] focus:outline-none"
+                        className="border-[1px] w-[160px] py-3 rounded-[8px] text-center h-[55px] placeholder:text-start px-3 placeholder:text-[14px] placeholder:text-[#B6B6B6] border-[#B6B6B6] focus:border-[#BB5042] focus:outline-none"
                         placeholder="Input Mark"
                         value={student.mark}
                         onChange={(e) =>
@@ -306,10 +306,10 @@ function Unmarked() {
                         }
                       />
                     </td>
-                    <td className="px-4 flex gap-6 items-center py-2">
+                    <td className="px-4 flex gap-8 items-center py-2">
                       <input
                         type="text"
-                        className="border-[1px] placeholder:text-[11px] w-full px-3 py-2 rounded-[8px] border-[#151515] focus:border-[#BB5042] focus:outline-none"
+                        className="border-[1px] placeholder:text-[14px] w-full px-3 py-3 h-[55px] rounded-[8px] border-[#B6B6B6] focus:border-[#BB5042] focus:outline-none"
                         placeholder="Write Comments"
                         value={student.comment}
                         onChange={(e) =>
@@ -336,7 +336,7 @@ function Unmarked() {
             <div className="flex items-center space-x-2">
               <button
                 onClick={handlePrevPage}
-                className={`w-10 h-10 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
+                className={`w-12 h-12 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
                   currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 disabled={currentPage === 1}
@@ -348,7 +348,7 @@ function Unmarked() {
                 <button
                   key={index}
                   onClick={() => handlePageClick(index + 1)}
-                  className={`w-10 h-10 flex items-center justify-center border-[1px] border-[#BB5042] rounded hover:bg-[#BB5042] hover:text-white ${
+                  className={`w-12 h-12 flex items-center justify-center border-[1px] border-[#BB5042] rounded hover:bg-[#BB5042] hover:text-white ${
                     currentPage === index + 1
                       ? 'bg-[#BB5042] text-white'
                       : 'bg-transparent text-[#BB5042]'
@@ -360,7 +360,7 @@ function Unmarked() {
 
               <button
                 onClick={handleNextPage}
-                className={`w-10 h-10 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
+                className={`w-12 h-12 flex items-center justify-center bg-transparent border-[#BB5042] border-[1px] rounded text-[#BB5042] hover:bg-[#BB5042] hover:text-white ${
                   currentPage === totalPages
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
