@@ -173,8 +173,8 @@ function LayoutLesson() {
   const location = useLocation();
 
   const tabs = [
-    { name: 'Marked', path: '/teacher/dashboard/marked' },
-    { name: 'Unmarked', path: '/teacher/dashboard/unmarked' },
+    { name: 'Unmarked', path: '/teacher/dashboard/marked' },
+    { name: 'Marked', path: '/teacher/dashboard/unmarked' },
   ];
 
   const openCreateModal = () => setCreateModalOpen(true);

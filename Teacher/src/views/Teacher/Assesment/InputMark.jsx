@@ -198,7 +198,7 @@ function InputMark() {
             <tbody>
               {displayedStudents.map((student, index) => (
                 <tr key={student.id} className="border-b text-[16px] text-gray-700">
-                  <td className="px-4 py-2 text-center">
+                  <td className="px-4 py-4 text-center">
                     <img
                       src={student.picture}
                       alt={student.name}
@@ -207,14 +207,14 @@ function InputMark() {
                   </td>
                   <td className="px-4 py-2">{student.studentId}</td>
                   <td className="px-4 py-2">{student.name}</td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 h-[50px] py-3">
                     <input
                       type="number"
-                      className="border-[1px] w-[160px] py-2 rounded-[8px] text-center placeholder:text-start px-3 placeholder:text-[11px] border-[#151515] focus:border-[#BB5042] focus:outline-none"
+                      className="border-[1px] w-[160px] py-3 h-[55px] rounded-[8px] text-center placeholder:text-start px-3 placeholder:text-[11px] border-[#151515] focus:border-[#BB5042] focus:outline-none"
                       placeholder="Input Mark"
                     />
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 h-[50px] w-[400px] py-3">
                     <input
                       type="text"
                       className="border-[1px] placeholder:text-[11px] w-full px-3 py-2 rounded-[8px] border-[#151515] focus:border-[#BB5042] focus:outline-none"

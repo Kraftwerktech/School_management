@@ -34,7 +34,7 @@ function MarkesGiven() {
               <span className="font-bold text-[20px] text-[#465049]">
                 Economics | Class IX | Group 1
               </span>
-              <div className="grid h-[150px] grid-cols-5 gap-5 mt-8">
+              <div className="grid h-[150px] grid-cols-4 gap-5 mt-8">
                 {assessments.map((assessment, idx) => (
                   <AssessmentCard
                     key={idx}
