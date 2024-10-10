@@ -1,6 +1,6 @@
-# 🏫 Chu-iraghan School Management System
+# 🏫 ChuterGhonta a unique School Management System
 
-**Chu-iraghan** is a comprehensive system designed to facilitate the management of students, teachers, courses, and administrative tasks in a user-friendly and efficient manner. Built using modern web technologies, it ensures seamless school management with easy access to all the essential features.
+**ChuterGhonta** is a comprehensive system designed to facilitate the management of students, teachers, courses, and administrative tasks in a user-friendly and efficient manner. Built using modern web technologies, it ensures seamless school management with easy access to all the essential features.
 
 ![Chu-iraghan Header Image](https://via.placeholder.com/1200x300.png?text=Chu-iraghan+School+Management+System)
 
