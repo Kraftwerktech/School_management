@@ -51,7 +51,7 @@ const TodayRouting = () => {
         {/* Right side - Subject schedule */}
         <div className="w-full">
           <h3 className="text-end mr-[47px] text-[18px] text-[#A4A594]">Weekly Routine</h3>
-          <div className="grid grid-cols-5 mt-[30px] md:grid-cols-6 gap-4">
+          <div className="grid mr-5 grid-cols-5 mt-[30px] md:grid-cols-6 gap-4">
             {subjects.map((subject, index) => (
               <div key={index} className="text-center bg-[#F6F9F7] p-4 rounded-lg">
                 <p className="font-bold text-[31px] mb-3 text-gray-800">{subject.period}</p>

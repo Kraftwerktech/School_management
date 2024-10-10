@@ -181,7 +181,7 @@ function LayoutLesson() {
   const closeCreateModal = () => setCreateModalOpen(false);
 
   return (
-    <div className="max-w-full mr-[65px]">
+    <div className="max-w-full mr-[56px]">
       <header className="flex justify-between items-center mt-5 h-[52px]">
         <h1 className="text-[31px] font-bold">Assessment</h1>
       </header>
@@ -203,7 +203,7 @@ function LayoutLesson() {
         ))}
       </nav>
 
-      <main className="mt-10">
+      <main className="mt-5">
         <Outlet />
       </main>
 
