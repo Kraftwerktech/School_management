@@ -112,8 +112,7 @@ const EditMarkModal = ({ isOpen, onClose }) => {
           className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
           aria-label="Close modal"
         >
-          <AiOutlineCloseCircle size={24} />
-        </button>
+          <AiOutlineCloseCircle size={24} />        </button>
 
         <h2 className="text-xl font-bold mb-7">
           Are you sure you want to change the Assessment Report?

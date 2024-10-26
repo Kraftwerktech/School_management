@@ -19,19 +19,20 @@ import MeetingLayout from './MeetingLayout';
 
 
 
+
 //EditMeetingModel
 function EditMeetingModal({setEditShowModal}) {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-20">
       <div className="bg-white w-[1140px] rounded-lg shadow-lg p-8 max-w-[1000px] relative">
         <div className="text-center pb-4">
           <h3 className="text-[31px] font-semibold">Edit Meeting</h3>
           <button
             onClick={() => {
-              console.log('Close button clicked');
-              setEditShowModal(false);
+              
+              setEditShowModal(true);
             }}
             className="text-gray-500 hover:text-gray-700 absolute top-4 right-4"
           >
@@ -41,7 +42,7 @@ function EditMeetingModal({setEditShowModal}) {
 
         <form className="mt-6 space-y-6">
           <div>
-            <label className="block text-gray-700 mb-1">Subject</label>
+          
             <input
               type="text"
               className="px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
@@ -129,18 +130,26 @@ function EditMeetingModal({setEditShowModal}) {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-1">Details</label>
+           
             <textarea
               className="px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full"
               placeholder="Enter Details"
               rows="4"
             />
           </div>
-
-          <div className='justify-start flex gap-2 items-center'>
-            <span><GrAttachment className='w-5 h-5'/></span>
-            <span>Attachment</span>
+<div className=' flex flex-col space-y-6'>
+<div className='justify-start flex gap-4 items-center'>
+<span className=' text-[16px]  text-[#939393]'>Attachment</span>
+            
+            <span className='text-[16px]'>Class Syllabus.pdf</span>
           </div>
+          <div className='flex items-center gap-2'>
+            <span className='text-[16px] font-semibold text-[#465049]'>Attendant Status</span>
+           <span><IoCheckmarkCircleOutline className=' w-6 h-6 text-[#08A647] '/></span>
+           <span className='text-[#465049]'>2 Students</span>
+          </div>
+</div>
+          
 
           <div className="flex justify-center">
             <button

@@ -173,16 +173,16 @@ function LayoutLesson() {
   const location = useLocation();
 
   const tabs = [
-    { name: 'Approved Lesson', path: '/teacher/dashboard/approveLesson' },
-    { name: 'Drafted Lesson', path: '/teacher/dashboard/draftLesson' },
+    { name: 'Approved Lesson Plan', path: '/teacher/dashboard/approveLesson' },
+    { name: 'Drafted Lesson plan', path: '/teacher/dashboard/draftLesson' },
   ];
 
   const openCreateModal = () => setCreateModalOpen(true);
   const closeCreateModal = () => setCreateModalOpen(false);
 
   return (
-    <div className="max-w-full mr-5">
-      <header className="flex justify-between items-center mt-5 h-[52px]">
+    <div className="max-w-full">
+      <header className="flex justify-between items-center mb-10 mt-5 h-[52px]">
         <h1 className="text-[31px] font-bold">Lesson Plan</h1>
         <button
           onClick={openCreateModal}
@@ -194,7 +194,8 @@ function LayoutLesson() {
       </header>
 
       {/* Tab Navigation */}
-      <nav className="flex gap-16 mt-10 border-b-[1px]">
+      <div className=' border-t-[1px] border-l-[1px] rounded-t-[8px] p-5 border-r-[1px]'>
+      <nav className="flex gap-16 mt-3 border-b-[1px]">
         {tabs.map((tab) => (
           <NavLink
             key={tab.name}
@@ -209,8 +210,10 @@ function LayoutLesson() {
           </NavLink>
         ))}
       </nav>
+      </div>
+      
 
-      <main className="mt-10">
+      <main >
         <Outlet />
       </main>
 

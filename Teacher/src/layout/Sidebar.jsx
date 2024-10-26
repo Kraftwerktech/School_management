@@ -20,6 +20,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
 import { LuBookPlus } from "react-icons/lu";
 import { FiMinus } from "react-icons/fi";
+import { MdAssignmentInd } from "react-icons/md";
+import { GrResources } from "react-icons/gr";
 
 import logo from '../assets/Teacher/logo1.png';
 
@@ -83,6 +85,8 @@ const Sidebar = () => {
     { path: "CoApprovedsyllabus", role: "coordinator", name: "Syllabus", icon: <LuCalendarDays /> },
     { path: "substitute-scheduling", role: "coordinator", name: "Substitute Scheduling", icon: <TbCalendarTime /> },
     { path: "teacherlist", role: "coordinator", name: "Teacher Directory", icon: <LiaChalkboardTeacherSolid /> },
+    { path: "assingsyllabus", role: "coordinator", name: "Assign Syllabus", icon: <MdAssignmentInd /> },
+    { path: "resourceallowcation", role: "coordinator", name: "Resource Allocation", icon: <GrResources /> },
     { path: "CMeeting", role: "coordinator", name: "Meetings", icon: <SiGooglemeet /> },
     { path: "coapprovedLesson", role: "coordinator", name: "Lesson Plan", icon: <VscRepo /> },
     { path: "CAnnuncement", role: "coordinator", name: "Announcements", icon: <GrAnnounce /> },

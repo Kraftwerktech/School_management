@@ -81,15 +81,15 @@ function ApprovedLesson() {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false); // State for modal
 
   return (
-    <div className='max-w-full mr-5'>
+    <div className='max-w-full mb-10   mr-[47px]'>
       <LayoutLesson />
-      <div className='mt-6'>
+      <div className=' p-5 border-l-[1px] rounded-b-[8px] border-r-[1px] border-b-[1px]'>
 
         {/* Flex container for the filter button and datepicker */}
-        <div className='flex mr-5 justify-between items-center'>
+        <div className='flex border-b-[1px]  justify-between items-center'>
           
           {/* Filter Button */}
-          <div className='flex gap-2 items-center'>
+          <div className='flex gap-2 mb-5 items-center'>
             <button
               className='py-2 gap-2 h-[55px] text-[18px] px-6 w-[150px] font-medium bg-[#BB5042] text-white flex items-center rounded-[8px]'
               onClick={() => setFilterModalOpen(true)} // Open modal on click
@@ -99,11 +99,11 @@ function ApprovedLesson() {
           </div>
 
           {/* Date Picker with Calendar Icon */}
-          <div className='relative flex items-center'>
+          <div className='relative mb-5 flex items-center'>
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              className="appearance-none px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-[200px] pr-[60px] h-[55px]"
+              className="appearance-none font-semibold px-8 py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-[200px] pr-[60px] h-[55px]"
               placeholderText="Select Date"
               dateFormat="dd MMM yyyy"
             />

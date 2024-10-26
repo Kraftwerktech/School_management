@@ -26,3 +26,43 @@ body {
   .background {
     background-image: url('http://localhost:5173/School.jpg');
 }
+
+
+/* Custom Calendar Styles */
+.calendar-custom .react-calendar {
+  border: none; /* Remove calendar borders */
+}
+
+.calendar-custom .react-calendar__navigation {
+  background-color: #ECEDDA; /* Month header background color */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.calendar-custom .react-calendar__navigation__label {
+  font-weight: bold;
+  color: #465049; /* Header text color */
+}
+
+.calendar-custom .react-calendar__tile--now {
+  background-color: #F5F5F5; /* Today’s date background */
+}
+
+.calendar-custom .react-calendar__tile--active {
+  background-color: #BB5042; /* Selected date background */
+  color: white;
+  border-radius: 50%; /* Fully rounded selected date */
+}
+
+.calendar-custom .react-calendar__month-view__weekdays__weekday {
+  font-weight: 600;
+  color: #8B8B8B; /* Weekdays color */
+}
+
+.calendar-custom .react-calendar__tile {
+  font-weight: 600;
+}
+
+.calendar-custom .react-calendar__tile--weekend {
+  color: #BB5042; /* Weekend (Friday and Saturday) color */
+}

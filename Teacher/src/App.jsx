@@ -60,6 +60,8 @@ const CAddActivity = lazy(() => import('./views/Coordinator/Syllabus/AddActivity
 const CoLayoutLesson = lazy(() => import('./views/Coordinator/LessonPlan/LayoutLesson'));
 const CoApprovedLesson = lazy(() => import('./views/Coordinator/LessonPlan/ApproviedLesson'));
 const CoPendingLesson = lazy(() => import('./views/Coordinator/LessonPlan/PendingLesson'));
+const AssingSyllabus = lazy(() => import('./views/Coordinator/AssingSyllabus'));
+const ResourcesAllowcation = lazy(() => import('./views/Coordinator/ResourcesAllow'));
 
 
 const ApprovedLesson = lazy(() => import('./views/Teacher/LessonPlan/ApprovedLesson'));
@@ -179,6 +181,8 @@ function App() {
         <Route path='CAnnuncement' element={<COAnnuncement/>}/>
         <Route path='CMeeting' element={<COMeeting/>}/>
         <Route path='CReport' element={<COReport/>}/>
+        <Route path='assingsyllabus' element={<AssingSyllabus/>}/>
+        <Route path='resourceallowcation' element={<ResourcesAllowcation/>}/>
         <Route path='CTeacherList' element={<COTeacherList/>}/>
         </Route>
         <Route path="/cologin" element={<CoOrdinatorlogin />} />

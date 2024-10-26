@@ -17,64 +17,73 @@ const SyllabusCard = ({ status, date, title, test, mark, time, lesson, topicno, 
       case 'Submitted':
         return 'bg-[#A4A594] rounded-lg text-white font-bold';
       case 'Rejected':
-        return 'border-[#CD1902]  bg-[#CD1902] rounded-lg text-white font-bold'; // Red border and background for rejected status
+        return 'border-[#CD1902]  bg-[#CD1902] rounded-[8px] text-white font-bold'; // Red border and background for rejected status
       default:
         return '';
     }
   };
 
+
+  const isSubmitted = status === "Submitted";
   return (
-    <div className={`bg-white border-b-[1px] mb-4 p-6 ${status === 'Rejected' ? 'border-red-500 border-[1px]' : ''}`}>
-      <div className="flex items-center mb-4">
-        <div className="flex flex-col">
-          <div className="text-white font-semibold max-w-[250px] text-[18px] pl-5 rounded-[8px] py-2 border-[1.5px] bg-[#A4A594]">
-            {date}
-          </div>
-          <div className="mt-4 justify-between w-full items-center flex gap-3">
-            <div className=' flex gap-4'>
-            <span className="font-semibold text-[20px] flex items-center gap-2 text-[#98AD9E]">
-              <input type="checkbox" className="w-4 h-4" /> {title}
-            </span>
-            <span className={`py-1 px-5 rounded-[12px] text-[14px] ${getStatusStyles()}`}>
-              {status}
-            </span>
-            </div>
-            <div className=' items-center flex ml-[860px] gap-4'>
-              <span>
-                <FiEdit className=' text-[#BB5042] w-7 h-7'/>
-              </span>
-              <span className=' text-[#B6B6B6] font-semibold text-[22px]'>|</span>
-              <span>
-                <CiTrash className=' text-[#BB5042] w-7 h-7'/>
-              </span>
-            </div>
-          </div>
-        </div>
+    <div className={`bg-white border-b-[2px] mt-5 mb-4 ${status === 'Rejected' ? 'border-red-500 rounded-[8px] p-5 border-[1px]' : ''}`}>
+    <div className="flex mb-5 justify-between items-center w-full">
+      <div className="text-white font-semibold w-full max-w-[250px] text-[18px] pl-5 rounded-[8px] py-2 border-[1.5px] bg-[#A4A594]">
+        {date}
       </div>
-
-      <div className="mb-2 text-gray-500 text-sm">
-        <h4 className="text-gray-600 font-bold text-[20px] mt-3 mb-3">Activity</h4>
-        <div className="mb-4">
-          <p className="text-gray-500 font-bold text-[16px]">{activityDetails}</p>
-        </div>
-        <span className=" font-semibold text-[#939393] text-[18px]">Lesson {lesson} </span>
+  
+      <div className="items-center flex gap-4">
+        <span>
+          <FiEdit className={`w-6 h-6 ${isSubmitted ? 'text-gray-400 cursor-not-allowed' : 'text-[#BB5042]'}`} disabled={isSubmitted} />
+        </span>
+        <span className="text-[#B6B6B6] font-semibold text-[22px]">|</span>
+        <span>
+          <CiTrash className={`w-6 h-6 ${isSubmitted ? 'text-gray-400 cursor-not-allowed' : 'text-[#BB5042]'}`} disabled={isSubmitted} />
+        </span>
       </div>
-
+    </div>
+  
+    <div className="flex gap-4">
+      <span className="font-semibold text-[20px] flex items-center gap-2 text-[#98AD9E]">
+        <input type="checkbox" className="w-4 h-4 border-[#BB5042]" /> {title}
+      </span>
+      <span className={`py-1 px-5 rounded-[12px] text-[14px] ${getStatusStyles()}`}>
+        {status}
+      </span>
+    </div>
+  
+  
+  
+    {/* Additional content sections */}
+    <div className="mb-2 text-gray-500 text-sm">
+      <h4 className="text-gray-600 font-bold text-[20px] mt-3 mb-3">Activity</h4>
+      <div className="mb-4">
+        <p className="text-gray-500 font-bold text-[16px]">{activityDetails}</p>
+      </div>
+      <span className="font-semibold text-[#939393] text-[18px]">Lesson {lesson}</span>
+    </div>
+  
+    <div>
+      <span className="font-bold text-[18px] text-[#939393]">Topic {topicno}</span>: 
+      <span className="text-[#939393] text-[16px]"> {topictitle}</span>
+    </div>
+  
+    <div className="mt-2 mr-10">
+      <p>{details}</p>
+    </div>
+  
+    <div className="mt-4 font-bold mb-3 text-[20px] flex gap-2">
+      <span>{test}</span> |
+      <span>{mark}</span> |
+      <span>{time}</span>
+    </div>
+  
+    {/* Repeated topic sections */}
+    <div className="space-y-3">
       <div>
         <span className="font-bold text-[18px] text-[#939393]">Topic {topicno}</span>: 
         <span className="text-[#939393] text-[16px]"> {topictitle}</span>
       </div>
-
-      <div className="mt-2 mr-10">
-        <p>{details}</p>
-      </div>
-
-      <div className="mt-4 font-bold mb-3 text-[20px] flex gap-2">
-        <span>{test}</span> |
-        <span>{mark}</span> |
-        <span>{time}</span>
-      </div>
-      <div className=' space-y-3'>
       <div>
         <span className="font-bold text-[18px] text-[#939393]">Topic {topicno}</span>: 
         <span className="text-[#939393] text-[16px]"> {topictitle}</span>
@@ -83,20 +92,26 @@ const SyllabusCard = ({ status, date, title, test, mark, time, lesson, topicno, 
         <span className="font-bold text-[18px] text-[#939393]">Topic {topicno}</span>: 
         <span className="text-[#939393] text-[16px]"> {topictitle}</span>
       </div>
-      <div>
-        <span className="font-bold text-[18px] text-[#939393]">Topic {topicno}</span>: 
-        <span className="text-[#939393] text-[16px]"> {topictitle}</span>
+    </div>
+  
+    {/* Homework and Additional Note sections */}
+    <div className="flex mt-5 mb-[30px]">
+      <div className="flex space-y-4 flex-col mr-[200px]">
+        <span className="font-bold text-[18px]">H.W</span>
+        <span>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.</span>
       </div>
+      <div className="flex space-y-4 flex-col mr-[200px]">
+        <span className="font-bold text-[18px]">Additional Note</span>
+        <span>Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.</span>
       </div>
-      <div className="mt-2 mr-10">
-        <p>{details}</p>
-      </div>
-
+    </div>
+  
+    {/* Attached files section */}
+    <div className="border-b-[1px]">
       {attachedFiles && attachedFiles.length > 0 && (
-        <div className="mt-6 flex  gap-2">
-          
+        <div className="mt-5 mb-5 flex gap-2">
           <div className="flex items-center flex-wrap gap-8">
-          <h4 className="text-gray-600 font-semibold mb-2">Attached Files</h4>
+            <h4 className="text-gray-600 font-semibold mb-2">Attached Files</h4>
             {attachedFiles.map((file, index) => (
               <a key={index} href={file.url} className="text-[#465049] font-semibold text-[16px] border-[1px] w-[170px] px-7 py-4 rounded-[8px] text-sm underline">
                 {file.name}
@@ -106,6 +121,21 @@ const SyllabusCard = ({ status, date, title, test, mark, time, lesson, topicno, 
         </div>
       )}
     </div>
+
+      {/* Resolve button and message section for Rejected status */}
+      {status === 'Rejected' && (
+      <div className="mt-4 bg-[#FFE5E5] p-4 rounded-[8px] border-[1px] border-red-400">
+        <p className="text-[#BB5042] font-semibold mb-3">Please provide a correct solution.</p>
+        <div className="flex items-center gap-3">
+          <button className="bg-[#BB5042] text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-600">Resolve</button>
+          <label className="flex items-center gap-2">
+            <input type="checkbox" className="w-4 h-4 text-[#BB5042]" /> <span className="text-[#BB5042] font-semibold">Mark as resolved</span>
+          </label>
+        </div>
+      </div>
+    )}
+  </div>
+  
   );
 };
 
@@ -251,15 +281,15 @@ function DraftLesson() {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <div className="max-w-full mr-10 font-roboto">
+    <div className="max-w-full mb-10   mr-[47px]">
       <LayoutLesson />
-      <div className="mt-6">
+      <div className="p-5 border-l-[1px] rounded-b-[8px] border-r-[1px] border-b-[1px]">
 
         {/* Flex container for the filter button and date picker */}
-        <div className="flex justify-between items-center">
+        <div className="flex border-b-[1px]  justify-between items-center">
 
           {/* Filter Button */}
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 mb-5 items-center">
             
             <button onClick={() => setFilterModalOpen(true)} className="py-2 px-6 w-[150px] h-[55px] text-[18px] font-medium border border-[#BB5042] text-[#BB5042] flex items-center rounded-[8px]">
               <CiFilter className="w-6 h-6" /> Filter
@@ -267,11 +297,11 @@ function DraftLesson() {
           </div>
 
           {/* Date Picker with Calendar Icon */}
-          <div className="relative flex items-center">
+          <div className="relative mb-5 flex items-center">
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              className="appearance-none px-8 w-[200px] py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] h-[55px] pr-[60px]"
+              className="appearance-none font-semibold px-8 w-[200px] py-2 outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] h-[55px] pr-[60px]"
               placeholderText="Select Date"
               dateFormat="dd MMM yyyy"
             />
@@ -279,14 +309,15 @@ function DraftLesson() {
           </div>
 
         </div>
-      </div>
-
-      {/* Rendering the Syllabus List */}
-      <div className="mt-6">
+  {/* Rendering the Syllabus List */}
+  <div className="mt-6">
         <SyllabusList />
       </div>
        {/* Render Filter Modal */}
        <FilterModal isOpen={isFilterModalOpen} onClose={() => setFilterModalOpen(false)} />
+      </div>
+
+      
     </div>
   );
 }

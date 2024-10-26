@@ -115,9 +115,9 @@ function Announcement() {
   return (
     <div className="pr-8 pb-6 mt-0">
       <h3 className="text-[31px] font-semibold mb-6">Announcement</h3>
-      
+      <div className=' border-[1px] p-5 rounded-[8px]'>
       <div className="w-full bg-white rounded-md">
-        <div className="flex flex-wrap gap-4 mb-10">
+        <div className="flex mt-5 flex-wrap gap-4 mb-10">
           <input 
             className="px-5 py-2 placeholder:text-[13px] outline-none border bg-transparent border-slate-300 rounded-md text-gray-700 focus:border-[#BB5042] w-full md:max-w-[300px]" 
             type="text" 
@@ -158,7 +158,7 @@ function Announcement() {
       <div className="w-full bg-white mt-6 rounded-md">
         <div className="overflow-x-auto rounded-t-md">
           <table className="min-w-full table-auto">
-            <thead className="bg-[#E4EBE6] text-left h-[60px]">
+            <thead className="bg-[#E4EBE6] text-left h-[70px]">
               <tr className="text-[#465049] text-[16px]">
                 <th className="px-4 py-3 max-w-[140px]">Date</th>
                 <th className="px-4 py-3 max-w-[220px]">Subject</th>
@@ -178,8 +178,8 @@ function Announcement() {
                     <br />
                     <span>{student.role}</span>
                   </td>
-                  <td className="px-4 py-3 max-w-[140px] text-center">
-                    <BsFiletypePdf className="w-5 h-5 text-[#BB5042] mx-auto" />
+                  <td className="px-4 py-3 max-w-[140px] justify-center items-center mr-8 text-center">
+                    <BsFiletypePdf className="w-8 h-8 text-[#BB5042]" />
                   </td>
                 </tr>
               ))}
@@ -217,6 +217,8 @@ function Announcement() {
           </div>
         </div>
       </div>
+      </div>
+      
     </div>
   );
 }

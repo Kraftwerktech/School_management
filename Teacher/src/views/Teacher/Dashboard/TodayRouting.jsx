@@ -9,6 +9,10 @@ const TodayRouting = () => {
   const [modalOpen, setModalOpen] = useState(false); // Control modal visibility
   const [selectedActivity, setSelectedActivity] = useState(null); // Store selected activity details
 
+
+
+
+
   const subjects = [
     { period: '1st', time: '10:00 am - 10:45 am', subject: 'Bengali', class: 'V - B', buttonText: 'Activity' },
     { period: '2nd', time: '11:00 am - 11:35 am', subject: 'n/a', class: 'V - A', buttonText: 'Activity' },
@@ -34,19 +38,32 @@ const TodayRouting = () => {
       <div className="flex ml-10 gap-4">
         {/* Left side - Calendar */}
         <div className="w-[500px]">
-          <h3 className="font-semibold text-[24px] text-[#465049] mb-5">Today’s Routing</h3>
-          {/* Display Calendar with selected date */}
-          <Calendar
-            value={selectedDate}
-            onChange={handleDateChange}
-            className="mt-5 mb-5 mr-5 rounded-[8px] border-[0.5px] border-[#F6F9F7] font-semibold p-5"
-          />
-          <Link to='/teacher/dashboard/routineCalender'>
-            <button className="hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]">
-              View Academic Calendar
-            </button>
-          </Link>
-        </div>
+      <h3 className="font-semibold text-[24px] text-[#465049] mb-5">Today’s Routing</h3>
+
+      {/* Display Calendar with selected date */}
+      <Calendar
+        value={selectedDate}
+        onChange={handleDateChange}
+        className="mt-5 mb-5 rounded-t-[8px] border-none  calendar-custom"
+        tileClassName={({ date, view }) => {
+          // Highlight Fridays and Saturdays in red
+          if (view === 'month' && (date.getDay() === 5 || date.getDay() === 6)) {
+            return 'text-[#BB5042]'; // Highlight Fridays and Saturdays
+          }
+          // Add full rounding to the selected date
+          if (selectedDate.toDateString() === date.toDateString()) {
+            return 'bg-[#BB5042] text-white rounded-full'; // Selected date style
+          }
+          return '';
+        }}
+      />
+
+      <Link to="/teacher/dashboard/routineCalender">
+        <button className="hover:bg-[#EAC9C4] ml-16 px-5 py-2 border-[1px] rounded-[8px] border-[#BB5042] text-[#BB5042]">
+          View Academic Calendar
+        </button>
+      </Link>
+    </div>
 
         {/* Right side - Subject schedule */}
         <div className="w-full">
@@ -55,7 +72,7 @@ const TodayRouting = () => {
             {subjects.map((subject, index) => (
               <div key={index} className="text-center bg-[#F6F9F7] p-4 rounded-lg">
                 <p className="font-bold text-[31px] mb-3 text-gray-800">{subject.period}</p>
-                <p className="font-medium items-center ml-8 w-[90px] text-[18px] mb-5 text-[#465049]">{subject.time}</p>
+                <p className="font-medium items-center w-[90px] text-[18px] mb-5 text-[#465049]">{subject.time}</p>
                 <p className="text-[#BB5042] font-bold text-[26px]">{subject.subject !== 'n/a' ? subject.subject : 'N/A'}</p>
                 <p className="text-[#465049] text-[20px] mb-8 font-bold">{subject.class}</p>
 
