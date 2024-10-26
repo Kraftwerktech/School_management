@@ -25,13 +25,13 @@ function CloneSyllabusModal({ isOpen, onClose, onYes, onNo }) {
         <div className="flex items-center justify-center gap-6">
           <button
             onClick={onYes}
-            className="bg-[#BB5042] text-white px-6 py-3 rounded-md hover:bg-[#a9432e]"
+            className="bg-[#BB5042] w-[180px] text-white px-6 py-3 rounded-md hover:bg-[#a9432e]"
           >
             Yes
           </button>
           <button
             onClick={onNo}
-            className="border border-[#BB5042] text-[#BB5042] px-6 py-3 rounded-md hover:bg-[#f8e4e0]"
+            className="border border-[#BB5042]  w-[180px] text-[#BB5042] px-6 py-3 rounded-md hover:bg-[#f8e4e0]"
           >
             No
           </button>
@@ -46,47 +46,53 @@ function CreateSyllabusModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0  bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      <div className="bg-white p-10 rounded-lg max-h-[600px] max-w-[700px] w-full relative">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-          aria-label="Close modal"
-        >
-          <RxCrossCircled size={24} />
-        </button>
+<div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+  <div className="bg-white p-10 rounded-lg max-h-[600px] max-w-[700px] w-full relative">
+    {/* Close Button */}
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+      aria-label="Close modal"
+    >
+      <RxCrossCircled size={24} />
+    </button>
 
-        <div className="p-6">
+    <div className="p-6">
       <h2 className="text-[31px] font-bold mt-6 mb-6 text-center">
-        Create Syllabus
+        Clone Syllabus
       </h2>
-      <div className="flex flex-col gap-6 ml-10 mr-10">
+      <div className="flex flex-col gap-6">
         {/* First Row */}
         <div className="flex gap-10 justify-center">
           <div className="flex gap-2 items-center">
-            <span className="text-[16px] font-bold text-[#465049]">Clone from</span>
-            <div className="relative">
-              <input
-                type="date"
-                placeholder="2024"
-                className="w-[100px] h-[48px] border border-gray-300 pl-2 pr-8 text-center rounded-md"
-                onFocus={(e) => (e.target.type = "year")}
-                onBlur={(e) => (e.target.type = "text")}
-              />
+            <span className="text-[18px] font-bold text-[#465049]">Clone from</span>
+            <div className="relative w-[152px]">
+              <select
+                className="w-full h-[58px] border border-gray-300 pl-2 pr-8 rounded-md appearance-none"
+                defaultValue=""
+              >
+                <option value="" disabled>year</option>
+                <option value="Class 1">2022</option>
+                <option value="Class 2">2023</option>
+                <option value="Class 3">2024</option>
+                {/* Add more classes as needed */}
+              </select>
               <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
             </div>
           </div>
           <div className="flex gap-2 items-center">
-            <span className="text-[16px] font-bold text-[#465049]">Syllabus Year</span>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="2025"
-                className="w-[100px] h-[48px] border border-gray-300 pl-2 pr-8 text-center rounded-md"
-                onFocus={(e) => (e.target.type = "year")}
-                onBlur={(e) => (e.target.type = "text")}
-              />
+            <span className="text-[18px] font-bold text-[#465049]">Syllabus Year</span>
+            <div className="relative w-[152px]">
+              <select
+                className="w-full h-[58px] border border-gray-300 pl-2 pr-8 rounded-md appearance-none"
+                defaultValue=""
+              >
+                <option value="" disabled>year</option>
+                <option value="Class 1">2025</option>
+                <option value="Class 2">2026</option>
+                <option value="Class 3">2027</option>
+                {/* Add more classes as needed */}
+              </select>
               <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
             </div>
           </div>
@@ -95,42 +101,52 @@ function CreateSyllabusModal({ isOpen, onClose }) {
         {/* Second Row */}
         <div className="flex gap-10 justify-center">
           <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Class"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
+            <div className="relative w-[152px]">
+              <select
+                className="w-full h-[58px] border border-gray-300 pl-2 pr-8 rounded-md appearance-none"
+                defaultValue=""
+              >
+                <option value="" disabled>Class</option>
+                <option value="Class 1">Class 1</option>
+                <option value="Class 2">Class 2</option>
+                <option value="Class 3">Class 3</option>
+                {/* Add more classes as needed */}
+              </select>
               <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
             </div>
           </div>
-         
-          <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Subject"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
-              <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-       
-
-        {/* Add content for creating a syllabus */}
-        <div className="flex items-center justify-center gap-6">
-          <Link to="/teacher/dashboard/createsyllabusDraft" className="bg-[#BB5042] w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e]">
-          <button>
-            Confirm
-          </button>
-          </Link>
           
+          <div className="flex gap-2 items-center">
+            <div className="relative w-[152px]">
+              <select
+                className="w-full h-[58px] border border-gray-300 pl-2 pr-8 rounded-md appearance-none"
+                defaultValue=""
+              >
+                <option value="" disabled>Select Subject</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                {/* Add more subjects as needed */}
+              </select>
+              <IoChevronDownSharp className="absolute right-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    {/* Confirm Button */}
+    <div className="flex items-center justify-center gap-6">
+      <Link to="/teacher/dashboard/createsyllabusDraft" className="bg-[#BB5042] text-center font-semibold w-[182px] text-white px-10 py-3 rounded-md hover:bg-[#a9432e]">
+        
+          Confirm
+       
+      </Link>
+    </div>
+  </div>
+</div>
+
+
   );
 }
 
@@ -151,63 +167,76 @@ function CreateNewSyllabusModal({ isOpen, onClose }) {
         </button>
 
         <div className="p-6">
-      <h2 className="text-[31px] font-bold mt-6 mb-6 text-center">
-        Create New Syllabus
-      </h2>
-      <div className="flex flex-col  space-y-[20px] gap-6 ml-10 mr-10">
-        {/* First Row */}
-        <div className="flex gap-10 justify-center">
-         
-          <div className="flex gap-2 items-center">
-            <span className="text-[20px] font-bold text-[#465049]">Syllabus Year</span>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="2025"
-                className="w-[150px] h-[48px] border border-gray-300 pl-2 pr-8 text-center rounded-md"
-                onFocus={(e) => (e.target.type = "year")}
-                onBlur={(e) => (e.target.type = "text")}
-              />
-              <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+          <h2 className="text-[31px] font-bold mt-6 mb-6 text-center">
+            Create New Syllabus
+          </h2>
+          <div className="flex flex-col space-y-6 mx-10">
+            {/* First Row */}
+            <div className="flex gap-10 justify-center">
+              <div className="flex gap-2 items-center">
+                <span className="text-[20px] font-bold text-[#465049]">Syllabus Year</span>
+                <div className="relative">
+                  <select
+                    className="w-[150px] h-[48px] border border-gray-300 pl-3 pr-10 rounded-md text-center appearance-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Select Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                  </select>
+                  <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+                </div>
+              </div>
+            </div>
+
+            {/* Second Row */}
+            <div className="flex gap-10 justify-center">
+              <div className="flex gap-2 items-center">
+                <span className="text-[20px] font-bold text-[#465049]">Class</span>
+                <div className="relative">
+                  <select
+                    className="w-[152px] h-[48px] border border-gray-300 pl-3 pr-10 rounded-md text-center appearance-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Class</option>
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                    {/* Add more classes as needed */}
+                  </select>
+                  <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+                </div>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <span className="text-[20px] font-bold text-[#465049]">Subject</span>
+                <div className="relative">
+                  <select
+                    className="w-[152px] h-[48px] border border-gray-300 pl-3 pr-10 rounded-md text-center appearance-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Subject</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    {/* Add more subjects as needed */}
+                  </select>
+                  <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Second Row */}
-        <div className="flex gap-10 justify-center">
-          <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Class"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
-              <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
-            </div>
-          </div>
-        
-          <div className="flex gap-2 items-center">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Select Subject"
-                className="w-[152px] h-[48px] border border-gray-300 pl-2 pr-8 rounded-md"
-              />
-              <IoChevronDownSharp className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#BB5042]" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-        {/* Add content for creating a syllabus */}
-        <div className="flex items-center justify-center gap-6">
-          <Link className="bg-[#BB5042] text-white w-[160px] px-6 py-3 rounded-md hover:bg-[#a9432e]" to='/teacher/dashboard/createsyllabusDraft'>
-          <button
+        {/* Confirm Button */}
+        <div className="flex items-center justify-center mt-6">
+          <Link
+            to="/teacher/dashboard/createsyllabusDraft"
+            className="bg-[#BB5042] text-white w-[160px] px-6 py-3 rounded-md hover:bg-[#a9432e] text-center"
           >
             Confirm
-          </button>
           </Link>
-          
         </div>
       </div>
     </div>
@@ -252,7 +281,7 @@ function LayoutSyllabus() {
         <span className="text-[31px] font-bold">Syllabus</span>
         <button
           onClick={openCloneModal}
-          className="border rounded-lg text-white bg-[#BB5042] mr-5 px-6 py-2"
+          className="border rounded-lg text-white bg-[#BB5042] mr-5 px-6 py-3"
         >
           Create Syllabus
         </button>
@@ -267,8 +296,8 @@ function LayoutSyllabus() {
             to={tab.path}
             className={({ isActive }) =>
               isActive || (tab.name === 'Approved Syllabus' && location.pathname === '/teacher/dashboard')
-                ? 'font-bold text-[20px] p-5 border-b-[5px] border-[#BB5042]'
-                : 'text-gray-600 text-[20px] p-5 hover:text-gray-900'
+                ? 'font-bold text-[24px] p-5 border-b-[5px] border-[#BB5042]'
+                : 'text-gray-600 text-[24px] p-5 hover:text-gray-900'
             }
           >
             {tab.name}

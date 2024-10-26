@@ -70,7 +70,7 @@ function CreateLessonModal({ isOpen, onClose }) {
               <select
                 value={selectedClass}
                 onChange={(e) => setSelectedClass(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
                 <option value="">Class</option>
                 {Array.from({ length: 12 }, (_, i) => (
@@ -87,7 +87,7 @@ function CreateLessonModal({ isOpen, onClose }) {
               <select
                 value={selectedSection}
                 onChange={(e) => setSelectedSection(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
                 <option value="">Section</option>
                 {['A', 'B', 'C', 'D'].map((section, index) => (
@@ -107,7 +107,7 @@ function CreateLessonModal({ isOpen, onClose }) {
               <select
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="border  focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6]  focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
                 <option value="">Subject</option>
                 {subjects.map((subject, index) => (
@@ -124,7 +124,7 @@ function CreateLessonModal({ isOpen, onClose }) {
               <select
                 value={selectedLesson}
                 onChange={(e) => setSelectedLesson(e.target.value)}
-                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-2 appearance-none"
+                className="border border-[#B6B6B6] focus:border-[#BB5042] rounded-md w-full px-4 py-3 appearance-none"
               >
                 <option value="">Lesson</option>
                 {lessons.map((lesson, index) => (

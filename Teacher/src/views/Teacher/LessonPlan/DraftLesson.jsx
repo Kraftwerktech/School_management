@@ -34,7 +34,10 @@ const SyllabusCard = ({ status, date, title, test, mark, time, lesson, topicno, 
   
       <div className="items-center flex gap-4">
         <span>
+          <Link to="http://localhost:5173/teacher/dashboard/addlessonplan">
           <FiEdit className={`w-6 h-6 ${isSubmitted ? 'text-gray-400 cursor-not-allowed' : 'text-[#BB5042]'}`} disabled={isSubmitted} />
+          </Link>
+          
         </span>
         <span className="text-[#B6B6B6] font-semibold text-[22px]">|</span>
         <span>

@@ -129,7 +129,10 @@ function AddLesson() {
       {/* Header Section */}
       <div className=' flex justify-between items-center mr-[48px]'>
       <div className='flex gap-4 items-center mt-5'>
+        <Link to='/teacher/dashboard/draftLesson'>
         <SlArrowLeftCircle className='text-[#BB5042] w-7 h-7' />
+        </Link>
+       
         <div className="relative flex items-center">
               <DatePicker
                 selected={selectedDate}
@@ -392,7 +395,7 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 
 <div className='mt-3 mb-8'>
-<div className='flex justify-between border-b-[1px] items-center mt-7 mr-5'>
+<div className='flex justify-between  border-b-[1px] items-center mt-7 mr-5'>
   <div className='gap-3 flex'>
   <input type='checkbox' className='w-[18px] text-[#BB5042] h-[18px] checked:border-[#BB5042]'/>
   <h3 className='text-[16px] mb-3 font-bold'>Activity 45</h3>
@@ -481,7 +484,11 @@ Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.L
 </div>
 
      
-      <div className='mt-5 pl-[450px] mb-20'><button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button></div>
+      <div className='mt-5  justify-center items-center flex mb-20'>
+        <Link to='/teacher/dashboard/draftLesson'>
+        <button className='py-3 rounded-[8px] px-8 bg-[#BB5042] w-[400px] justify-center items-center text-white'>Save</button>
+        </Link>
+      </div>
     </div>
   );
 }
